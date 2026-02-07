@@ -14,7 +14,7 @@
     .hero { text-align:center; background:#f5faf7; }
     .btn { padding:14px 26px; background:#1f8f5f; color:#fff; text-decoration:none; border-radius:6px; display:inline-block; margin:10px; }
     .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:24px; }
-    .card { padding:22px; border-radius:10px; background:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.06); }
+    .card { padding:22px; border-radius:14px; background:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.06); display:flex; flex-direction:column; }
     .highlight { background:#0f2f24; color:#fff; }
     input, select { width:100%; padding:12px; margin:12px 0; }
     button { width:100%; padding:14px; background:#1f8f5f; color:#fff; border:none; border-radius:6px; font-size:16px; }
@@ -39,53 +39,26 @@
 <section>
   <h2>Why Traditional Car Washing Is Bad for Your Car</h2>
   <div class="grid">
-    <div class="card">Causes swirl marks & micro‑scratches due to dirty reused cloths</div>
-    <div class="card">Wastes 100–150 litres of water per wash</div>
-    <div class="card">Untrained cleaners & inconsistent cleaning quality</div>
-    <div class="card">Harsh detergents damage paint, rubber & trims over time</div>
-  </div>
-
-  <h3 style="margin-top:50px; text-align:center;">How SteamCare Fixes This</h3>
-  <div class="grid" style="margin-top:20px;">
-    <div class="card">
-      <strong>High‑Pressure Steam Technology</strong><br>
-      Controlled steam safely lifts dirt, grease, and bacteria without damaging paint or interiors.
-    </div>
-    <div class="card">
-      <strong>Ultra Low Water Usage</strong><br>
-      Uses less than 2 litres per wash — eco‑friendly and society‑approved.
-    </div>
-    <div class="card">
-      <strong>One Car, One Cloth Policy</strong><br>
-      Fresh microfiber cloths for every vehicle to prevent scratches and contamination.
-    </div>
-  </div>
-</section>
-
-<section class="highlight">
-  <h2>Our SteamCare Solution</h2>
-  <p style="max-width:800px; margin:0 auto 40px; font-size:18px; line-height:1.6; text-align:center;">SteamCare is designed for modern car owners who care about their vehicle, the environment, and convenience. We replace outdated bucket washes with a smarter, cleaner, premium system.</p>
-
-  <div class="grid">
     <div class="card" style="text-align:center;">
-      <img src="assets/steam-technology.png" alt="High Pressure Steam Cleaning" style="width:100%; border-radius:10px; margin-bottom:15px;" />
       <strong>High‑Pressure Steam Technology</strong>
       <p>Controlled steam safely lifts dirt and bacteria without harming paint, rubber, or interiors.</p>
+      <img src="assets/steam-technology.png" alt="High Pressure Steam Cleaning" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-top:15px;" />
     </div>
 
     <div class="card" style="text-align:center;">
-      <img src="assets/water-saving.png" alt="Water Saving Car Wash" style="width:100%; border-radius:10px; margin-bottom:15px;" />
       <strong>Ultra Low Water Usage</strong>
       <p>Less than 2 litres per wash — perfect for Noida societies facing water shortages.</p>
+      <img src="assets/water-saving.png" alt="Water Saving Car Wash" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-top:15px;" />
     </div>
 
     <div class="card" style="text-align:center;">
-      <img src="assets/microfiber-cloth.jpg" alt="Microfiber Cloth Scratch Free Cleaning" style="width:100%; border-radius:10px; margin-bottom:15px;" />
       <strong>One Car, One Cloth Policy</strong>
       <p>Fresh microfiber cloths for every car, every time. No swirl marks, no scratches.</p>
+      <img src="assets/microfiber-cloth.jpg" alt="Microfiber Cloth Scratch Free Cleaning" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-top:15px;" />
     </div>
   </div>
 </section>
+
 
 <!-- HOW IT WORKS -->
 <section>
