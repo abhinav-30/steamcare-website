@@ -106,6 +106,7 @@
     section:nth-child(2) { animation-delay: 0.2s; }
     section:nth-child(3) { animation-delay: 0.3s; }
     section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
     
     /* === HERO === */
     .hero {
@@ -293,6 +294,152 @@
       transform: scale(1.05);
     }
     
+    /* === PROBLEM POINTERS === */
+    .problem-list {
+      max-width: 700px;
+      margin: 2rem auto 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+      border-left: 4px solid #dc2626;
+      border-radius: 12px;
+      transition: var(--transition);
+      opacity: 0;
+      animation: slideInLeft 0.6s ease forwards;
+    }
+    
+    .problem-item:nth-child(1) { animation-delay: 0.1s; }
+    .problem-item:nth-child(2) { animation-delay: 0.2s; }
+    .problem-item:nth-child(3) { animation-delay: 0.3s; }
+    
+    @keyframes slideInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+    }
+    
+    .problem-item:hover {
+      transform: translateX(8px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .problem-icon {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+    }
+    
+    .problem-text {
+      flex: 1;
+    }
+    
+    .problem-text strong {
+      display: block;
+      color: #dc2626;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+    }
+    
+    .problem-text p {
+      color: #991b1b;
+      font-size: 1rem;
+      margin: 0;
+    }
+    
+    /* === SOLUTION SECTION === */
+    .solution-section {
+      background: linear-gradient(135deg, var(--primary-light) 0%, #d4ede3 100%);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .solution-section::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(31,143,95,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -100px;
+      right: -100px;
+    }
+    
+    .solution-section h2 {
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      position: relative;
+    }
+    
+    .solution-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 2px solid transparent;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .solution-card:nth-child(1) { animation-delay: 0.2s; }
+    .solution-card:nth-child(2) { animation-delay: 0.3s; }
+    .solution-card:nth-child(3) { animation-delay: 0.4s; }
+    
+    .solution-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .solution-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-size: 1.35rem;
+    }
+    
+    .solution-card p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    
+    .solution-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-top: 1rem;
+      transition: var(--transition);
+    }
+    
+    .solution-card:hover img {
+      transform: scale(1.05);
+    }
+    
     /* === WORKFLOW === */
     .workflow-animated {
       display: grid;
@@ -351,7 +498,7 @@
     }
     
     .flow-arrow {
-      display: none; /* Hidden on mobile, shown on desktop */
+      display: none;
       font-size: 2rem;
       color: var(--primary);
       align-self: center;
@@ -374,50 +521,162 @@
       }
     }
     
-    /* === HIGHLIGHT SECTION === */
-    .highlight {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
-      color: #fff;
+    /* === ENHANCED PRICING === */
+    .pricing-section {
+      background: linear-gradient(135deg, #fafbfc 0%, #f0f2f5 100%);
       border-radius: var(--radius-lg);
-      padding: 3rem 2rem;
-      margin: 3rem 0;
-      position: relative;
-      overflow: hidden;
+      padding: 4rem 2rem;
+      margin-top: 3rem;
     }
     
-    .highlight::before {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(37,211,102,0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      top: -150px;
-      right: -100px;
+    .pricing-section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
     }
     
-    .highlight h2 {
-      color: #fff;
+    .pricing-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    .highlight p {
-      color: rgba(255,255,255,0.9);
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
     
-    /* === PRICING === */
     .pricing-card {
-      background: linear-gradient(135deg, #fff 0%, var(--bg-soft) 100%);
-      border: 2px solid var(--primary-light);
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 3px solid transparent;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .pricing-card:nth-child(1) { animation-delay: 0.1s; }
+    .pricing-card:nth-child(2) { 
+      animation-delay: 0.2s;
+      border-color: var(--primary);
+      transform: scale(1.05);
+    }
+    .pricing-card:nth-child(3) { animation-delay: 0.3s; }
+    
+    .pricing-card.featured {
+      border-color: var(--primary);
+      box-shadow: 0 12px 40px rgba(31,143,95,0.2);
+    }
+    
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
     
     .pricing-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-lg);
       border-color: var(--primary);
     }
     
-    .pricing-card strong {
+    .pricing-card.featured:hover {
+      transform: translateY(-8px) scale(1.07);
+    }
+    
+    .plan-name {
       font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      font-family: 'Sora', sans-serif;
+    }
+    
+    .plan-description {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      min-height: 40px;
+    }
+    
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 700;
       color: var(--primary);
+      font-family: 'Sora', sans-serif;
+      line-height: 1;
+    }
+    
+    .price-period {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+    
+    .plan-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+    
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      color: var(--text);
+      font-size: 1rem;
+    }
+    
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .plan-features li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .pricing-note {
+      text-align: center;
+      margin-top: 2.5rem;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    
+    .pricing-note strong {
+      color: var(--primary);
+      font-weight: 600;
     }
     
     /* === FOOTER === */
@@ -479,60 +738,6 @@
       transform: translateY(-2px) scale(1.02);
     }
     
-    /* === FORM ELEMENTS === */
-    input, select {
-      width: 100%;
-      padding: 14px 18px;
-      margin: 12px 0;
-      border: 2px solid var(--primary-light);
-      border-radius: 12px;
-      font-size: 1rem;
-      font-family: 'Inter', sans-serif;
-      transition: var(--transition);
-      background: #fff;
-    }
-    
-    input:focus, select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(31,143,95,0.1);
-    }
-    
-    button {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 16px rgba(31,143,95,0.3);
-    }
-    
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(31,143,95,0.4);
-    }
-    
-    button:active {
-      transform: translateY(0);
-    }
-    
-    /* === SCROLL ANIMATIONS === */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-    
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
       .hero {
@@ -540,7 +745,7 @@
         padding: 3rem 1rem;
       }
       
-      .grid {
+      .grid, .pricing-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
@@ -555,13 +760,23 @@
       section {
         padding: clamp(40px, 8vw, 60px) 16px;
       }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+      
+      .pricing-card:nth-child(2) {
+        transform: scale(1);
+      }
+      
+      .pricing-section {
+        padding: 3rem 1.5rem;
+      }
     }
     
     /* === ACCESSIBILITY === */
     .btn:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible {
+    button:focus-visible {
       outline: 3px solid var(--primary);
       outline-offset: 2px;
     }
@@ -593,26 +808,57 @@
   </div>
 </section>
 
-<!-- PROBLEM + SOLUTION -->
+<!-- PROBLEM SECTION -->
 <section>
-  <h2>Why Traditional Car Washing Is Bad for Your Car</h2>
-  <div class="grid">
-    <div class="card reveal">
-      <strong>High‑Pressure Steam Technology</strong>
-      <p>Controlled steam safely lifts dirt and bacteria without harming paint, rubber, or interiors.</p>
-      <img src="assets/steam-technology.png" alt="High Pressure Steam Cleaning" loading="lazy" />
+  <h2 style="text-align: center;">Why Traditional Car Washing Is Bad for Your Car</h2>
+  
+  <div class="problem-list">
+    <div class="problem-item">
+      <span class="problem-icon">🧽</span>
+      <div class="problem-text">
+        <strong>Dirty cloths and sponges cause micro-scratches</strong>
+        <p>Reused cloths trap dirt particles that scratch your paint with every wipe</p>
+      </div>
     </div>
-
-    <div class="card reveal">
-      <strong>Ultra Low Water Usage</strong>
-      <p>Less than 2 litres per wash — saving thousands of litres every year and letting you wash responsibly.</p>
-      <img src="assets/water-saving.png" alt="Water Saving Car Wash" loading="lazy" />
+    
+    <div class="problem-item">
+      <span class="problem-icon">💧</span>
+      <div class="problem-text">
+        <strong>One car can waste thousands of litres every month</strong>
+        <p>Traditional washing uses 150-300 litres per wash, adding up to massive water waste</p>
+      </div>
     </div>
+    
+    <div class="problem-item">
+      <span class="problem-icon">❌</span>
+      <div class="problem-text">
+        <strong>Inconsistent cleaning quality</strong>
+        <p>Different workers, varying techniques, and poor quality control lead to unpredictable results</p>
+      </div>
+    </div>
+  </div>
 
-    <div class="card reveal">
-      <strong>One Car, One Cloth Policy</strong>
-      <p>Fresh microfiber cloths for every car. No swirl marks, no scratches.</p>
-      <img src="assets/microfiber-cloth.jpg" alt="Microfiber Cloth Scratch Free Cleaning" loading="lazy" />
+  <!-- SOLUTION SECTION -->
+  <div class="solution-section">
+    <h2>How SteamCare Solves the Problem</h2>
+    <div class="solution-grid">
+      <div class="solution-card">
+        <h3>High-Pressure Steam Technology</h3>
+        <p>Controlled steam safely lifts dirt and bacteria without harming paint, rubber, or interiors. No abrasive contact means zero scratches.</p>
+        <img src="assets/steam-technology.png" alt="High Pressure Steam Cleaning" loading="lazy" />
+      </div>
+      
+      <div class="solution-card">
+        <h3>Ultra Low Water Usage</h3>
+        <p>Less than 2 litres per wash — saving thousands of litres every year and letting you wash responsibly without guilt.</p>
+        <img src="assets/water-saving.png" alt="Water Saving Car Wash" loading="lazy" />
+      </div>
+      
+      <div class="solution-card">
+        <h3>One Car, One Cloth Policy</h3>
+        <p>Fresh microfiber cloths for every car, every time. No swirl marks, no scratches, no cross-contamination. Guaranteed premium care.</p>
+        <img src="assets/microfiber-cloth.jpg" alt="Microfiber Cloth Scratch Free Cleaning" loading="lazy" />
+      </div>
     </div>
   </div>
 </section>
@@ -655,29 +901,70 @@
   </div>
 </section>
 
-<!-- PRICING -->
-<section>
-  <h2>Simple Monthly Plans</h2>
-  <div class="grid">
-    <div class="card pricing-card reveal">
-      <strong>Basic Care Plan -> 8 steam washes / month (2 per week)</strong>
-      <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">₹1499</p>
-      <p>per month</p>
+<!-- ENHANCED PRICING -->
+<section class="pricing-section">
+  <h2>Choose Your Perfect Plan</h2>
+  <p class="pricing-subtitle">Flexible options designed for every car owner. All plans include doorstep service and eco-friendly steam cleaning.</p>
+  
+  <div class="pricing-grid">
+    <!-- Basic Plan -->
+    <div class="pricing-card">
+      <div class="plan-name">Basic Care</div>
+      <div class="plan-description">Perfect for weekend warriors</div>
+      <div class="plan-price">
+        <span class="price-amount">₹1,499</span>
+        <span class="price-period">/month</span>
+      </div>
+      <ul class="plan-features">
+        <li>8 steam washes per month</li>
+        <li>2 washes per week</li>
+        <li>Scratch-free guarantee</li>
+        <li>Fresh microfiber cloths</li>
+        <li>Eco-friendly steam cleaning</li>
+      </ul>
     </div>
-    <div class="card pricing-card reveal">
-      <strong>Smart Alternate Plan -> Alternate-day steam wash (≈15 washes/month) </strong>
-      <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">₹2499</p>
-      <p>per month</p>
+
+    <!-- Smart Plan (Featured) -->
+    <div class="pricing-card featured">
+      <div class="plan-name">Smart Alternate</div>
+      <div class="plan-description">Best value for regular care</div>
+      <div class="plan-price">
+        <span class="price-amount">₹2,499</span>
+        <span class="price-period">/month</span>
+      </div>
+      <ul class="plan-features">
+        <li>≈15 steam washes per month</li>
+        <li>Alternate-day service</li>
+        <li>Priority booking</li>
+        <li>Scratch-free guarantee</li>
+        <li>Fresh microfiber cloths</li>
+        <li>Eco-friendly steam cleaning</li>
+      </ul>
     </div>
-    <div class="card pricing-card reveal">
-      <strong>Elite Protection Plan ->Alternate-day steam wash (≈15 washes/month) + Interior deep cleaning once a month  </strong>
-     <p style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 1rem 0;">₹3499</p>
-      <p>per month</p>
+
+    <!-- Elite Plan -->
+    <div class="pricing-card">
+      <div class="plan-name">Elite Protection</div>
+      <div class="plan-description">Complete premium care package</div>
+      <div class="plan-price">
+        <span class="price-amount">₹3,499</span>
+        <span class="price-period">/month</span>
+      </div>
+      <ul class="plan-features">
+        <li>≈15 steam washes per month</li>
+        <li>Alternate-day service</li>
+        <li>Monthly interior deep cleaning</li>
+        <li>VIP priority support</li>
+        <li>Scratch-free guarantee</li>
+        <li>Fresh microfiber cloths</li>
+        <li>Eco-friendly steam cleaning</li>
+      </ul>
     </div>
   </div>
-  <p style="text-align:center; margin-top:2rem; color: var(--text-light);">
-    <strong>Limited slots per sector</strong> • Introductory pricing
-  </p>
+  
+  <div class="pricing-note">
+    <strong>Limited slots per sector</strong> • Introductory pricing • 30-day satisfaction guarantee
+  </div>
 </section>
 
 <footer>
@@ -738,4 +1025,3 @@
 
 </body>
 </html>
-
