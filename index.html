@@ -94,35 +94,226 @@ button{
 
 /* BEFORE AFTER SECTION */
 
-.compare-container{
-  position:relative;
-  max-width:900px;
-  margin:50px auto;
-  overflow:hidden;
-  border-radius:15px;
+.compare-wrapper {
+  max-width: 960px;
+  margin: 60px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 }
 
-.compare-container img{
-  width:100%;
-  display:block;
+.compare-panel {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
 }
 
-.after-img{
-  position:absolute;
-  top:0;
-  left:0;
-  width:50%;
-  overflow:hidden;
+.compare-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
 }
 
-.slider{
-  position:absolute;
-  top:0;
-  left:50%;
-  width:4px;
-  height:100%;
-  background:#00ff88;
-  cursor:ew-resize;
+.compare-label.before {
+  background: rgba(255,255,255,0.12);
+  color: #ccc;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.compare-label.after {
+  background: rgba(0,255,136,0.2);
+  color: #00ff88;
+  border: 1px solid rgba(0,255,136,0.4);
+}
+
+/* Realistic car scene — BEFORE (dusty/dirty) */
+.car-scene {
+  position: relative;
+  width: 100%;
+  padding-bottom: 65%;
+  overflow: hidden;
+}
+
+.car-scene-inner {
+  position: absolute;
+  inset: 0;
+}
+
+/* Ground / road */
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38%;
+  border-radius: 0 0 18px 18px;
+}
+
+.road-before {
+  background: linear-gradient(to bottom, #2a2118 0%, #1a150e 100%);
+}
+
+.road-after {
+  background: linear-gradient(to bottom, #1a1a1a 0%, #0e0e0e 100%);
+}
+
+/* Sky / background */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 62%;
+}
+
+.sky-before {
+  background: linear-gradient(160deg, #2c1f0e 0%, #1a1208 50%, #0f0d0b 100%);
+}
+
+.sky-after {
+  background: linear-gradient(160deg, #0a1628 0%, #071220 50%, #040a14 100%);
+}
+
+/* Ambient glow */
+.scene-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+/* Dust particles for BEFORE */
+.dust-cloud {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(180,130,60,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 30% 55%, rgba(160,110,40,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 70% 45%, rgba(200,150,70,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* SVG car body */
+.car-svg-wrap {
+  position: absolute;
+  bottom: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88%;
+}
+
+.car-svg-wrap svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.7));
+}
+
+/* Dirt overlay on car */
+.dirt-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%, rgba(140,100,40,0.28) 0%, transparent 70%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Shine overlay on car */
+.shine-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 35% 30%, rgba(0,255,136,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 25% at 65% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Ground reflection */
+.reflection {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 10%;
+  border-radius: 50%;
+  filter: blur(18px);
+}
+
+.reflection-before {
+  background: rgba(140,100,40,0.2);
+}
+
+.reflection-after {
+  background: rgba(0,255,136,0.15);
+}
+
+/* Water droplets on clean car */
+.droplets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.droplet {
+  position: absolute;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Caption bar */
+.compare-caption {
+  padding: 14px 20px;
+  font-size: 0.82rem;
+  color: #888;
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-caption.after-cap {
+  color: #00cc6a;
+}
+
+.compare-caption span.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-bad { background: #ff6b35; }
+.dot-good { background: #00ff88; }
+
+/* Animate the after panel glow */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.after-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  border: 2px solid rgba(0,255,136,0.25);
+  pointer-events: none;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@media (max-width: 600px) {
+  .compare-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* FORM */
@@ -254,12 +445,235 @@ footer{
 <section class="section">
   <h2>See The Difference</h2>
 
-  <div class="compare-container" id="compareBox">
-    <img src="assets/before-wash.png" alt="Before Dirty Car">
-    <div class="after-img" id="afterImg">
-      <img src="assets/after-wash.png" alt="After Clean Car">
+  <div class="compare-wrapper">
+
+    <!-- BEFORE panel -->
+    <div class="compare-panel">
+      <div class="car-scene">
+        <div class="car-scene-inner">
+          <div class="sky sky-before"></div>
+          <div class="road road-before"></div>
+          <div class="dust-cloud"></div>
+
+          <!-- Ground shadow -->
+          <div class="reflection reflection-before"></div>
+
+          <!-- Car SVG — dirty/dusty state -->
+          <div class="car-svg-wrap">
+            <div class="dirt-overlay"></div>
+            <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- Body shadow -->
+              <ellipse cx="250" cy="210" rx="195" ry="12" fill="rgba(0,0,0,0.45)"/>
+              <!-- Main body lower -->
+              <path d="M55 160 Q55 130 90 128 L410 128 Q445 128 445 160 L445 185 Q445 195 435 195 L65 195 Q55 195 55 185 Z" fill="#3d2f1a"/>
+              <!-- Dirt patches on body -->
+              <path d="M55 160 Q55 130 90 128 L410 128 Q445 128 445 160 L445 185 Q445 195 435 195 L65 195 Q55 195 55 185 Z" fill="none" stroke="rgba(100,70,20,0.5)" stroke-width="1.5"/>
+              <!-- Roof + cabin -->
+              <path d="M145 128 Q155 80 180 72 L240 65 L310 65 Q335 68 355 80 L365 128 Z" fill="#2d2010"/>
+              <!-- Windshield (dirty) -->
+              <path d="M165 125 Q170 88 190 80 L240 75 L300 75 Q320 82 335 98 L340 125 Z" fill="#2a2415" opacity="0.9"/>
+              <!-- Dirt smear on windshield -->
+              <path d="M180 120 Q200 95 230 90 L280 90 Q310 92 325 110 L325 125 L175 125 Z" fill="rgba(140,100,40,0.3)"/>
+              <!-- Side windows dirty -->
+              <rect x="88" y="95" width="60" height="35" rx="5" fill="#252015" opacity="0.8"/>
+              <rect x="360" y="95" width="55" height="35" rx="5" fill="#252015" opacity="0.8"/>
+              <!-- Dirt streaks on windows -->
+              <line x1="100" y1="98" x2="105" y2="128" stroke="rgba(140,100,40,0.4)" stroke-width="2"/>
+              <line x1="120" y1="96" x2="115" y2="129" stroke="rgba(140,100,40,0.3)" stroke-width="1.5"/>
+              <!-- Hood -->
+              <path d="M90 128 L145 128 L145 140 L88 140 Z" fill="#3a2b15"/>
+              <!-- Dirt on hood -->
+              <path d="M90 128 L145 128 L145 135 L90 135 Z" fill="rgba(160,110,40,0.25)"/>
+              <!-- Trunk -->
+              <path d="M355 128 L415 128 L416 140 L355 140 Z" fill="#3a2b15"/>
+              <!-- Front bumper (muddy) -->
+              <path d="M58 162 Q58 155 72 155 L120 155 L120 175 Q80 175 65 172 Q55 170 58 162 Z" fill="#2a1e0a"/>
+              <!-- Mud on bumper -->
+              <path d="M60 168 Q75 165 110 166 L115 172 Q80 173 65 170 Z" fill="rgba(100,65,15,0.6)"/>
+              <!-- Rear bumper -->
+              <path d="M442 162 Q442 155 430 155 L385 155 L385 175 Q420 175 435 172 Q445 170 442 162 Z" fill="#2a1e0a"/>
+              <!-- Front headlight (dim/dirty) -->
+              <ellipse cx="75" cy="155" rx="14" ry="10" fill="#1a1508"/>
+              <ellipse cx="75" cy="155" rx="10" ry="7" fill="#2a2010" opacity="0.6"/>
+              <!-- Rear light -->
+              <rect x="425" y="148" width="16" height="14" rx="3" fill="#3a1a0a"/>
+              <!-- Wheels -->
+              <circle cx="135" cy="193" r="28" fill="#1a1208"/>
+              <circle cx="135" cy="193" r="22" fill="#0e0c08"/>
+              <circle cx="135" cy="193" r="14" fill="#2a1e0a"/>
+              <!-- Mud on wheel -->
+              <path d="M115 200 Q130 210 155 205 Q145 215 120 210 Z" fill="rgba(100,65,15,0.7)"/>
+              <circle cx="365" cy="193" r="28" fill="#1a1208"/>
+              <circle cx="365" cy="193" r="22" fill="#0e0c08"/>
+              <circle cx="365" cy="193" r="14" fill="#2a1e0a"/>
+              <!-- Mud on rear wheel -->
+              <path d="M345 200 Q360 212 385 206 Q375 216 348 212 Z" fill="rgba(100,65,15,0.7)"/>
+              <!-- Door handle (rusty/dirty) -->
+              <rect x="195" y="150" width="35" height="6" rx="3" fill="#3a2a10"/>
+              <rect x="270" y="150" width="35" height="6" rx="3" fill="#3a2a10"/>
+              <!-- Overall dust layer -->
+              <rect x="55" y="65" width="390" height="130" fill="rgba(180,130,50,0.07)" rx="5"/>
+              <!-- Dust particles floating -->
+              <circle cx="120" cy="100" r="1.5" fill="rgba(200,160,80,0.5)"/>
+              <circle cx="200" cy="85" r="1" fill="rgba(200,160,80,0.4)"/>
+              <circle cx="320" cy="92" r="2" fill="rgba(200,160,80,0.35)"/>
+              <circle cx="390" cy="110" r="1.5" fill="rgba(200,160,80,0.45)"/>
+              <circle cx="165" cy="115" r="1" fill="rgba(200,160,80,0.4)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="compare-label before">Before</div>
+      <div class="compare-caption">
+        <span class="dot dot-bad"></span>
+        Dust, road grime & monsoon mud buildup
+      </div>
     </div>
-    <div class="slider" id="slider"></div>
+
+    <!-- AFTER panel -->
+    <div class="compare-panel">
+      <div class="after-glow"></div>
+      <div class="car-scene">
+        <div class="car-scene-inner">
+          <div class="sky sky-after"></div>
+          <div class="road road-after"></div>
+
+          <!-- Subtle green ambient -->
+          <div class="scene-glow" style="width:200px;height:120px;background:rgba(0,255,136,0.04);bottom:25%;left:30%;"></div>
+
+          <!-- Ground reflection / wet shine -->
+          <div class="reflection reflection-after"></div>
+
+          <!-- Water droplets -->
+          <div class="droplets">
+            <div class="droplet" style="width:6px;height:8px;top:38%;left:20%;opacity:0.7;"></div>
+            <div class="droplet" style="width:4px;height:6px;top:42%;left:55%;opacity:0.5;"></div>
+            <div class="droplet" style="width:5px;height:7px;top:35%;left:72%;opacity:0.65;"></div>
+            <div class="droplet" style="width:3px;height:4px;top:48%;left:40%;opacity:0.55;"></div>
+            <div class="droplet" style="width:4px;height:5px;top:30%;left:30%;opacity:0.45;"></div>
+          </div>
+
+          <!-- Car SVG — clean/shiny state -->
+          <div class="car-svg-wrap">
+            <div class="shine-overlay"></div>
+            <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+              <!-- Body shadow (softer) -->
+              <ellipse cx="250" cy="210" rx="195" ry="10" fill="rgba(0,0,0,0.5)"/>
+              <!-- Main body lower — deep gloss black -->
+              <path d="M55 160 Q55 130 90 128 L410 128 Q445 128 445 160 L445 185 Q445 195 435 195 L65 195 Q55 195 55 185 Z" fill="url(#bodyGrad)"/>
+              <!-- Metallic highlight streak -->
+              <path d="M100 132 Q250 128 400 132 L400 138 Q250 134 100 138 Z" fill="rgba(255,255,255,0.08)"/>
+              <!-- Roof + cabin — clean deep gloss -->
+              <path d="M145 128 Q155 80 180 72 L240 65 L310 65 Q335 68 355 80 L365 128 Z" fill="url(#roofGrad)"/>
+              <!-- Windshield (crystal clear) -->
+              <path d="M165 125 Q170 88 190 80 L240 75 L300 75 Q320 82 335 98 L340 125 Z" fill="url(#glassGrad)"/>
+              <!-- Glass reflection -->
+              <path d="M185 122 Q195 95 215 86 L240 83 L245 125 Z" fill="rgba(255,255,255,0.07)"/>
+              <!-- Side windows clean -->
+              <rect x="88" y="95" width="60" height="35" rx="5" fill="url(#sideGlass)"/>
+              <rect x="360" y="95" width="55" height="35" rx="5" fill="url(#sideGlass)"/>
+              <!-- Window reflection -->
+              <path d="M93 98 L100 128 L93 128 Z" fill="rgba(255,255,255,0.06)"/>
+              <!-- Hood — clean with highlight -->
+              <path d="M90 128 L145 128 L145 140 L88 140 Z" fill="#0d0d0d"/>
+              <path d="M92 129 L143 129 L143 132 L92 132 Z" fill="rgba(0,255,136,0.07)"/>
+              <!-- Trunk -->
+              <path d="M355 128 L415 128 L416 140 L355 140 Z" fill="#0d0d0d"/>
+              <!-- Front bumper (clean chrome-ish) -->
+              <path d="M58 162 Q58 155 72 155 L120 155 L120 175 Q80 175 65 172 Q55 170 58 162 Z" fill="url(#bumperGrad)"/>
+              <!-- Bumper highlight -->
+              <path d="M65 158 Q90 156 115 157 L115 161 Q90 160 65 162 Z" fill="rgba(255,255,255,0.12)"/>
+              <!-- Rear bumper -->
+              <path d="M442 162 Q442 155 430 155 L385 155 L385 175 Q420 175 435 172 Q445 170 442 162 Z" fill="url(#bumperGrad)"/>
+              <!-- Front headlight (bright) -->
+              <ellipse cx="75" cy="155" rx="14" ry="10" fill="#0a0a12"/>
+              <ellipse cx="75" cy="155" rx="10" ry="7" fill="url(#headlightGrad)"/>
+              <!-- Headlight glow -->
+              <ellipse cx="75" cy="155" rx="18" ry="13" fill="rgba(0,200,255,0.06)"/>
+              <!-- DRL strip -->
+              <path d="M62 148 Q75 145 88 148" stroke="rgba(200,230,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- Rear light (LED red) -->
+              <rect x="425" y="148" width="16" height="14" rx="3" fill="#2a0808"/>
+              <rect x="427" y="150" width="12" height="10" rx="2" fill="rgba(255,60,40,0.7)"/>
+              <!-- LED tail detail -->
+              <line x1="429" y1="153" x2="437" y2="153" stroke="rgba(255,100,80,0.8)" stroke-width="1.5"/>
+              <!-- Wheels — clean polished -->
+              <circle cx="135" cy="193" r="28" fill="#0c0c0c"/>
+              <circle cx="135" cy="193" r="22" fill="url(#tireGrad)"/>
+              <circle cx="135" cy="193" r="10" fill="url(#rimGrad)"/>
+              <!-- Rim spokes -->
+              <line x1="135" y1="183" x2="135" y2="174" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="145" y1="186" x2="151" y2="179" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="125" y1="186" x2="119" y2="179" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="125" y1="200" x2="119" y2="207" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="145" y1="200" x2="151" y2="207" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="135" y1="203" x2="135" y2="212" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+
+              <circle cx="365" cy="193" r="28" fill="#0c0c0c"/>
+              <circle cx="365" cy="193" r="22" fill="url(#tireGrad)"/>
+              <circle cx="365" cy="193" r="10" fill="url(#rimGrad)"/>
+              <!-- Rim spokes rear -->
+              <line x1="365" y1="183" x2="365" y2="174" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="375" y1="186" x2="381" y2="179" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="355" y1="186" x2="349" y2="179" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="355" y1="200" x2="349" y2="207" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="375" y1="200" x2="381" y2="207" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+              <line x1="365" y1="203" x2="365" y2="212" stroke="rgba(200,200,210,0.7)" stroke-width="2"/>
+
+              <!-- Door handles (chrome) -->
+              <rect x="195" y="150" width="35" height="5" rx="2.5" fill="rgba(200,210,220,0.6)"/>
+              <rect x="270" y="150" width="35" height="5" rx="2.5" fill="rgba(200,210,220,0.6)"/>
+              <!-- Overall gloss sheen -->
+              <path d="M90 130 Q250 125 415 130 L415 145 Q250 140 90 145 Z" fill="rgba(0,255,136,0.025)"/>
+
+              <!-- Gradients -->
+              <defs>
+                <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a1a1a"/>
+                  <stop offset="100%" stop-color="#0a0a0a"/>
+                </linearGradient>
+                <linearGradient id="roofGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#111"/>
+                  <stop offset="100%" stop-color="#050505"/>
+                </linearGradient>
+                <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1a2535" stop-opacity="0.95"/>
+                  <stop offset="100%" stop-color="#0d1520" stop-opacity="0.9"/>
+                </linearGradient>
+                <linearGradient id="sideGlass" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#162030" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#0a1018" stop-opacity="0.9"/>
+                </linearGradient>
+                <linearGradient id="bumperGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#252525"/>
+                  <stop offset="100%" stop-color="#111"/>
+                </linearGradient>
+                <radialGradient id="headlightGrad" cx="40%" cy="40%">
+                  <stop offset="0%" stop-color="#c8e8ff"/>
+                  <stop offset="60%" stop-color="#4090c0"/>
+                  <stop offset="100%" stop-color="#0a1525"/>
+                </radialGradient>
+                <radialGradient id="tireGrad" cx="50%" cy="50%">
+                  <stop offset="0%" stop-color="#222"/>
+                  <stop offset="100%" stop-color="#080808"/>
+                </radialGradient>
+                <radialGradient id="rimGrad" cx="35%" cy="35%">
+                  <stop offset="0%" stop-color="#d0d8e0"/>
+                  <stop offset="70%" stop-color="#909aa0"/>
+                  <stop offset="100%" stop-color="#505860"/>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="compare-label after">After</div>
+      <div class="compare-caption after-cap">
+        <span class="dot dot-good"></span>
+        Showroom-clean with BioGlanz Plant Wax & Shampoo
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -309,25 +723,6 @@ function animate(){
   renderer.render(scene, camera);
 }
 animate();
-
-/* Before After Slider */
-const slider = document.getElementById("slider");
-const afterImg = document.getElementById("afterImg");
-const compareBox = document.getElementById("compareBox");
-
-let isDown = false;
-
-slider.addEventListener("mousedown",()=> isDown = true);
-window.addEventListener("mouseup",()=> isDown = false);
-window.addEventListener("mousemove",(e)=>{
-  if(!isDown) return;
-  const rect = compareBox.getBoundingClientRect();
-  let x = e.clientX - rect.left;
-  if(x < 0) x = 0;
-  if(x > rect.width) x = rect.width;
-  slider.style.left = x + "px";
-  afterImg.style.width = x + "px";
-});
 
 /* Scroll */
 function scrollToProducts(){
