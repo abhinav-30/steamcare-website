@@ -348,26 +348,26 @@ document.getElementById("notifyForm").addEventListener("submit",function(e){
   const email = document.getElementById("email").value;
   const city = document.getElementById("city").value;
 
-fetch("https://script.google.com/macros/s/AKfycbyAspEChnciIsBT0BBgKynplMBVYIW2YtDlz3_e1PZo5Z5IZPtK7ouKqJiCPSeBY9bUcQ/exec",{
+fetch("https://jsonplaceholder.typicode.com/posts",{
   method:"POST",
   headers:{
     "Content-Type":"application/json"
   },
   body:JSON.stringify({name,email,city})
 })
-.then(response=>response.json())
+.then(res => res.json())
 .then(data=>{
-  document.getElementById("successMsg").style.display="block";
+  document.getElementById("successMsg").style.display = "block";
   document.getElementById("notifyForm").reset();
 })
-.catch(error=>{
-  alert("Something went wrong. Please try again.");
-});
+.catch(err=>{
+  alert("Submission failed");
 });
 </script>
 
 </body>
 </html>
+
 
 
 
