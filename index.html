@@ -348,20 +348,16 @@ document.getElementById("notifyForm").addEventListener("submit",function(e){
   const email = document.getElementById("email").value;
   const city = document.getElementById("city").value;
 
-fetch("https://jsonplaceholder.typicode.com/posts",{
-  method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-  body:JSON.stringify({name,email,city})
-})
-.then(res => res.json())
-.then(data=>{
   document.getElementById("successMsg").style.display = "block";
   document.getElementById("notifyForm").reset();
-})
-.catch(err=>{
-  alert("Submission failed");
+
+  fetch("https://jsonplaceholder.typicode.com/posts",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({name,email,city})
+  }).catch(err=> console.log("Fetch error:", err));
 });
 </script>
 
