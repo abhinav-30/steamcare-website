@@ -4,368 +4,1420 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BioGlanz — Plant Based Car Care</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#0c0c0c;
-  color:white;
-  overflow-x:hidden;
+:root {
+  --cream: #f5f0e8;
+  --parchment: #ede6d6;
+  --sand: #c9b89a;
+  --bark: #7a5c3e;
+  --moss: #4a6741;
+  --forest: #2d4a28;
+  --deep-forest: #1a2e16;
+  --sage: #8a9e7a;
+  --olive: #6b7c4a;
+  --clay: #9c6b4a;
+  --charcoal: #1e1e1a;
+  --warm-black: #120f0a;
+  --leaf-green: #5a8a3c;
+  --gold: #c9a84c;
+  --gold-light: #e8c96a;
 }
 
-#canvas-container{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--warm-black);
+  color: var(--cream);
+  overflow-x: hidden;
 }
 
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--warm-black); }
+::-webkit-scrollbar-thumb { background: var(--moss); border-radius: 3px; }
+
+/* ANNOUNCEMENT BANNER */
+.banner {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 50%, var(--forest) 100%);
+  padding: 10px 0;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  z-index: 100;
 }
 
-.brand{
-  font-size:4rem;
-  font-weight:800;
-  letter-spacing:4px;
-  color:#00ff88;
+.banner-track {
+  display: flex;
+  gap: 0;
+  animation: banner-scroll 30s linear infinite;
+  white-space: nowrap;
+  width: max-content;
 }
 
-.tagline{
-  font-size:1.2rem;
-  color:#ccc;
-  max-width:600px;
-  margin:20px 0 30px;
+.banner-item {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  padding: 0 60px;
 }
 
-button{
-  background:#00ff88;
-  border:none;
-  padding:12px 30px;
-  border-radius:30px;
-  font-weight:600;
-  cursor:pointer;
-  margin-top:10px;
+.banner-item span {
+  color: var(--sage);
+  margin: 0 16px;
+  font-size: 0.6rem;
 }
 
-.section{
-  padding:100px 20px;
-  text-align:center;
+@keyframes banner-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-  max-width:1100px;
-  margin:auto;
-  margin-top:50px;
+/* NAV */
+nav {
+  position: fixed;
+  top: 32px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
 }
 
-.card{
-  background:#151515;
-  padding:20px;
-  border-radius:15px;
-  transition:0.3s;
+nav.scrolled {
+  top: 0;
+  background: rgba(18,15,10,0.92);
+  backdrop-filter: blur(20px);
+  padding: 16px 60px;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
 }
 
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 20px rgba(0,255,136,0.4);
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
-.card img{
-  width:100%;
-  height:250px;
-  object-fit:contain;
-  margin-bottom:15px;
+.nav-logo em {
+  color: var(--gold);
+  font-style: normal;
 }
 
-/* BEFORE AFTER SECTION */
-
-.compare-wrapper{
-  max-width:960px;
-  margin:50px auto 0;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
 }
 
-.compare-panel{
-  position:relative;
-  border-radius:15px;
-  overflow:hidden;
-  background:#151515;
+.nav-links a {
+  color: var(--sand);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-.compare-panel img{
-  width:100%;
-  height:280px;
-  object-fit:cover;
-  display:block;
+.nav-links a:hover { color: var(--gold-light); }
+
+.nav-cta {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 10px 24px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.compare-label{
-  position:absolute;
-  top:14px;
-  left:14px;
-  font-size:0.75rem;
-  font-weight:700;
-  letter-spacing:3px;
-  padding:5px 14px;
-  border-radius:20px;
-  text-transform:uppercase;
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--warm-black);
 }
 
-.compare-label.before{
-  background:rgba(255,255,255,0.12);
-  color:#ccc;
-  border:1px solid rgba(255,255,255,0.2);
+/* HERO */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
-.compare-label.after{
-  background:rgba(0,255,136,0.2);
-  color:#00ff88;
-  border:1px solid rgba(0,255,136,0.4);
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(45,74,40,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(90,138,60,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 40% at 50% 10%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    var(--warm-black);
 }
 
-@media(max-width:600px){
-  .compare-wrapper{
-    grid-template-columns:1fr;
-  }
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px;
 }
 
-/* FORM */
-
-form{
-  max-width:400px;
-  margin:40px auto;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px;
+  max-width: 700px;
+  animation: hero-rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-input{
-  padding:12px;
-  border-radius:8px;
-  border:none;
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.success{
-  margin-top:20px;
-  color:#00ff88;
-  display:none;
+.hero-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: hero-rise 1.2s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-footer{
-  padding:40px;
-  text-align:center;
-  color:#777;
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  margin-bottom: 30px;
+  animation: hero-rise 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-title strong {
+  font-weight: 600;
+  color: var(--leaf-green);
+  font-style: normal;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--sand);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 50px;
+  font-weight: 300;
+  animation: hero-rise 1.2s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  animation: hero-rise 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--forest), var(--moss));
+  border: none;
+  color: var(--cream);
+  padding: 16px 40px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--moss), var(--leaf-green));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary span { position: relative; z-index: 1; }
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--sand);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+  padding: 0;
+}
+
+.btn-ghost:hover { color: var(--gold-light); }
+
+.btn-ghost svg {
+  width: 32px;
+  height: 32px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  padding: 8px;
+  transition: all 0.3s;
+}
+
+.btn-ghost:hover svg { transform: translateX(4px); }
+
+/* HERO VISUAL */
+.hero-visual {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 55%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-product-float {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  animation: float-hero 8s ease-in-out infinite;
+  filter: drop-shadow(0 40px 80px rgba(45,74,40,0.5));
+}
+
+@keyframes float-hero {
+  0%, 100% { transform: translateY(-50%) translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-50%) translateY(-20px) rotate(2deg); }
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+}
+
+.hero-orb-1 {
+  width: 400px; height: 400px;
+  background: var(--forest);
+  right: 100px; top: 10%;
+  animation: orb-drift 12s ease-in-out infinite;
+}
+
+.hero-orb-2 {
+  width: 250px; height: 250px;
+  background: var(--gold);
+  right: 300px; bottom: 10%;
+  animation: orb-drift 8s ease-in-out infinite reverse;
+  opacity: 0.15;
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -40px); }
+}
+
+/* STATS BAR */
+.stats-bar {
+  background: linear-gradient(90deg, rgba(45,74,40,0.3), rgba(74,103,65,0.3), rgba(45,74,40,0.3));
+  border-top: 1px solid rgba(201,168,76,0.15);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 40px 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-item { position: relative; }
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 20%; bottom: 20%;
+  width: 1px;
+  background: rgba(201,168,76,0.2);
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 0.68rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 500;
+}
+
+/* SECTION BASE */
+.section {
+  padding: 120px 80px;
+  position: relative;
+}
+
+.section-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: var(--gold);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  max-width: 600px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+/* WHY SECTION */
+.why-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.why-left { }
+.why-desc {
+  color: var(--sand);
+  line-height: 1.9;
+  font-weight: 300;
+  margin-top: 24px;
+  font-size: 0.95rem;
+}
+
+.why-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 50px;
+}
+
+.pillar {
+  background: rgba(45,74,40,0.15);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 32px 28px;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(45,74,40,0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.pillar:hover::before { opacity: 1; }
+.pillar:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+
+.pillar-icon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.pillar h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--cream);
+}
+
+.pillar p {
+  font-size: 0.82rem;
+  color: var(--sand);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* PRODUCTS */
+.products-section {
+  background: linear-gradient(180deg, var(--warm-black) 0%, rgba(18,15,10,0.5) 50%, var(--warm-black) 100%);
+}
+
+.products-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: rgba(28,24,18,0.8);
+  border: 1px solid rgba(201,168,76,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.product-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  transform: translateY(-8px);
+  z-index: 2;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(45,74,40,0.2);
+}
+
+.product-img-wrap {
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg, rgba(45,74,40,0.08) 0%, rgba(18,15,10,0.5) 100%);
+}
+
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-img-wrap img {
+  transform: scale(1.08);
+}
+
+.product-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(45,74,40,0.9);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold-light);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.product-body {
+  padding: 28px 28px 32px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--cream);
+}
+
+.product-features {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.product-features li {
+  font-size: 0.78rem;
+  color: var(--sand);
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 300;
+}
+
+.product-features li::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--gold-light);
+}
+
+.product-price sup {
+  font-size: 0.9rem;
+  vertical-align: super;
+}
+
+.product-btn {
+  background: transparent;
+  border: 1px solid var(--sage);
+  color: var(--sage);
+  padding: 9px 20px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.product-btn:hover {
+  background: var(--sage);
+  color: var(--warm-black);
+  border-color: var(--sage);
+}
+
+/* MARQUEE LAUNCH */
+.launch-marquee {
+  overflow: hidden;
+  padding: 50px 0;
+  background: linear-gradient(135deg, rgba(45,74,40,0.2), rgba(74,103,65,0.15));
+  border-top: 1px solid rgba(201,168,76,0.15);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  position: relative;
+}
+
+.launch-marquee::before,
+.launch-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 100px;
+  z-index: 2;
+}
+
+.launch-marquee::before { left: 0; background: linear-gradient(90deg, var(--warm-black), transparent); }
+.launch-marquee::after { right: 0; background: linear-gradient(-90deg, var(--warm-black), transparent); }
+
+.launch-track {
+  display: flex;
+  gap: 0;
+  animation: banner-scroll 20s linear infinite;
+  width: max-content;
+}
+
+.launch-word {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,168,76,0.4);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 0 60px;
+  white-space: nowrap;
+}
+
+.launch-word.filled {
+  color: var(--gold-light);
+  -webkit-text-stroke: none;
+}
+
+.launch-dot {
+  font-size: 0.5rem;
+  color: var(--gold);
+  align-self: center;
+}
+
+/* PROCESS */
+.process-section {
+  padding: 120px 80px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.process-step {
+  position: relative;
+  padding-left: 30px;
+  border-left: 1px solid rgba(201,168,76,0.2);
+}
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 300;
+  color: rgba(201,168,76,0.1);
+  line-height: 1;
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+
+.step-icon {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--cream);
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  color: var(--sand);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* BEFORE / AFTER */
+.compare-section {
+  padding: 120px 80px;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(45,74,40,0.1) 0%, transparent 70%);
+}
+
+.compare-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  max-width: 1000px;
+  margin: 60px auto 0;
+  border: 1px solid rgba(201,168,76,0.15);
+  overflow: hidden;
+}
+
+.compare-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.compare-panel img {
+  width: 100%; height: 360px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transition: filter 0.4s;
+}
+
+.compare-panel:hover img { filter: brightness(1); }
+
+.compare-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 7px 16px;
+  border: 1px solid;
+  backdrop-filter: blur(10px);
+}
+
+.compare-label.before {
+  color: rgba(245,240,232,0.7);
+  border-color: rgba(245,240,232,0.2);
+  background: rgba(18,15,10,0.6);
+}
+
+.compare-label.after {
+  color: var(--gold-light);
+  border-color: rgba(201,168,76,0.4);
+  background: rgba(45,74,40,0.7);
+}
+
+.compare-divider {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+  z-index: 5;
+  transform: translateX(-50%);
+}
+
+.compare-placeholder {
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28,24,18,0.9);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--sand);
+  font-style: italic;
+}
+
+/* NOTIFY */
+.notify-section {
+  padding: 120px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.notify-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 70% 80% at 50% 50%, rgba(45,74,40,0.2) 0%, transparent 70%),
+    var(--warm-black);
+}
+
+.notify-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.notify-content .section-eyebrow { justify-content: center; }
+.notify-content .section-title { text-align: center; margin: 0 auto 20px; }
+
+.notify-sub {
+  color: var(--sand);
+  font-weight: 300;
+  margin-bottom: 50px;
+  font-size: 0.95rem;
+}
+
+.notify-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.notify-form input {
+  background: rgba(28,24,18,0.8);
+  border: 1px solid rgba(201,168,76,0.15);
+  color: var(--cream);
+  padding: 16px 20px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.notify-form input::placeholder { color: var(--sand); opacity: 0.6; }
+.notify-form input:focus { border-color: rgba(201,168,76,0.4); }
+
+.notify-form button {
+  background: linear-gradient(135deg, var(--forest), var(--moss));
+  border: none;
+  color: var(--cream);
+  padding: 18px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.notify-form button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--moss), var(--leaf-green));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.notify-form button:hover::after { opacity: 1; }
+.notify-form button span { position: relative; z-index: 1; }
+
+.success-msg {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: rgba(45,74,40,0.2);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--gold-light);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* FOOTER */
+footer {
+  padding: 60px 80px 40px;
+  border-top: 1px solid rgba(201,168,76,0.12);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.footer-desc {
+  font-size: 0.82rem;
+  color: var(--sand);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 300px;
+}
+
+.footer-col h5 {
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  color: var(--sand);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 300;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover { color: var(--gold-light); }
+
+.footer-bottom {
+  padding: 24px 80px;
+  border-top: 1px solid rgba(201,168,76,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 0.72rem;
+  color: rgba(201,168,76,0.4);
+  letter-spacing: 1px;
+}
+
+/* SCROLL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* LEAF DECORATION */
+.leaf-deco {
+  position: absolute;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  nav { padding: 0 30px; }
+  .hero-content { padding: 0 40px; }
+  .hero-visual { width: 45%; }
+  .hero-product-float { width: 320px; right: 40px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 40px; }
+  .section { padding: 80px 40px; }
+  footer { padding: 60px 40px 40px; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-bottom { padding: 24px 40px; }
+}
+
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hero-content { padding: 100px 30px 60px; max-width: 100%; }
+  .hero-visual { display: none; }
+  .hero { min-height: auto; padding: 80px 0 60px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .compare-wrapper { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; gap: 40px; }
+  .why-section { grid-template-columns: 1fr; gap: 40px; }
+  .why-pillars { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; }
+  .section { padding: 60px 24px; }
+  .stats-bar { padding: 30px 24px; gap: 20px; }
 }
 </style>
 </head>
-
 <body>
 
-<div id="canvas-container"></div>
+<!-- ANNOUNCEMENT BANNER -->
+<div class="banner">
+  <div class="banner-track" id="bannerTrack">
+    <span class="banner-item">🌿 Launching Soon in India <span>✦</span></span>
+    <span class="banner-item">Plant-Based Car Care <span>✦</span></span>
+    <span class="banner-item">100% Biodegradable Formula <span>✦</span></span>
+    <span class="banner-item">Free Delivery on First Order <span>✦</span></span>
+    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
+    <span class="banner-item">Safe for All Indian Cars <span>✦</span></span>
+    <span class="banner-item">🌿 Launching Soon in India <span>✦</span></span>
+    <span class="banner-item">Plant-Based Car Care <span>✦</span></span>
+    <span class="banner-item">100% Biodegradable Formula <span>✦</span></span>
+    <span class="banner-item">Free Delivery on First Order <span>✦</span></span>
+    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
+    <span class="banner-item">Safe for All Indian Cars <span>✦</span></span>
+  </div>
+</div>
 
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#"><em>Bio</em>Glanz</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#process">Our Process</a></li>
+    <li><a href="#notify">Waitlist</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('notify').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="brand">BIOGLANZ</div>
-  <div class="tagline">
-    Plant-Based Car Care Built for Indian Roads 🇮🇳 <br>
-    Fighting dust, heat, pollution & monsoon damage.
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Launching 2026 · Made in India</div>
+    <h1 class="hero-title">
+      Premium Car Care,<br>
+      <em>Rooted in</em><br>
+      <strong>Nature.</strong>
+    </h1>
+    <p class="hero-sub">
+      Plant-derived formulas crafted for India's roads. 
+      Battling heat, dust, monsoon & pollution — without a single harsh chemical.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+        <span>Explore Products</span>
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('notify').scrollIntoView({behavior:'smooth'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+        Join Waitlist
+      </button>
+    </div>
   </div>
-  <button onclick="scrollToProducts()">Explore Products</button>
-</section>
-  <section class="section">
-  <h2>Why BioGlanz Is Different</h2>
 
-  <div class="products">
-
-    <div class="card">
-      <h3>🌿 100% Plant-Based Surfactants</h3>
-      <p>Derived from coconut & natural sources instead of petroleum chemicals.</p>
-    </div>
-
-    <div class="card">
-      <h3>♻ Biodegradable Formula</h3>
-      <p>Breaks down naturally without harming soil or water systems.</p>
-    </div>
-
-    <div class="card">
-      <h3>💧 Water Saving Technology</h3>
-      <p>High concentration formula reduces water usage by up to 40%.</p>
-    </div>
-
-    <div class="card">
-      <h3>🚗 Safe for All Indian Cars</h3>
-      <p>Tested for Maruti, Hyundai, Tata, Mahindra & premium brands.</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="section" id="products">
-  <h2>Our Upcoming Products</h2>
-
-  <div class="products">
-
-    <div class="card">
-      <img src="assets/car-shampoo.png" alt="Car Shampoo">
-      <h3>Plant-Based Car Shampoo</h3>
-      <p>
-        ✔ Coconut-derived surfactants <br>
-        ✔ Biodegradable formula <br>
-        ✔ Hard water stain removal <br>
-        ✔ Safe on ceramic coatings
-      </p>
-      <h3 style="color:#00ff88;">₹799</h3>
-    </div>
-
-    <div class="card">
-      <img src="assets/car-wax.png" alt="Car Wax">
-      <h3>Premium Plant Wax</h3>
-      <p>
-        ✔ Natural Carnauba blend <br>
-        ✔ 45°C UV heat protection <br>
-        ✔ Deep gloss finish <br>
-        ✔ 3+ months durability
-      </p>
-      <h3 style="color:#00ff88;">₹1,299</h3>
-    </div>
-
-    <div class="card">
-      <img src="assets/car-scratch-remover.png" alt="Scratch Remover">
-      <h3>Eco Scratch Remover</h3>
-      <p>
-        ✔ Non-toxic polishing agents <br>
-        ✔ Removes swirl marks <br>
-        ✔ Safe for clear coat <br>
-        ✔ Restores showroom shine
-      </p>
-      <h3 style="color:#00ff88;">₹699</h3>
-    </div>
-
-    <div class="card">
-      <img src="assets/car-apc.png" alt="All Purpose Cleaner">
-      <h3>Plant-Based All Purpose Cleaner</h3>
-      <p>
-        ✔ No ammonia or bleach <br>
-        ✔ Safe on dashboard & leather <br>
-        ✔ Removes food & AC dust stains <br>
-        ✔ Eco interior safe formula
-      </p>
-      <h3 style="color:#00ff88;">₹649</h3>
-    </div>
-
+  <div class="hero-visual">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <img class="hero-product-float" src="assets/car-shampoo.png" alt="BioGlanz Car Shampoo">
   </div>
 </section>
 
-<section class="section">
-  <h2>See The Difference</h2>
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stat-item">
+    <div class="stat-num">100<small style="font-size:1.2rem">%</small></div>
+    <div class="stat-label">Plant-Based Ingredients</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">40<small style="font-size:1.2rem">%</small></div>
+    <div class="stat-label">Less Water Usage</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Harsh Chemicals</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">4</div>
+    <div class="stat-label">Products at Launch</div>
+  </div>
+</div>
 
-  <div class="compare-wrapper">
+<!-- WHY BIOGLANZ -->
+<section class="section" id="about" style="padding: 120px 80px;">
+  <div class="why-section">
+    <div class="why-left reveal">
+      <div class="section-eyebrow">The BioGlanz Difference</div>
+      <h2 class="section-title">Why <em>Nature</em> Cleans Better</h2>
+      <p class="why-desc">
+        Most car care products rely on petroleum-derived chemicals that strip your paint, 
+        damage the environment, and weren't designed for Indian conditions. 
+        BioGlanz changes that. Every formula starts from plants — and ends with a shine 
+        that feels as good as it looks.
+      </p>
+    </div>
+    <div class="why-pillars reveal">
+      <div class="pillar reveal-delay-1">
+        <span class="pillar-icon">🌿</span>
+        <h4>Plant-Based Surfactants</h4>
+        <p>Derived from coconut & natural sources. No petroleum, no compromise.</p>
+      </div>
+      <div class="pillar reveal-delay-2">
+        <span class="pillar-icon">♻</span>
+        <h4>Fully Biodegradable</h4>
+        <p>Breaks down naturally. Safe for soil, waterways, and future generations.</p>
+      </div>
+      <div class="pillar reveal-delay-3">
+        <span class="pillar-icon">💧</span>
+        <h4>Water Saving Formula</h4>
+        <p>High-concentration technology cuts water usage by up to 40%.</p>
+      </div>
+      <div class="pillar reveal-delay-4">
+        <span class="pillar-icon">🚗</span>
+        <h4>Indian Road Tested</h4>
+        <p>Formulated for Maruti, Tata, Hyundai, Mahindra & premium imports.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- LAUNCH MARQUEE -->
+<div class="launch-marquee">
+  <div class="launch-track">
+    <span class="launch-word filled">New Launch</span>
+    <span class="launch-word">BioGlanz</span>
+    <span class="launch-word filled">2026</span>
+    <span class="launch-word">Plant Power</span>
+    <span class="launch-word filled">India's Own</span>
+    <span class="launch-word">Eco Premium</span>
+    <span class="launch-word filled">New Launch</span>
+    <span class="launch-word">BioGlanz</span>
+    <span class="launch-word filled">2026</span>
+    <span class="launch-word">Plant Power</span>
+    <span class="launch-word filled">India's Own</span>
+    <span class="launch-word">Eco Premium</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="section products-section" id="products">
+  <div class="products-header reveal">
+    <div class="section-eyebrow" style="justify-content:center">Upcoming Collection</div>
+    <h2 class="section-title" style="text-align:center; margin:0 auto;">Four Products. <em>One Philosophy.</em></h2>
+  </div>
+
+  <div class="products-grid">
+
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img-wrap">
+        <img src="assets/car-shampoo.png" alt="Plant-Based Car Shampoo">
+        <div class="product-badge">500ml</div>
+      </div>
+      <div class="product-body">
+        <h3 class="product-name">Plant-Based Car Shampoo</h3>
+        <ul class="product-features">
+          <li>Coconut-derived surfactants</li>
+          <li>Hard water stain removal</li>
+          <li>Safe on ceramic coatings</li>
+          <li>Biodegradable formula</li>
+        </ul>
+        <div class="product-footer">
+          <div class="product-price"><sup>₹</sup>799</div>
+          <button class="product-btn">Notify Me</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img-wrap">
+        <img src="assets/car-wax.png" alt="Premium Plant Wax">
+        <div class="product-badge">100ml</div>
+      </div>
+      <div class="product-body">
+        <h3 class="product-name">Premium Plant Wax</h3>
+        <ul class="product-features">
+          <li>Natural Carnauba blend</li>
+          <li>45°C UV heat protection</li>
+          <li>Deep gloss finish</li>
+          <li>3+ months durability</li>
+        </ul>
+        <div class="product-footer">
+          <div class="product-price"><sup>₹</sup>1,299</div>
+          <button class="product-btn">Notify Me</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-img-wrap">
+        <img src="assets/car-scratch-remover.png" alt="Eco Scratch Remover">
+        <div class="product-badge">100ml</div>
+      </div>
+      <div class="product-body">
+        <h3 class="product-name">Eco Scratch Remover</h3>
+        <ul class="product-features">
+          <li>Non-toxic polishing agents</li>
+          <li>Removes swirl marks</li>
+          <li>Safe for clear coat</li>
+          <li>Restores showroom shine</li>
+        </ul>
+        <div class="product-footer">
+          <div class="product-price"><sup>₹</sup>699</div>
+          <button class="product-btn">Notify Me</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-4">
+      <div class="product-img-wrap">
+        <img src="assets/car-apc.png" alt="All Purpose Cleaner">
+        <div class="product-badge">500ml</div>
+      </div>
+      <div class="product-body">
+        <h3 class="product-name">All Purpose Cleaner</h3>
+        <ul class="product-features">
+          <li>No ammonia or bleach</li>
+          <li>Safe on dashboard & leather</li>
+          <li>Removes AC dust stains</li>
+          <li>Eco interior-safe formula</li>
+        </ul>
+        <div class="product-footer">
+          <div class="product-price"><sup>₹</sup>649</div>
+          <button class="product-btn">Notify Me</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-section" id="process">
+  <div class="reveal">
+    <div class="section-eyebrow">The Science Behind It</div>
+    <h2 class="section-title">How We <em>Craft</em> Each Formula</h2>
+  </div>
+
+  <div class="process-grid">
+    <div class="process-step reveal reveal-delay-1">
+      <span class="step-num">01</span>
+      <div class="step-icon">🌱</div>
+      <h3 class="step-title">Plant Sourcing</h3>
+      <p class="step-desc">Every active ingredient starts in nature — coconut, carnauba palm, citrus extracts. We source responsibly and trace every batch.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <span class="step-num">02</span>
+      <div class="step-icon">🔬</div>
+      <h3 class="step-title">Lab Formulation</h3>
+      <p class="step-desc">Our chemists blend plant actives into high-performance concentrates, tested against India's toughest conditions — dust storms, monsoons, 45°C heat.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <span class="step-num">03</span>
+      <div class="step-icon">✅</div>
+      <h3 class="step-title">Real Car Testing</h3>
+      <p class="step-desc">Every formula is tested on Maruti, Tata, Hyundai, Mahindra and premium European brands before earning the BioGlanz seal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section compare-section" style="text-align:center;">
+  <div class="reveal">
+    <div class="section-eyebrow" style="justify-content:center">Results Speak</div>
+    <h2 class="section-title" style="margin:0 auto 10px; text-align:center;">See the <em>Transformation</em></h2>
+    <p style="color:var(--sand); font-weight:300; font-size:0.9rem; margin-top:10px;">Before & after using BioGlanz Car Shampoo + Plant Wax</p>
+  </div>
+
+  <div class="compare-wrapper reveal">
     <div class="compare-panel">
-      <img src="assets/before-wash.png" alt="Before Dirty Car">
+      <div class="compare-placeholder">
+        📸 Before — Upload your car photo
+      </div>
+      <div class="compare-label before">Before</div>
     </div>
-
     <div class="compare-panel">
-      <img src="assets/after-wash.png" alt="After Clean Car">
+      <div class="compare-placeholder" style="background: rgba(45,74,40,0.15);">
+        ✨ After — BioGlanz shine
+      </div>
+      <div class="compare-label after">After</div>
     </div>
-
   </div>
 </section>
 
-<section class="section">
-  <h2>Get Early Access</h2>
+<!-- NOTIFY -->
+<section class="section notify-section" id="notify">
+  <div class="notify-bg"></div>
+  <div class="notify-content reveal">
+    <div class="section-eyebrow">Limited Early Access</div>
+    <h2 class="section-title">Be First to <em>Experience</em> BioGlanz</h2>
+    <p class="notify-sub">Join our VIP waitlist for early bird pricing, exclusive launch offers, and free samples for the first 500 members.</p>
 
-  <form id="notifyForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <input type="text" id="city" placeholder="Your City" required>
-    <button type="submit">Notify Me</button>
-  </form>
+    <form class="notify-form" id="notifyForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="text" id="city" placeholder="Your City" required>
+      <button type="submit"><span>Join the VIP Waitlist</span></button>
+    </form>
 
-  <div class="success" id="successMsg">
-    Thank you! You're on the BioGlanz VIP list 🚗✨
+    <div class="success-msg" id="successMsg">
+      You're on the BioGlanz VIP list — we'll be in touch soon. 🌿
+    </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-© 2026 BioGlanz India | Launching Soon
+  <div>
+    <div class="footer-brand">BioGlanz</div>
+    <p class="footer-desc">Plant-based car care built for India's roads, weather, and values. Launching 2026.</p>
+  </div>
+  <div class="footer-col">
+    <h5>Products</h5>
+    <ul>
+      <li><a href="#">Car Shampoo</a></li>
+      <li><a href="#">Plant Wax</a></li>
+      <li><a href="#">Scratch Remover</a></li>
+      <li><a href="#">APC Cleaner</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Company</h5>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Our Ingredients</a></li>
+      <li><a href="#">Sustainability</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<div class="footer-bottom">
+  <p>© 2026 BioGlanz India. All rights reserved.</p>
+  <p style="letter-spacing:3px;">Made with 🌿 in India</p>
+</div>
 
 <script>
-/* 3D Background */
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({alpha:true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById("canvas-container").appendChild(renderer.domElement);
-
-const geometry = new THREE.CylinderGeometry(1, 1, 3, 32);
-const material = new THREE.MeshPhysicalMaterial({
-  color:0x00ff88,
-  transparent:true,
-  opacity:0.5
+/* NAV scroll */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
 });
-const bottle = new THREE.Mesh(geometry, material);
-scene.add(bottle);
 
-camera.position.z = 5;
+/* Reveal on scroll */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+reveals.forEach(r => observer.observe(r));
 
-function animate(){
-  requestAnimationFrame(animate);
-  bottle.rotation.y += 0.01;
-  renderer.render(scene, camera);
-}
-animate();
+/* Product notify buttons */
+document.querySelectorAll('.product-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('notify').scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-/* Scroll */
-function scrollToProducts(){
-  document.getElementById("products").scrollIntoView({behavior:"smooth"});
-}
-
-/* Notify Me Form */
-document.getElementById("notifyForm").addEventListener("submit",function(e){
+/* Form */
+document.getElementById('notifyForm').addEventListener('submit', function(e) {
   e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const city = document.getElementById('city').value;
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const city = document.getElementById("city").value;
+  document.getElementById('successMsg').style.display = 'block';
+  this.reset();
 
-  document.getElementById("successMsg").style.display = "block";
-  document.getElementById("notifyForm").reset();
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, city })
+  }).catch(err => console.log('Fetch error:', err));
+});
 
-  fetch("https://jsonplaceholder.typicode.com/posts",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({name,email,city})
-  }).catch(err=> console.log("Fetch error:", err));
+/* Parallax hero image */
+const heroImg = document.querySelector('.hero-product-float');
+window.addEventListener('scroll', () => {
+  if (heroImg) {
+    const scrollY = window.scrollY;
+    heroImg.style.transform = `translateY(calc(-50% + ${scrollY * 0.15}px))`;
+  }
 });
 </script>
-
 </body>
 </html>
-
-
-
-
-
-
