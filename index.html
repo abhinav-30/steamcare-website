@@ -58,6 +58,20 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding-top:110px}
 .hero-subtitle{color:#ffffff;font-weight:500;font-size:1.1rem;background:rgba(0,0,0,0.45);padding:10px 18px;border-radius:8px;display:inline-block
 }
+.hero-ribbon{
+  display:inline-block;
+  background:#111827;
+  color:#fff;
+  padding:12px 24px;
+  font-weight:500;
+  transform:skew(-10deg);
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+
+.hero-ribbon span{
+  display:inline-block;
+  transform:skew(10deg);
+}
 .hero-bg{position:absolute;inset:0;background:url("assets/background-img.PNG") center center / cover no-repeat;z-index:0}
 .hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(26,37,53,.7) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(58,122,170,.2) 0%,transparent 60%),radial-gradient(ellipse 80% 40% at 50% 10%,rgba(201,168,76,.1) 0%,transparent 60%),rgba(10,12,16,.55)}
 .hero-noise{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
@@ -231,6 +245,20 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   .hero-title{font-size:clamp(2.6rem,11vw,3.8rem)}
   .hero-sub{font-size:.92rem;margin-bottom:36px}
   .hero-actions{flex-direction:column;align-items:stretch;gap:12px}
+  .hero-ribbon{
+  display:inline-block;
+  background:#111827;
+  color:#fff;
+  padding:12px 24px;
+  font-weight:500;
+  transform:skew(-10deg);
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+
+.hero-ribbon span{
+  display:inline-block;
+  transform:skew(10deg);
+}
   .btn-primary{width:100%;text-align:center;padding:16px 24px}
   .btn-ghost{width:100%;justify-content:center}
 
@@ -344,9 +372,9 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
       <strong>Perfection.</strong>
     </h1>
     <p class="hero-sub">
-      <b><strong>
+     <div class="hero-ribbon"> <b><strong>
       Professional-grade detailing formulas built for India's roads.
-      Defeating heat, dust, monsoon &amp; pollution — with precision chemistry that protects every coat.</strong> </b>
+      Defeating heat, dust, monsoon &amp; pollution — with precision chemistry that protects every coat.</strong></b></div>
     </p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
@@ -684,6 +712,7 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
 
 
 
