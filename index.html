@@ -3,15 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BioGlanz — Plant Based Car Care</title>
+<title>CarGlanz — Premium Car Care</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cream:#f5f0e8; --parchment:#ede6d6; --sand:#c9b89a; --bark:#7a5c3e;
-  --moss:#4a6741; --forest:#2d4a28; --deep-forest:#1a2e16; --sage:#8a9e7a;
-  --olive:#6b7c4a; --clay:#9c6b4a; --charcoal:#1e1e1a; --warm-black:#120f0a;
-  --leaf-green:#5a8a3c; --gold:#c9a84c; --gold-light:#e8c96a;
-  --banner-h:38px;
+:root{
+
+--black:#0b0b0c;
+--graphite:#1a1a1d;
+--carbon:#222326;
+--silver:#c7c7c7;
+--steel:#8c8f96;
+
+--accent:#00c2ff;
+--accent-glow:#2de2ff;
+
+--lux:#d6b25e;
+
+--banner-h:38px;
+
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -21,7 +30,8 @@ body{font-family:'Jost',sans-serif;background:var(--warm-black);color:var(--crea
 ::-webkit-scrollbar-thumb{background:var(--moss);border-radius:3px}
 
 /* ── STICKY BANNER ── */
-.banner{background:linear-gradient(135deg,var(--forest),var(--moss),var(--forest));padding:9px 0;overflow:hidden;position:fixed;top:0;left:0;right:0;height:var(--banner-h);border-bottom:1px solid rgba(201,168,76,.3);z-index:1000}
+.banner{background:linear-gradient(90deg,#0b0b0c,#1a1a1d,#0b0b0c);
+border-bottom:1px solid rgba(214,178,94,.35);padding:9px 0;overflow:hidden;position:fixed;top:0;left:0;right:0;height:var(--banner-h);border-bottom:1px solid rgba(201,168,76,.3);z-index:1000}
 .banner-track{display:flex;animation:bscroll 30s linear infinite;white-space:nowrap;width:max-content}
 .banner-item{font-size:.72rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);padding:0 60px}
 .banner-item span{color:var(--sage);margin:0 16px;font-size:.6rem}
@@ -680,6 +690,7 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
 
 
 
