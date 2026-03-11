@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CarGlanz — Premium Car Care</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --cream:#e8edf2; --parchment:#d0d8e0; --sand:#9aaab8; --bark:#4a5a6a;
@@ -19,6 +19,10 @@ body{font-family:'Jost',sans-serif;background:var(--warm-black);color:var(--crea
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--warm-black)}
 ::-webkit-scrollbar-thumb{background:var(--bark);border-radius:3px}
+
+/* ── CARGLANZ BRAND TEXT ── */
+.cg-car{color:var(--gold);font-style:normal}
+.cg-glanz{color:var(--cream);font-style:normal}
 
 /* ── STICKY BANNER ── */
 .banner{background:linear-gradient(135deg,var(--forest),var(--moss),var(--forest));padding:9px 0;overflow:hidden;position:fixed;top:0;left:0;right:0;height:var(--banner-h);border-bottom:1px solid rgba(201,168,76,.3);z-index:1000}
@@ -88,7 +92,7 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--moss),#3a6a8a);opacity:0;transition:opacity .4s}
 .btn-primary:hover::after{opacity:1}
 .btn-primary span{position:relative;z-index:1}
-.btn-ghost{background:transparent;border:none;color:var(--sand);font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px;transition:color .3s;padding:0}
+.btn-ghost{background:transparent;border:none;color:var(--sand);font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px;transition:color .3s;padding:0;font-weight:700}
 .btn-ghost:hover{color:var(--gold-light)}
 .btn-ghost svg{width:32px;height:32px;border:1px solid currentColor;border-radius:50%;padding:8px;transition:all .3s}
 .btn-ghost:hover svg{transform:translateX(4px)}
@@ -125,9 +129,9 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .product-card:hover .product-img-wrap img{transform:scale(1.06)}
 .product-badge{position:absolute;top:16px;right:16px;background:rgba(26,37,53,.9);border:1px solid rgba(201,168,76,.4);color:var(--gold-light);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;font-weight:600;backdrop-filter:blur(10px)}
 .product-body{padding:28px 28px 32px;border-top:1px solid rgba(201,168,76,.1)}
-.product-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:14px;color:var(--cream)}
+.product-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:14px;color:var(--cream);letter-spacing:1px}
 .product-features{list-style:none;margin-bottom:24px}
-.product-features li{font-size:.78rem;color:var(--sand);padding:5px 0;display:flex;align-items:center;gap:10px;font-weight:300}
+.product-features li{font-size:.88rem;color:var(--sand);padding:5px 0;display:flex;align-items:center;gap:10px;font-weight:700}
 .product-features li::before{content:'';width:16px;height:1px;background:var(--sage);flex-shrink:0}
 .product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:20px;border-top:1px solid rgba(201,168,76,.1)}
 .product-price{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold-light)}
@@ -146,10 +150,10 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 
 /* BEFORE/AFTER */
 .compare-section{padding:120px 80px;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(26,37,53,.2) 0%,transparent 70%)}
-.compare-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:3px;max-width:1000px;margin:60px auto 0;border:1px solid rgba(201,168,76,.15);overflow:hidden}
-.compare-panel{position:relative;overflow:hidden}
-.compare-placeholder{width:100%;height:360px;display:flex;align-items:center;justify-content:center;background:rgba(28,24,18,.9);overflow:hidden}
-.compare-placeholder img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.compare-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:3px;max-width:1400px;margin:60px auto 0;border:1px solid rgba(201,168,76,.15);overflow:visible}
+.compare-panel{position:relative;overflow:visible}
+.compare-placeholder{width:100%;height:auto;display:flex;align-items:center;justify-content:center;background:rgba(28,24,18,.9);overflow:hidden}
+.compare-placeholder img{width:100%;height:auto;max-height:none;object-fit:contain;object-position:center;display:block}
 .compare-label{position:absolute;bottom:20px;left:20px;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;padding:7px 16px;border:1px solid;backdrop-filter:blur(10px)}
 .compare-label.before{color:rgba(245,240,232,.7);border-color:rgba(245,240,232,.2);background:rgba(18,15,10,.6)}
 .compare-label.after{color:var(--gold-light);border-color:rgba(201,168,76,.4);background:rgba(26,37,53,.8)}
@@ -163,7 +167,7 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .pillar:hover::before{opacity:1}
 .pillar:hover{border-color:rgba(201,168,76,.3);transform:translateY(-4px)}
 .pillar-icon{font-size:1.8rem;margin-bottom:14px;display:block}
-.pillar h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;margin-bottom:8px;color:var(--cream)}
+.pillar h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--cream);letter-spacing:.5px}
 .pillar p{font-size:.82rem;color:var(--sand);line-height:1.7;font-weight:300}
 
 /* PROCESS */
@@ -172,7 +176,7 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .process-step{position:relative;padding-left:30px;border-left:1px solid rgba(201,168,76,.2)}
 .step-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:rgba(201,168,76,.1);line-height:1;position:absolute;top:-10px;right:0}
 .step-icon{font-size:1.5rem;margin-bottom:20px}
-.step-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:14px;color:var(--cream)}
+.step-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:14px;color:var(--cream);letter-spacing:.5px}
 .step-desc{font-size:.85rem;color:var(--sand);line-height:1.8;font-weight:300}
 
 /* NOTIFY */
@@ -195,7 +199,7 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 
 /* FOOTER */
 footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px}
-.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--cream);margin-bottom:16px}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;letter-spacing:6px;color:var(--cream);margin-bottom:16px}
 .footer-desc{font-size:.82rem;color:var(--sand);line-height:1.8;font-weight:300;max-width:300px}
 .footer-col h5{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:600}
 .footer-col ul{list-style:none}
@@ -283,7 +287,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   /* before/after */
   .compare-section{padding:56px 20px}
   .compare-wrapper{grid-template-columns:1fr}
-  .compare-placeholder{height:240px}
+  .compare-placeholder{height:auto;min-height:180px}
 
   /* why */
   .why-section{grid-template-columns:1fr;gap:36px}
@@ -318,12 +322,12 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 <div class="banner">
   <div class="banner-track">
     <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
-    <span class="banner-item">Introducing CarGlanz – Engineered for Showroom Shine <span>✦</span></span>
+    <span class="banner-item">Introducing <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> – Engineered for Showroom Shine <span>✦</span></span>
     <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
     <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
     <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
     <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
-    <span class="banner-item">Introducing CarGlanz – Engineered for Showroom Shine <span>✦</span></span>
+    <span class="banner-item">Introducing <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> – Engineered for Showroom Shine <span>✦</span></span>
     <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
     <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
     <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
@@ -332,7 +336,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" href="#"><em>Car</em>Glanz</a>
+  <a class="nav-logo" href="#"><em>CAR</em>Glanz</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#products">Products</a></li>
@@ -348,7 +352,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 <!-- MOBILE DRAWER -->
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" id="mobClose" aria-label="Close">✕</button>
-  <a class="mob-logo" href="#" onclick="closeMenu()"><em>Car</em>Glanz</a>
+  <a class="mob-logo" href="#" onclick="closeMenu()"><em>CAR</em>Glanz</a>
   <a class="mob-link" href="#about"    onclick="closeMenu()">About</a>
   <a class="mob-link" href="#products" onclick="closeMenu()">Products</a>
   <a class="mob-link" href="#process"  onclick="closeMenu()">Our Process</a>
@@ -508,13 +512,13 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 <div class="launch-marquee">
   <div class="launch-track">
     <span class="launch-word filled">New Launch</span>
-    <span class="launch-word">CarGlanz</span>
+    <span class="launch-word"><span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span></span>
     <span class="launch-word filled">2026</span>
     <span class="launch-word">Pro Detailing</span>
     <span class="launch-word filled">India's Own</span>
     <span class="launch-word">Showroom Shine</span>
     <span class="launch-word filled">New Launch</span>
-    <span class="launch-word">CarGlanz</span>
+    <span class="launch-word"><span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span></span>
     <span class="launch-word filled">2026</span>
     <span class="launch-word">Pro Detailing</span>
     <span class="launch-word filled">India's Own</span>
@@ -527,7 +531,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   <div class="reveal">
     <div class="section-eyebrow" style="justify-content:center">Results Speak</div>
     <h2 class="section-title" style="margin:0 auto 10px;text-align:center;">See the <em>Transformation</em></h2>
-    <p style="color:var(--sand);font-weight:300;font-size:.9rem;margin-top:10px;">Before &amp; after using CarGlanz High-Gloss Shampoo + Ceramic Protection Wax</p>
+    <p style="color:var(--sand);font-weight:300;font-size:.9rem;margin-top:10px;">Before &amp; after using <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> High-Gloss Shampoo + Ceramic Protection Wax</p>
   </div>
 
   <div class="compare-wrapper reveal">
@@ -553,12 +557,12 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 <section class="section" id="about">
   <div class="why-section">
     <div class="why-left reveal">
-      <div class="section-eyebrow">The CarGlanz Difference</div>
+      <div class="section-eyebrow">The <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> Difference</div>
       <h2 class="section-title">Why <em>Precision</em> Outperforms</h2>
       <p class="why-desc">
         Most car care products on the market use generic formulas that dull your paint,
         fade trim, and weren't built for Indian conditions.
-        CarGlanz changes that. Every formula is engineered for detailing performance — delivering a
+        <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> changes that. Every formula is engineered for detailing performance — delivering a
         shine that rivals a professional wash, every single time.
       </p>
     </div>
@@ -610,7 +614,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
       <span class="step-num">03</span>
       <div class="step-icon">✅</div>
       <h3 class="step-title">Real Car Validation</h3>
-      <p class="step-desc">Every formula is validated on Maruti, Tata, Hyundai, Mahindra, and premium European brands before earning the CarGlanz seal of performance.</p>
+      <p class="step-desc">Every formula is validated on Maruti, Tata, Hyundai, Mahindra, and premium European brands before earning the <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> seal of performance.</p>
     </div>
   </div>
 </section>
@@ -620,7 +624,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   <div class="notify-bg"></div>
   <div class="notify-content reveal">
     <div class="section-eyebrow">Limited Early Access</div>
-    <h2 class="section-title">Be First to <em>Experience</em> CarGlanz</h2>
+    <h2 class="section-title">Be First to <em>Experience</em> <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span></h2>
     <p class="notify-sub">Join our VIP waitlist for early bird pricing, exclusive launch offers, and free samples for the first 500 members.</p>
     <form class="notify-form" id="notifyForm">
       <input type="text"  id="name"  placeholder="Your Name"  required>
@@ -628,14 +632,14 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
       <input type="text"  id="city"  placeholder="Your City"  required>
       <button type="submit"><span>Join the VIP Waitlist</span></button>
     </form>
-    <div class="success-msg" id="successMsg">You're on the CarGlanz VIP list — we'll be in touch soon. ⚡</div>
+    <div class="success-msg" id="successMsg">You're on the <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> VIP list — we'll be in touch soon. ⚡</div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div>
-    <div class="footer-brand">CarGlanz</div>
+    <div class="footer-brand"><span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span></div>
     <p class="footer-desc">Professional-grade car care engineered for India's roads, climate, and performance standards. Launching 2026.</p>
   </div>
   <div class="footer-col">
@@ -650,16 +654,14 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   <div class="footer-col">
     <h5>Company</h5>
     <ul>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Our Technology</a></li>
-      <li><a href="#">Performance Lab</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#process">Our Technology</a></li>
     </ul>
   </div>
 </footer>
 
 <div class="footer-bottom">
-  <p>© 2026 CarGlanz India. All rights reserved.</p>
+  <p>© 2026 <span class="cg-car">CAR</span><span class="cg-glanz">Glanz</span> India. All rights reserved.</p>
   <p style="letter-spacing:3px">Engineered ⚡ in India</p>
 </div>
 
