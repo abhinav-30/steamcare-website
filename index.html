@@ -701,7 +701,7 @@ document.getElementById('notifyForm').addEventListener('submit',function(e){
   const c=document.getElementById('city').value;
   document.getElementById('successMsg').style.display='block';
   this.reset();
-  fetch('https://sheetdb.io/api/v1/2yjanmxj0usg7',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:em,city:c})}).catch(()=>{});
+  fetch('https://sheetdb.io/api/v1/2yjanmxj0usg7',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({data:[{Name:n,Email:em,City:c})}).catch(()=>{});
 });
 
 /* PARALLAX */
