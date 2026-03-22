@@ -93,15 +93,22 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 /* ── HOW TO USE ── */
 .howto-section{padding:100px 80px;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(26,37,53,.15) 0%,transparent 70%)}
 .howto-header{text-align:center;margin-bottom:70px}
-.howto-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1200px;margin:0 auto;position:relative}
-.howto-steps::before{content:'';position:absolute;top:48px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),rgba(201,168,76,.3),rgba(201,168,76,.3),transparent);z-index:0}
-.howto-step{text-align:center;padding:0 20px;position:relative;z-index:1}
-.step-circle{width:96px;height:96px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;background:var(--warm-black);font-size:1.6rem;position:relative;transition:all .4s}
-.step-circle::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid transparent;background:linear-gradient(var(--warm-black),var(--warm-black)) padding-box,linear-gradient(135deg,rgba(201,168,76,.15),transparent) border-box}
-.howto-step:hover .step-circle{border-color:rgba(201,168,76,.5);transform:scale(1.05)}
-.step-num-label{position:absolute;top:-8px;right:-8px;width:24px;height:24px;background:var(--gold);border-radius:50%;font-size:.6rem;font-weight:700;color:var(--warm-black);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif}
+.howto-steps{display:flex;align-items:flex-start;justify-content:center;max-width:1200px;margin:0 auto;gap:0}
+.howto-step{text-align:center;padding:0 20px;position:relative;z-index:1;flex:1}
+.step-arrow{display:flex;align-items:center;justify-content:center;padding-top:36px;flex-shrink:0;opacity:.45}
+.step-arrow svg{width:28px;height:28px;stroke:var(--gold);stroke-width:1.2}
+.step-num-display{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--gold-light);line-height:1;margin:0 auto 16px;width:72px;height:72px;display:flex;align-items:center;justify-content:center;transition:color .3s}
+.howto-step:hover .step-num-display{color:var(--gold)}
+.step-icon-wrap{width:52px;height:52px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center}
+.step-icon-wrap svg{width:52px;height:52px;stroke:var(--sage);opacity:.75;transition:stroke .3s,opacity .3s,transform .4s}
+.howto-step:hover .step-icon-wrap svg{stroke:var(--gold-light);opacity:1;transform:translateY(-3px)}
 .howto-step h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:8px;color:var(--cream)}
 .howto-step p{font-size:.8rem;color:var(--sand);line-height:1.7;font-weight:300}
+@media(max-width:768px){
+  .howto-steps{flex-wrap:wrap}
+  .howto-step{flex:0 0 45%;padding:0 12px 32px}
+  .step-arrow{display:none}
+}
 
 /* ── SPECS ── */
 .specs-section{padding:80px 80px;border-top:1px solid rgba(201,168,76,.1)}
@@ -496,16 +503,18 @@ function renderProduct() {
 
   // how to use
   const howtoEl = document.getElementById('howtoSteps');
+  const arrowSVG = `<svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 14h20M16 7l8 7-8 7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   p.howto.forEach((s, i) => {
     howtoEl.innerHTML += `
       <div class="howto-step reveal reveal-delay-${i+1}">
-        <div class="step-circle">
-          <span class="step-num-label">${i+1}</span>
-        </div>
-		<span> ${s.icon} </span>
+        <div class="step-num-display">${String(i+1).padStart(2,'0')}</div>
+        <div class="step-icon-wrap">${s.icon}</div>
         <h4>${s.title}</h4>
         <p>${s.desc}</p>
       </div>`;
+    if (i < p.howto.length - 1) {
+      howtoEl.innerHTML += `<div class="step-arrow">${arrowSVG}</div>`;
+    }
   });
 
   // specs
