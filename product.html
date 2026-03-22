@@ -86,7 +86,8 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 .detail-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),transparent);opacity:0;transition:opacity .4s}
 .detail-card:hover{border-color:rgba(201,168,76,.25);transform:translateY(-4px)}
 .detail-card:hover::before{opacity:1}
-.detail-icon{font-size:1.8rem;margin-bottom:18px;display:block}
+.detail-icon{font-size:1.8rem;margin-bottom:18px;display:block;width:48px;height:48px}
+.detail-icon svg{width:48px;height:48px;stroke:var(--gold-light);opacity:.8}
 .detail-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:10px;color:var(--cream)}
 .detail-desc{font-size:.85rem;color:var(--sand);line-height:1.8;font-weight:300}
 
@@ -96,9 +97,11 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 .howto-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1200px;margin:0 auto;position:relative}
 .howto-steps::before{content:'';position:absolute;top:48px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),rgba(201,168,76,.3),rgba(201,168,76,.3),transparent);z-index:0}
 .howto-step{text-align:center;padding:0 20px;position:relative;z-index:1}
-.step-circle{width:96px;height:96px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;background:var(--warm-black);font-size:1.6rem;position:relative;transition:all .4s}
+.step-circle{width:96px;height:96px;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;background:var(--warm-black);position:relative;transition:all .4s}
 .step-circle::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid transparent;background:linear-gradient(var(--warm-black),var(--warm-black)) padding-box,linear-gradient(135deg,rgba(201,168,76,.15),transparent) border-box}
+.step-circle svg{width:38px;height:38px;stroke:var(--gold-light);opacity:.85;transition:opacity .4s,transform .4s}
 .howto-step:hover .step-circle{border-color:rgba(201,168,76,.5);transform:scale(1.05)}
+.howto-step:hover .step-circle svg{opacity:1;transform:scale(1.08)}
 .step-num-label{position:absolute;top:-8px;right:-8px;width:24px;height:24px;background:var(--gold);border-radius:50%;font-size:.6rem;font-weight:700;color:var(--warm-black);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif}
 .howto-step h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:8px;color:var(--cream)}
 .howto-step p{font-size:.8rem;color:var(--sand);line-height:1.7;font-weight:300}
@@ -323,15 +326,15 @@ const PRODUCTS = {
       'Works in hard Indian water',
     ],
     details: [
-      { icon: '🧪', title: 'pH-Balanced Formula', desc: 'Precisely calibrated pH ensures maximum cleaning power without stripping wax, sealants, or ceramic coatings from your paint.' },
-      { icon: '💧', title: 'Hard Water Compatible', desc: 'Specially formulated to work with India\'s notoriously hard water — no mineral spotting, no white residue, just clean panels.' },
-      { icon: '🛡️', title: 'Coating-Safe', desc: 'Zero harsh detergents or alkaline agents that degrade ceramic coatings or paint protection films. Safe for use on all coated vehicles.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="22" r="10"/><path d="M20 22h8"/><path d="M24 18v8"/><path d="M17 15l-2-3"/><path d="M31 15l2-3"/><path d="M14 26l-3 2"/><path d="M34 26l3 2"/><path d="M18 38h12" stroke-linecap="round"/><path d="M24 32v6"/></svg>`, title: 'pH-Balanced Formula', desc: 'Precisely calibrated pH ensures maximum cleaning power without stripping wax, sealants, or ceramic coatings from your paint.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M24 10c0 0-12 10-12 20a12 12 0 0 0 24 0C36 20 24 10 24 10z"/><path d="M24 26v-8" stroke-linecap="round"/><path d="M20 24l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>`, title: 'Hard Water Compatible', desc: 'Specially formulated to work with India\'s notoriously hard water — no mineral spotting, no white residue, just clean panels.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M24 10L38 18V30L24 38L10 30V18L24 10Z"/><path d="M24 18L32 22V30L24 34L16 30V22L24 18Z" stroke-opacity=".4"/><circle cx="24" cy="26" r="3"/></svg>`, title: 'Coating-Safe', desc: 'Zero harsh detergents or alkaline agents that degrade ceramic coatings or paint protection films. Safe for use on all coated vehicles.' },
     ],
     howto: [
-      { icon: '🪣', title: 'Dilute', desc: 'Mix 10–20 ml into a bucket of water (1:20 ratio). Foams richly even in hard water.' },
-      { icon: '🧽', title: 'Apply', desc: 'Apply with a wash mitt using gentle circular motions. Work from roof downwards.' },
-      { icon: '💦', title: 'Rinse', desc: 'Rinse thoroughly with clean water before suds dry. One pass is enough.' },
-      { icon: '🪣', title: 'Dry', desc: 'Dry with a clean microfibre towel for a streak-free, high-gloss finish.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="38" rx="14" ry="5" stroke-opacity=".4"/><path d="M10 18h28l-4 20H14L10 18Z"/><path d="M6 12c0-2 2-3 4-2l4 8H10"/><path d="M42 12c0-2-2-3-4-2l-4 8h4"/><path d="M18 18v-4a6 6 0 0 1 12 0v4"/><path d="M20 28c1 2 7 2 8 0" stroke-linecap="round"/></svg>`, title: 'Dilute', desc: 'Mix 10–20 ml into a bucket of water (1:20 ratio). Foams richly even in hard water.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="20" width="28" height="18" rx="4"/><path d="M14 20v-4a10 10 0 0 1 20 0v4"/><circle cx="24" cy="29" r="4"/><path d="M22 29h4" stroke-linecap="round"/><path d="M18 38c0 3 12 3 12 0"/></svg>`, title: 'Apply', desc: 'Apply with a wash mitt using gentle circular motions. Work from roof downwards.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 10c0 0 2 6 12 6s12-6 12-6" stroke-linecap="round"/><path d="M8 20c0 0 4 8 16 8s16-8 16-8" stroke-linecap="round"/><path d="M14 32l-2 8h24l-2-8"/><path d="M20 14c0 4-2 8-4 12"/><path d="M28 14c0 4 2 8 4 12"/><path d="M24 14v12"/></svg>`, title: 'Rinse', desc: 'Rinse thoroughly with clean water before suds dry. One pass is enough.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="28" width="32" height="12" rx="3"/><path d="M14 28V18a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v10"/><path d="M8 34h32" stroke-opacity=".3"/><path d="M20 22h8" stroke-linecap="round"/><path d="M22 26h4" stroke-linecap="round"/></svg>`, title: 'Dry', desc: 'Dry with a clean microfibre towel for a streak-free, high-gloss finish.' },
     ],
     specs: [
       ['Volume', '200 ml'],
@@ -359,15 +362,15 @@ const PRODUCTS = {
       'Self-healing micro layer',
     ],
     details: [
-      { icon: '🌡️', title: '45°C Heat Resistance', desc: 'Engineered with high-temp polymer chains that remain stable in extreme Indian summer heat — no melting, streaking, or oil-out.' },
-      { icon: '✨', title: 'Mirror-Gloss Finish', desc: 'Ceramic micro-particles fill in paint micro-scratches and micro-marring to produce a deep, wet-look gloss that rivals professional detailing studios.' },
-      { icon: '🌧️', title: '3+ Month Durability', desc: 'The polymer-ceramic matrix bonds strongly to clear coat, lasting through monsoon rains, dust storms, and daily washing without degradation.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M24 8v6"/><path d="M32 11l-3 5"/><path d="M16 11l3 5"/><path d="M12 26h6"/><path d="M30 26h6"/><path d="M16 38l3-5"/><path d="M32 38l-3-5"/><path d="M24 40v-6"/><circle cx="24" cy="26" r="8"/><circle cx="24" cy="26" r="4" fill="rgba(201,168,76,.12)" stroke="rgba(201,168,76,.5)"/></svg>`, title: '45°C Heat Resistance', desc: 'Engineered with high-temp polymer chains that remain stable in extreme Indian summer heat — no melting, streaking, or oil-out.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="28" rx="16" ry="6"/><ellipse cx="24" cy="22" rx="12" ry="4" stroke-opacity=".5"/><ellipse cx="24" cy="17" rx="8" ry="3" stroke-opacity=".25"/><path d="M8 28v4c0 4 7 6 16 6s16-2 16-6v-4"/></svg>`, title: 'Mirror-Gloss Finish', desc: 'Ceramic micro-particles fill in paint micro-scratches to produce a deep, wet-look gloss that rivals professional detailing studios.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M10 24c4-8 24-8 28 0"/><path d="M10 30c4-6 24-6 28 0" stroke-opacity=".5"/><path d="M14 36c3-4 17-4 20 0" stroke-opacity=".25"/><path d="M24 10v8"/><path d="M20 14l4-4 4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>`, title: '3+ Month Durability', desc: 'The polymer-ceramic matrix bonds strongly to clear coat, lasting through monsoon rains, dust storms, and daily washing.' },
     ],
     howto: [
-      { icon: '🧹', title: 'Clean First', desc: 'Start with a freshly washed, decontaminated, and dry vehicle. Remove any iron fallout before applying.' },
-      { icon: '💧', title: 'Apply Thin', desc: 'Apply a thin layer using the foam applicator in straight-line motions — less is more with this formula.' },
-      { icon: '⏱️', title: 'Wait & Flash', desc: 'Allow product to haze for 3–5 minutes (less in direct sunlight). You\'ll see a chalky film form.' },
-      { icon: '🪞', title: 'Buff Off', desc: 'Buff off using a clean microfibre towel in straight lines for a blinding mirror gloss.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M24 8L28 18H38L30 24L33 34L24 28L15 34L18 24L10 18H20L24 8Z" stroke-linejoin="round"/></svg>`, title: 'Clean First', desc: 'Start with a freshly washed, decontaminated, and dry vehicle. Remove any iron fallout before applying.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M16 36V20a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16"/><path d="M12 36h24"/><circle cx="24" cy="14" r="4"/><path d="M24 10V6"/><path d="M20 12l-3-3"/><path d="M28 12l3-3"/><path d="M20 28c2 3 6 3 8 0" stroke-linecap="round"/></svg>`, title: 'Apply Thin', desc: 'Apply a thin layer using the foam applicator in straight-line motions — less is more with this formula.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="14"/><path d="M24 14v2"/><path d="M24 34v2"/><path d="M14 24h2"/><path d="M34 24h2"/><path d="M17 17l1.4 1.4"/><path d="M31 31l-1.4-1.4" stroke-opacity=".5"/><path d="M17 31l1.4-1.4"/><path d="M31 17l-1.4 1.4" stroke-opacity=".5"/><circle cx="24" cy="24" r="4" fill="rgba(201,168,76,.15)" stroke="rgba(201,168,76,.6)"/></svg>`, title: 'Wait & Flash', desc: 'Allow product to haze for 3–5 minutes. You\'ll see a chalky film form on the surface.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M10 28c7-6 21-6 28 0"/><path d="M10 34c7-6 21-6 28 0" stroke-opacity=".4"/><rect x="8" y="20" width="32" height="8" rx="2"/><path d="M16 20v-6a8 8 0 0 1 16 0v6"/></svg>`, title: 'Buff Off', desc: 'Buff off using a clean microfibre towel in straight lines for a blinding mirror gloss.' },
     ],
     specs: [
       ['Volume', '200 ml'],
@@ -395,15 +398,15 @@ const PRODUCTS = {
       'One-step application',
     ],
     details: [
-      { icon: '🔬', title: 'Micro-Abrasive Science', desc: 'Calibrated aluminium oxide micro-abrasives cut at the microscopic level — removing just the defect layer without biting into healthy paint or clear coat.' },
-      { icon: '🌀', title: 'Swirl Mark Elimination', desc: 'The formula is specifically optimised for removing car wash swirls — the most common paint defect in India from roadside hand washes.' },
-      { icon: '💎', title: 'Gloss Restoration', desc: 'After cutting, built-in gloss enhancers and fine polishing agents leave a brilliant, reflection-sharp finish without a separate polish step.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="20" r="8"/><path d="M20 20h8"/><path d="M24 24v-8"/><path d="M18 28l-6 10h24l-6-10"/><path d="M20 33h8" stroke-opacity=".4" stroke-linecap="round"/></svg>`, title: 'Micro-Abrasive Science', desc: 'Calibrated aluminium oxide micro-abrasives cut at the microscopic level — removing just the defect layer without biting into healthy paint or clear coat.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M14 34c0-5 4-14 10-14s10 9 10 14"/><path d="M10 38h28"/><path d="M19 20c0-3 5-10 5-10s5 7 5 10"/><path d="M22 14c0-2 2-5 2-5s2 3 2 5" stroke-opacity=".5"/></svg>`, title: 'Swirl Mark Elimination', desc: 'The formula is specifically optimised for removing car wash swirls — the most common paint defect in India from roadside hand washes.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M24 10l3 8h8l-7 5 3 8-7-5-7 5 3-8-7-5h8z"/><path d="M14 36h20" stroke-linecap="round" stroke-opacity=".4"/><path d="M16 40h16" stroke-linecap="round" stroke-opacity=".2"/></svg>`, title: 'Gloss Restoration', desc: 'After cutting, built-in gloss enhancers and fine polishing agents leave a brilliant, reflection-sharp finish without a separate polish step.' },
     ],
     howto: [
-      { icon: '🧹', title: 'Prep Surface', desc: 'Wash and dry the area. Work in shade or indoors. Panel temperature should be cool to the touch.' },
-      { icon: '💧', title: 'Apply Product', desc: 'Apply a small amount to a foam or microfibre applicator. 3–4 pea-sized drops per panel.' },
-      { icon: '✋', title: 'Work In', desc: 'Work in overlapping straight lines or small circles with moderate pressure by hand or dual-action polisher.' },
-      { icon: '🪞', title: 'Buff Off', desc: 'Remove residue with a clean microfibre towel before it dries. Inspect and repeat if deeper scratches remain.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="30" width="28" height="8" rx="2"/><path d="M14 30V22a10 10 0 0 1 20 0v8"/><path d="M19 22a5 5 0 0 1 10 0"/><path d="M24 30V22"/></svg>`, title: 'Prep Surface', desc: 'Wash and dry the area. Work in shade or indoors. Panel should be cool to the touch.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M20 38V18l-6-8h20l-6 8v20"/><path d="M14 22h20"/><circle cx="24" cy="30" r="3"/><path d="M17 38h14" stroke-linecap="round"/></svg>`, title: 'Apply Product', desc: 'Apply a small amount to a foam or microfibre applicator. 3–4 pea-sized drops per panel.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M12 24c4-6 20-6 24 0" stroke-linecap="round"/><path d="M12 30c4-6 20-6 24 0" stroke-linecap="round" stroke-opacity=".5"/><path d="M12 18c4-6 20-6 24 0" stroke-linecap="round" stroke-opacity=".5"/><path d="M10 36h28" stroke-linecap="round"/><path d="M10 12h28" stroke-linecap="round" stroke-opacity=".3"/></svg>`, title: 'Work In', desc: 'Work in overlapping straight lines with moderate pressure by hand or dual-action polisher.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M10 36l8-8 6 6 8-12 6 6"/><circle cx="34" cy="16" r="6"/><path d="M32 16l1.5 1.5L37 13" stroke-linecap="round" stroke-linejoin="round" stroke="rgba(201,168,76,.8)"/></svg>`, title: 'Buff Off', desc: 'Remove residue with a clean microfibre towel. Inspect and repeat if deeper scratches remain.' },
     ],
     specs: [
       ['Volume', '200 ml'],
@@ -431,15 +434,15 @@ const PRODUCTS = {
       'No bleaching or discolouring',
     ],
     details: [
-      { icon: '🌿', title: 'Ammonia & Solvent Free', desc: 'No ammonia (which dries out leather and vinyl), no harsh chlorinated solvents — just a powerful surfactant blend that lifts grime without damage.' },
-      { icon: '🚗', title: 'Full Interior Safe', desc: 'One product for dashboard, plastics, leather, fabric, carpets, engine bay, and exterior trim — dilute to task and clean everything.' },
-      { icon: '💨', title: 'AC Vent & Dust Specialist', desc: 'India\'s dusty roads fill AC vents with grime. This formula is optimised to dissolve the sticky fine dust and pollen buildup in vents and crevices.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M24 10c0 0-10 8-10 16a10 10 0 0 0 20 0C34 18 24 10 24 10z"/><path d="M19 26a5 5 0 0 0 5 5"/><path d="M34 14l4-4"/><path d="M36 18l2-1"/><path d="M30 10l1-2" stroke-linecap="round"/></svg>`, title: 'Ammonia & Solvent Free', desc: 'No ammonia (which dries out leather and vinyl), no harsh chlorinated solvents — just a powerful surfactant blend that lifts grime without damage.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="22" width="32" height="18" rx="3"/><path d="M14 22v-4a4 4 0 0 1 8 0"/><path d="M26 22v-6a4 4 0 0 1 8 0v6"/><path d="M8 30h32" stroke-opacity=".3"/><circle cx="16" cy="34" r="2" fill="rgba(201,168,76,.2)" stroke="rgba(201,168,76,.5)"/><circle cx="24" cy="34" r="2" fill="rgba(201,168,76,.2)" stroke="rgba(201,168,76,.5)"/><circle cx="32" cy="34" r="2" fill="rgba(201,168,76,.2)" stroke="rgba(201,168,76,.5)"/></svg>`, title: 'Full Interior Safe', desc: 'One product for dashboard, plastics, leather, fabric, carpets, engine bay, and exterior trim — dilute to task and clean everything.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="18" width="24" height="20" rx="3"/><path d="M16 18v-4a4 4 0 0 1 8 0"/><path d="M12 26h24"/><path d="M18 32h4"/><path d="M26 32h4"/><path d="M18 36h12" stroke-opacity=".4" stroke-linecap="round"/><path d="M30 10l4-4 4 4M34 6v8" stroke-linecap="round" stroke-linejoin="round"/></svg>`, title: 'AC Vent & Dust Specialist', desc: 'India\'s dusty roads fill AC vents with grime. This formula is optimised to dissolve sticky fine dust and pollen buildup in vents and crevices.' },
     ],
     howto: [
-      { icon: '💧', title: 'Dilute to Task', desc: 'Light interior dust: 1:10. Greasy dashboard: 1:5. Engine bay / heavy grime: 1:3. Leather: 1:15.' },
-      { icon: '🧽', title: 'Apply', desc: 'Spray onto a microfibre cloth (never directly on electronics or screens) and wipe the surface.' },
-      { icon: '✋', title: 'Agitate', desc: 'For stubborn grime in vents or crevices, use a detailing brush while the product is still wet.' },
-      { icon: '🪣', title: 'Wipe Clean', desc: 'Follow with a clean damp cloth to remove residue. Dry with a final microfibre pass.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M16 38V22l-4-10h24l-4 10v16"/><path d="M12 30h24"/><path d="M16 38h16"/><path d="M24 22v8"/><path d="M20 26h8"/></svg>`, title: 'Dilute to Task', desc: 'Light interior dust: 1:10. Greasy dashboard: 1:5. Engine bay / heavy grime: 1:3. Leather: 1:15.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="18" width="20" height="22" rx="3"/><path d="M14 24h20"/><path d="M20 18v-4a4 4 0 0 1 8 0v4"/><path d="M19 31c1.5 2 8.5 2 10 0" stroke-linecap="round"/><path d="M24 31v5" stroke-linecap="round"/></svg>`, title: 'Apply', desc: 'Spray onto a microfibre cloth (never directly on screens) and wipe the surface evenly.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M24 12v6"/><path d="M14 16l4 4"/><path d="M34 16l-4 4"/><path d="M12 26h6"/><path d="M30 26h6"/><circle cx="24" cy="26" r="8"/><path d="M21 26c1 2 5 2 6 0" stroke-linecap="round"/></svg>`, title: 'Agitate', desc: 'For stubborn grime in vents or crevices, use a detailing brush while the product is still wet.' },
+      { icon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><path d="M10 20c4-4 24-4 28 0v14a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V20Z"/><path d="M10 24h28" stroke-opacity=".3"/><path d="M10 28h28" stroke-opacity=".15"/><path d="M18 20v-6a6 6 0 0 1 12 0v6"/><path d="M16 36l4-8 4 4 4-4 4 8" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".5"/></svg>`, title: 'Wipe Clean', desc: 'Follow with a clean damp cloth to remove residue, then a final dry microfibre pass.' },
     ],
     specs: [
       ['Volume', '200 ml'],
