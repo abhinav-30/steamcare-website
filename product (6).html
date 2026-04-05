@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarGlanz — Product Details</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#e8edf2; --parchment:#d0d8e0; --sand:#9aaab8; --bark:#4a5a6a;
+  --moss:#2a3a4a; --forest:#1a2535; --deep-forest:#0d1520; --sage:#6a8090;
+  --olive:#4a5e70; --clay:#5a6a7a; --charcoal:#1a1e22; --warm-black:#0a0c10;
+  --leaf-green:#3a7aaa; --gold:#c9a84c; --gold-light:#e8c96a;
+  --banner-h:38px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--warm-black);color:var(--cream);overflow-x:hidden;padding-top:var(--banner-h)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--warm-black)}
+::-webkit-scrollbar-thumb{background:var(--bark);border-radius:3px}
+
+.cg-car{color:var(--gold);font-style:normal}
+.cg-glanz{color:var(--cream);font-style:normal}
+
+/* ── BANNER ── */
+.banner{background:linear-gradient(135deg,var(--forest),var(--moss),var(--forest));padding:9px 0;overflow:hidden;position:fixed;top:0;left:0;right:0;height:var(--banner-h);border-bottom:1px solid rgba(201,168,76,.3);z-index:1000}
+.banner-track{display:flex;animation:bscroll 30s linear infinite;white-space:nowrap;width:max-content}
+.banner-item{font-size:.72rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);padding:0 60px}
+.banner-item span{color:var(--sage);margin:0 16px;font-size:.6rem}
+@keyframes bscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60px;background:rgba(10,12,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--cream);letter-spacing:6px;text-transform:uppercase;text-decoration:none}
+.nav-logo em{color:var(--gold);font-style:normal}
+.nav-back{background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--sand);padding:9px 22px;font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-back:hover{border-color:var(--gold);color:var(--gold-light)}
+.nav-back svg{width:14px;height:14px}
+
+/* ── PRODUCT HERO ── */
+.product-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:calc(var(--banner-h) + 68px);position:relative;overflow:hidden}
+.product-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 30% 50%,rgba(26,37,53,.4) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 20%,rgba(201,168,76,.06) 0%,transparent 60%);pointer-events:none;z-index:0}
+
+/* left: image */
+.ph-visual{position:relative;display:flex;align-items:center;justify-content:center;padding:60px 40px 60px 80px;z-index:1}
+.ph-img-stage{position:relative;width:100%;max-width:460px}
+.ph-img-bg{position:absolute;inset:-40px;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,.07) 0%,transparent 70%);border-radius:50%;filter:blur(40px)}
+.ph-img{width:100%;height:auto;display:block;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(0,0,0,.7));animation:floatProd 7s ease-in-out infinite}
+@keyframes floatProd{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-18px) rotate(1deg)}}
+.ph-badge{position:absolute;top:20px;right:0;background:rgba(26,37,53,.9);border:1px solid rgba(201,168,76,.4);color:var(--gold-light);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;font-weight:600;backdrop-filter:blur(10px)}
+
+/* right: info */
+.ph-info{padding:60px 80px 60px 40px;z-index:1;display:flex;flex-direction:column;justify-content:center}
+.ph-eyebrow{font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--sage);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.ph-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold)}
+.ph-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;line-height:1.15;margin-bottom:10px}
+.ph-name em{font-style:italic;color:var(--gold-light)}
+.ph-tagline{font-size:.95rem;color:var(--sand);font-weight:300;line-height:1.8;margin-bottom:36px;max-width:420px}
+
+/* price row */
+.ph-price-row{display:flex;align-items:center;gap:24px;margin-bottom:40px;padding:24px 0;border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12)}
+.ph-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold-light);line-height:1}
+.ph-price sup{font-size:1.4rem;vertical-align:super}
+.ph-volume{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage);padding:5px 14px;border:1px solid rgba(201,168,76,.2)}
+
+/* features */
+.ph-features-title{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:16px}
+.ph-features{list-style:none;margin-bottom:40px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ph-features li{font-size:.88rem;color:var(--sand);display:flex;align-items:flex-start;gap:10px;font-weight:400;line-height:1.5}
+.ph-features li::before{content:'';width:18px;height:1px;background:var(--gold);flex-shrink:0;margin-top:10px}
+
+/* CTA */
+.ph-cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--forest),var(--moss));border:none;color:var(--cream);padding:16px 40px;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
+.btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--moss),#3a6a8a);opacity:0;transition:opacity .4s}
+.btn-primary:hover::after{opacity:1}
+.btn-primary span{position:relative;z-index:1}
+.btn-ghost-outline{background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--sand);padding:16px 32px;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.btn-ghost-outline:hover{border-color:var(--gold);color:var(--gold-light)}
+
+/* ── DETAILS SECTION ── */
+.details-section{padding:100px 80px;border-top:1px solid rgba(201,168,76,.1)}
+.details-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:60px}
+.detail-card{background:rgba(26,37,53,.15);border:1px solid rgba(201,168,76,.08);padding:40px 32px;transition:all .4s;position:relative;overflow:hidden}
+.detail-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),transparent);opacity:0;transition:opacity .4s}
+.detail-card:hover{border-color:rgba(201,168,76,.25);transform:translateY(-4px)}
+.detail-card:hover::before{opacity:1}
+.detail-icon{font-size:1.8rem;margin-bottom:18px;display:block}
+.detail-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:10px;color:var(--cream)}
+.detail-desc{font-size:.85rem;color:var(--sand);line-height:1.8;font-weight:300}
+
+/* ── HOW TO USE ── */
+.howto-section{padding:100px 80px;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(26,37,53,.15) 0%,transparent 70%)}
+.howto-header{text-align:center;margin-bottom:70px}
+.howto-steps{display:flex;align-items:flex-start;justify-content:center;max-width:1200px;margin:0 auto;gap:0}
+.howto-step{text-align:center;padding:0 20px;position:relative;z-index:1;flex:1}
+.step-arrow{display:flex;align-items:center;justify-content:center;padding-top:36px;flex-shrink:0;opacity:.45}
+.step-arrow svg{width:28px;height:28px;stroke:var(--gold);stroke-width:1.2}
+.step-num-display{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--gold-light);line-height:1;margin:0 auto 16px;width:72px;height:72px;display:flex;align-items:center;justify-content:center;transition:color .3s}
+.howto-step:hover .step-num-display{color:var(--gold)}
+.step-icon-wrap{width:52px;height:52px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center}
+.step-icon-wrap svg{width:52px;height:52px;stroke:var(--sage);opacity:.75;transition:stroke .3s,opacity .3s,transform .4s}
+.howto-step:hover .step-icon-wrap svg{stroke:var(--gold-light);opacity:1;transform:translateY(-3px)}
+.howto-step h4{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:8px;color:var(--cream)}
+.howto-step p{font-size:.8rem;color:var(--sand);line-height:1.7;font-weight:300}
+@media(max-width:768px){
+  .howto-steps{flex-wrap:wrap}
+  .howto-step{flex:0 0 45%;padding:0 12px 32px}
+  .step-arrow{display:none}
+}
+
+/* ── SPECS ── */
+.specs-section{padding:80px 80px;border-top:1px solid rgba(201,168,76,.1)}
+.specs-table{max-width:700px;margin:50px auto 0}
+.spec-row{display:grid;grid-template-columns:1fr 1fr;padding:18px 0;border-bottom:1px solid rgba(201,168,76,.08)}
+.spec-row:last-child{border-bottom:none}
+.spec-key{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage)}
+.spec-val{font-size:.88rem;color:var(--cream);font-weight:400;text-align:right}
+
+/* ── SECTION HEADERS ── */
+.section-eyebrow{font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--sage);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.section-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold)}
+.section-eyebrow.center{justify-content:center}
+.section-eyebrow.center::before{display:none}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.2}
+.section-title em{font-style:italic;color:var(--gold-light)}
+
+/* ── NOTIFY ── */
+.notify-strip{padding:80px;text-align:center;background:linear-gradient(135deg,rgba(26,37,53,.3),rgba(42,58,74,.2));border-top:1px solid rgba(201,168,76,.1)}
+.notify-strip .section-title{margin:0 auto 14px}
+.notify-strip p{color:var(--sand);font-weight:300;margin-bottom:40px}
+.notify-form{display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto}
+.notify-form input{background:rgba(28,24,18,.8);border:1px solid rgba(201,168,76,.15);color:var(--cream);padding:14px 18px;font-family:'Jost',sans-serif;font-size:.85rem;outline:none;transition:border-color .3s}
+.notify-form input::placeholder{color:var(--sand);opacity:.6}
+.notify-form input:focus{border-color:rgba(201,168,76,.4)}
+.notify-form button{background:linear-gradient(135deg,var(--forest),var(--moss));border:none;color:var(--cream);padding:16px;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.notify-form button::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--moss),#3a6a8a);opacity:0;transition:opacity .4s}
+.notify-form button:hover::after{opacity:1}
+.notify-form button span{position:relative;z-index:1}
+.success-msg{display:none;margin-top:24px;padding:18px;border:1px solid rgba(201,168,76,.3);background:rgba(45,74,40,.2);font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;color:var(--gold-light)}
+
+/* ── FOOTER ── */
+footer{padding:40px 80px;border-top:1px solid rgba(201,168,76,.12);display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;letter-spacing:6px;color:var(--cream)}
+.footer-desc{font-size:.78rem;color:var(--sand);font-weight:300}
+.footer-bottom{padding:20px 80px;border-top:1px solid rgba(201,168,76,.08);display:flex;justify-content:space-between}
+.footer-bottom p{font-size:.7rem;color:rgba(201,168,76,.4);letter-spacing:1px}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+/* ── LOADING ── */
+#loading{position:fixed;inset:0;background:var(--warm-black);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
+#loading.hidden{opacity:0;pointer-events:none}
+.loading-inner{text-align:center}
+.loading-logo{font-family:'Cormorant Garamond',serif;font-size:2rem;letter-spacing:8px;color:var(--cream);margin-bottom:24px}
+.loading-bar{width:120px;height:1px;background:rgba(201,168,76,.2);margin:0 auto;overflow:hidden}
+.loading-bar-fill{height:100%;background:var(--gold);animation:loadfill .8s ease forwards}
+@keyframes loadfill{from{width:0}to{width:100%}}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .product-hero{grid-template-columns:1fr;padding-top:calc(var(--banner-h) + 68px)}
+  .ph-visual{padding:40px 24px 20px;max-width:360px;margin:0 auto}
+  .ph-img-stage{max-width:280px}
+  .ph-info{padding:20px 24px 60px}
+  .ph-features{grid-template-columns:1fr}
+  .details-section,.howto-section,.specs-section,.notify-strip{padding:60px 24px}
+  .details-grid{grid-template-columns:1fr}
+  .howto-steps{grid-template-columns:1fr 1fr;gap:30px}
+  .howto-steps::before{display:none}
+  nav{padding:14px 24px}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+  .footer-bottom{padding:16px 24px;flex-direction:column;gap:6px;text-align:center}
+}
+@media(max-width:560px){
+  .howto-steps{grid-template-columns:1fr}
+  .ph-name{font-size:2.4rem}
+  .ph-cta-row{flex-direction:column}
+  .btn-primary,.btn-ghost-outline{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="loading-inner">
+    <div class="loading-logo"><span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span></div>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="banner">
+  <div class="banner-track">
+    <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
+    <span class="banner-item">Introducing CARGLANZ – Engineered for Showroom Shine <span>✦</span></span>
+    <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
+    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
+    <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
+    <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
+    <span class="banner-item">Introducing CARGLANZ – Engineered for Showroom Shine <span>✦</span></span>
+    <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
+    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
+    <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html"><em>CAR</em>Glanz</a>
+  <a class="nav-back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Products
+  </a>
+</nav>
+
+<!-- PRODUCT HERO -->
+<section class="product-hero" id="productHero">
+  <div class="ph-visual">
+    <div class="ph-img-stage">
+      <div class="ph-img-bg"></div>
+      <img class="ph-img" id="prodImg" src="" alt="">
+      <div class="ph-badge" id="prodBadge">200ml</div>
+    </div>
+  </div>
+  <div class="ph-info">
+    <div class="ph-eyebrow">CarGlanz Collection</div>
+    <h1 class="ph-name" id="prodName">Loading…</h1>
+    <p class="ph-tagline" id="prodTagline"></p>
+    <div class="ph-price-row">
+      <div class="ph-price" id="prodPrice"></div>
+      <div class="ph-volume" id="prodVolume">200 ml</div>
+    </div>
+    <div class="ph-features-title">Key Features</div>
+    <ul class="ph-features" id="prodFeatures"></ul>
+    <div class="ph-cta-row">
+      <button class="btn-primary" onclick="document.getElementById('notifyStrip').scrollIntoView({behavior:'smooth'})">
+        <span>Notify Me at Launch</span>
+      </button>
+      <a class="btn-ghost-outline" href="index.html">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT DETAILS CARDS -->
+<section class="details-section">
+  <div class="section-eyebrow">Product Deep Dive</div>
+  <h2 class="section-title" id="detailsTitle">What Makes It <em>Different</em></h2>
+  <div class="details-grid" id="detailsGrid">
+    <!-- filled by JS -->
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="howto-section">
+  <div class="howto-header">
+    <div class="section-eyebrow center">Application Guide</div>
+    <h2 class="section-title" style="text-align:center;margin:0 auto">How to <em>Use It</em></h2>
+  </div>
+  <div class="howto-steps" id="howtoSteps">
+    <!-- filled by JS -->
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs-section">
+  <div style="text-align:center">
+    <div class="section-eyebrow center">Technical Specifications</div>
+    <h2 class="section-title" style="text-align:center;margin:0 auto">Product <em>Specs</em></h2>
+  </div>
+  <div class="specs-table" id="specsTable">
+    <!-- filled by JS -->
+  </div>
+</section>
+
+<!-- NOTIFY STRIP -->
+<section class="notify-strip reveal" id="notifyStrip">
+  <div class="section-eyebrow center">Limited Early Access</div>
+  <h2 class="section-title" style="margin:0 auto 14px;text-align:center">Be First to <em>Experience</em> <span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span></h2>
+  <p>Join our VIP waitlist for early bird pricing and exclusive launch offers.</p>
+  <form class="notify-form" id="notifyForm">
+    <input type="text"  id="name"  placeholder="Your Name"  required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <input type="text"  id="city"  placeholder="Your City"  required>
+    <button type="submit"><span>Join the VIP Waitlist</span></button>
+  </form>
+  <div class="success-msg" id="successMsg">You're on the <span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span> VIP list — we'll be in touch soon. ⚡</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand"><span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span></div>
+    <p class="footer-desc">Professional-grade car care engineered for India's roads.</p>
+  </div>
+  <a class="nav-back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Home
+  </a>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 <span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span> India. All rights reserved.</p>
+  <p style="letter-spacing:3px">Engineered ⚡ in India</p>
+</div>
+
+<script>
+/* ── PRODUCT DATABASE ── */
+const PRODUCTS = {
+  'car-shampoo': {
+    name: 'High-Gloss Car Shampoo',
+    image: 'assets/car-shampoo.PNG',
+    badge: '200ml',
+    price: '₹399',
+    volume: '200 ml',
+    tagline: 'A pH-balanced, ultra-foaming shampoo engineered to dissolve road grime, hard water deposits, and dust — all while being completely safe on ceramic coatings and paint protection film.',
+    features: [
+      'Ultra-foaming concentrate',
+      'Hard water stain removal',
+      'Safe on ceramic coatings',
+      'Streak-free rinse formula',
+      'pH-balanced formula',
+      'Works in hard Indian water',
+    ],
+    details: [
+      { icon: '🧪', title: 'pH-Balanced Formula', desc: 'Precisely calibrated pH ensures maximum cleaning power without stripping wax, sealants, or ceramic coatings from your paint.' },
+      { icon: '💧', title: 'Hard Water Compatible', desc: 'Specially formulated to work with India\'s notoriously hard water — no mineral spotting, no white residue, just clean panels.' },
+      { icon: '🛡️', title: 'Coating-Safe', desc: 'Zero harsh detergents or alkaline agents that degrade ceramic coatings or paint protection films. Safe for use on all coated vehicles.' },
+    ],
+    howto: [
+      { icon: '🪣', title: 'Dilute', desc: 'Mix 10–20 ml into a bucket of water (1:20 ratio). Foams richly even in hard water.' },
+      { icon: '🧽', title: 'Apply', desc: 'Apply with a wash mitt using gentle circular motions. Work from roof downwards.' },
+      { icon: '💦', title: 'Rinse', desc: 'Rinse thoroughly with clean water before suds dry. One pass is enough.' },
+      { icon: '🪣', title: 'Dry', desc: 'Dry with a clean microfibre towel for a streak-free, high-gloss finish.' },
+    ],
+    specs: [
+      ['Volume', '200 ml'],
+      ['Dilution Ratio', '1:20 (up to 1:50)'],
+      ['pH Level', '6.5 – 7.5 (Neutral)'],
+      ['Fragrance', 'Fresh citrus'],
+      ['Suitable For', 'All paint types, ceramic coatings, PPF'],
+      ['Safe On', 'Clear coat, wax, sealants'],
+      ['Country of Origin', 'India'],
+    ],
+  },
+  'car-wax': {
+    name: 'Ceramic Protection Wax',
+    image: 'assets/car-wax.PNG',
+    badge: '200ml',
+    price: '₹499',
+    volume: '200 ml',
+    tagline: 'Advanced ceramic-polymer hybrid wax that bonds to your paintwork and delivers a deep mirror-gloss finish with up to 3+ months of UV and heat protection — built specifically for India\'s 45°C summers.',
+    features: [
+      'Advanced ceramic-polymer blend',
+      '45°C UV heat resistance',
+      'Deep mirror-gloss finish',
+      '3+ months durability',
+      'Hydrophobic water-beading',
+      'Self-healing micro layer',
+    ],
+    details: [
+      { icon: '🌡️', title: '45°C Heat Resistance', desc: 'Engineered with high-temp polymer chains that remain stable in extreme Indian summer heat — no melting, streaking, or oil-out.' },
+      { icon: '✨', title: 'Mirror-Gloss Finish', desc: 'Ceramic micro-particles fill in paint micro-scratches and micro-marring to produce a deep, wet-look gloss that rivals professional detailing studios.' },
+      { icon: '🌧️', title: '3+ Month Durability', desc: 'The polymer-ceramic matrix bonds strongly to clear coat, lasting through monsoon rains, dust storms, and daily washing without degradation.' },
+    ],
+    howto: [
+      { icon: '🧹', title: 'Clean First', desc: 'Start with a freshly washed, decontaminated, and dry vehicle. Remove any iron fallout before applying.' },
+      { icon: '💧', title: 'Apply Thin', desc: 'Apply a thin layer using the foam applicator in straight-line motions — less is more with this formula.' },
+      { icon: '⏱️', title: 'Wait & Flash', desc: 'Allow product to haze for 3–5 minutes (less in direct sunlight). You\'ll see a chalky film form.' },
+      { icon: '🪞', title: 'Buff Off', desc: 'Buff off using a clean microfibre towel in straight lines for a blinding mirror gloss.' },
+    ],
+    specs: [
+      ['Volume', '200 ml'],
+      ['Durability', '3–4 months'],
+      ['Heat Resistance', 'Up to 45°C'],
+      ['Gloss Level', 'Ultra-high / mirror'],
+      ['Application Method', 'Foam applicator pad'],
+      ['Suitable For', 'All paint colors, metallic, matte (non-matte formulas)'],
+      ['Country of Origin', 'India'],
+    ],
+  },
+  'car-scratch-remover': {
+    name: 'Pro Scratch Remover',
+    image: 'assets/car-scratch-remover.png',
+    badge: '200ml',
+    price: '₹399',
+    volume: '200 ml',
+    tagline: 'A professional-grade micro-abrasive compound that eliminates light-to-medium scratches, swirl marks, and oxidation — restoring deep gloss without damaging your clear coat or going through paint.',
+    features: [
+      'Micro-abrasive cutting agents',
+      'Eliminates swirl marks',
+      'Safe on all clear coats',
+      'Deep gloss restoration',
+      'Dust-minimised formula',
+      'One-step application',
+    ],
+    details: [
+      { icon: '🔬', title: 'Micro-Abrasive Science', desc: 'Calibrated aluminium oxide micro-abrasives cut at the microscopic level — removing just the defect layer without biting into healthy paint or clear coat.' },
+      { icon: '🌀', title: 'Swirl Mark Elimination', desc: 'The formula is specifically optimised for removing car wash swirls — the most common paint defect in India from roadside hand washes.' },
+      { icon: '💎', title: 'Gloss Restoration', desc: 'After cutting, built-in gloss enhancers and fine polishing agents leave a brilliant, reflection-sharp finish without a separate polish step.' },
+    ],
+    howto: [
+      { icon: '🧹', title: 'Prep Surface', desc: 'Wash and dry the area. Work in shade or indoors. Panel temperature should be cool to the touch.' },
+      { icon: '💧', title: 'Apply Product', desc: 'Apply a small amount to a foam or microfibre applicator. 3–4 pea-sized drops per panel.' },
+      { icon: '✋', title: 'Work In', desc: 'Work in overlapping straight lines or small circles with moderate pressure by hand or dual-action polisher.' },
+      { icon: '🪞', title: 'Buff Off', desc: 'Remove residue with a clean microfibre towel before it dries. Inspect and repeat if deeper scratches remain.' },
+    ],
+    specs: [
+      ['Volume', '200 ml'],
+      ['Cut Level', 'Light-to-medium'],
+      ['Abrasive Type', 'Diminishing micro-abrasive'],
+      ['Finish', 'High gloss'],
+      ['Application', 'Hand or DA polisher'],
+      ['Safe On', 'Single-stage, clear coat, OEM paint'],
+      ['Country of Origin', 'India'],
+    ],
+  },
+  'car-apc': {
+    name: 'All Purpose Cleaner',
+    image: 'assets/car-apc.PNG',
+    badge: '200ml',
+    price: '₹299',
+    volume: '200 ml',
+    tagline: 'A professional APC formulated without ammonia or harsh solvents — safe for every surface inside your car from leather seats to dashboard plastics, door trims, AC vents, and fabric upholstery.',
+    features: [
+      'Ammonia & solvent-free',
+      'Safe on dashboard & leather',
+      'Removes AC dust & grime',
+      'Professional APC formula',
+      'Adjustable dilution ratio',
+      'No bleaching or discolouring',
+    ],
+    details: [
+      { icon: '🌿', title: 'Ammonia & Solvent Free', desc: 'No ammonia (which dries out leather and vinyl), no harsh chlorinated solvents — just a powerful surfactant blend that lifts grime without damage.' },
+      { icon: '🚗', title: 'Full Interior Safe', desc: 'One product for dashboard, plastics, leather, fabric, carpets, engine bay, and exterior trim — dilute to task and clean everything.' },
+      { icon: '💨', title: 'AC Vent & Dust Specialist', desc: 'India\'s dusty roads fill AC vents with grime. This formula is optimised to dissolve the sticky fine dust and pollen buildup in vents and crevices.' },
+    ],
+    howto: [
+      { icon: '💧', title: 'Dilute to Task', desc: 'Light interior dust: 1:10. Greasy dashboard: 1:5. Engine bay / heavy grime: 1:3. Leather: 1:15.' },
+      { icon: '🧽', title: 'Apply', desc: 'Spray onto a microfibre cloth (never directly on electronics or screens) and wipe the surface.' },
+      { icon: '✋', title: 'Agitate', desc: 'For stubborn grime in vents or crevices, use a detailing brush while the product is still wet.' },
+      { icon: '🪣', title: 'Wipe Clean', desc: 'Follow with a clean damp cloth to remove residue. Dry with a final microfibre pass.' },
+    ],
+    specs: [
+      ['Volume', '200 ml'],
+      ['Dilution Range', '1:3 to 1:20'],
+      ['Ammonia', 'None'],
+      ['Solvents', 'None'],
+      ['Safe Surfaces', 'Plastic, leather, vinyl, fabric, rubber, glass'],
+      ['pH Level', 'Slightly alkaline (8–9)'],
+      ['Country of Origin', 'India'],
+    ],
+  },
+};
+
+/* ── PARSE URL PARAM ── */
+function getProductId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('product') || 'car-shampoo';
+}
+
+/* ── RENDER PRODUCT ── */
+function renderProduct() {
+  const id = getProductId();
+  const p = PRODUCTS[id];
+  if (!p) { window.location.href = 'index.html'; return; }
+
+  document.title = `CarGlanz — ${p.name}`;
+
+  document.getElementById('prodImg').src = p.image;
+  document.getElementById('prodImg').alt = p.name;
+  document.getElementById('prodBadge').textContent = p.badge;
+  document.getElementById('prodName').innerHTML = p.name.replace(/(\w+)$/, '<em>$1</em>');
+  document.getElementById('prodTagline').textContent = p.tagline;
+  document.getElementById('prodPrice').innerHTML = `<sup>₹</sup>${p.price.replace('₹','')}`;
+  document.getElementById('prodVolume').textContent = p.volume;
+
+  // features
+  const featEl = document.getElementById('prodFeatures');
+  p.features.forEach(f => {
+    const li = document.createElement('li');
+    li.textContent = f;
+    featEl.appendChild(li);
+  });
+
+  // details cards
+  const detailsEl = document.getElementById('detailsGrid');
+  p.details.forEach((d, i) => {
+    detailsEl.innerHTML += `
+      <div class="detail-card reveal reveal-delay-${i+1}">
+        <span class="detail-icon">${d.icon}</span>
+        <h3 class="detail-title">${d.title}</h3>
+        <p class="detail-desc">${d.desc}</p>
+      </div>`;
+  });
+
+  // how to use
+  const howtoEl = document.getElementById('howtoSteps');
+  const arrowSVG = `<svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 14h20M16 7l8 7-8 7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  p.howto.forEach((s, i) => {
+    howtoEl.innerHTML += `
+      <div class="howto-step reveal reveal-delay-${i+1}">
+        <div class="step-num-display">${String(i+1).padStart(2,'0')}</div>
+        <div class="step-icon-wrap">${s.icon}</div>
+        <h4>${s.title}</h4>
+        <p>${s.desc}</p>
+      </div>`;
+    if (i < p.howto.length - 1) {
+      howtoEl.innerHTML += `<div class="step-arrow">${arrowSVG}</div>`;
+    }
+  });
+
+  // specs
+  const specsEl = document.getElementById('specsTable');
+  p.specs.forEach(([k,v]) => {
+    specsEl.innerHTML += `
+      <div class="spec-row">
+        <span class="spec-key">${k}</span>
+        <span class="spec-val">${v}</span>
+      </div>`;
+  });
+}
+
+/* ── LOADING DISMISS ── */
+window.addEventListener('load', () => {
+  renderProduct();
+  setTimeout(() => {
+    document.getElementById('loading').classList.add('hidden');
+    // trigger reveals
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+  }, 900);
+});
+
+/* ── FORM ── */
+document.getElementById('notifyForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const n  = document.getElementById('name').value;
+  const em = document.getElementById('email').value;
+  const c  = document.getElementById('city').value;
+  document.getElementById('successMsg').style.display = 'block';
+  this.reset();
+  fetch('https://script.google.com/macros/s/AKfycbxEbMtj2X_MRp7Tw_Rght7RdyeC6HlpfyWMwZjk-lJkTt7ZI3b_Qj3_Yg5c8B5vcd8C/exec', {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({name:n, email:em, city:c})
+  }).catch(()=>{});
+});
+</script>
+</body>
+</html>
