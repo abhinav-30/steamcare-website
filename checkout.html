@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>CarGlanz — Checkout</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -40,12 +40,12 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 .checkout-page{min-height:100vh;padding:calc(var(--banner-h) + 80px) 60px 80px;display:grid;grid-template-columns:1fr 420px;gap:48px;max-width:1300px;margin:0 auto}
 
 /* LEFT — FORM */
-.checkout-form-col{}
+.checkout-form-col{padding-left:32px}
 .checkout-heading{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;margin-bottom:6px}
 .checkout-heading em{color:var(--gold-light);font-style:italic}
 .checkout-sub{font-size:.8rem;color:var(--sand);letter-spacing:1px;margin-bottom:48px}
 
-.form-section{margin-bottom:40px}
+.form-section{margin-bottom:40px;padding-left:8px;border-left:2px solid rgba(201,168,76,.15)}
 .form-section-title{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .form-section-title::before{content:'';width:24px;height:1px;background:var(--gold)}
 .form-grid{display:grid;gap:14px}
@@ -54,7 +54,7 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 
 .field{display:flex;flex-direction:column;gap:7px}
 .field label{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage);font-weight:500}
-.field input,.field select{background:rgba(26,37,53,.3);border:1px solid rgba(201,168,76,.12);color:var(--cream);padding:14px 16px;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none}
+.field input,.field select{background:rgba(26,37,53,.3);border:1px solid rgba(201,168,76,.12);color:var(--cream);padding:14px 16px;font-family:'Jost',sans-serif;font-size:16px;outline:none;transition:border-color .3s;-webkit-appearance:none;appearance:none}
 .field input::placeholder{color:var(--sand);opacity:.5}
 .field input:focus,.field select:focus{border-color:rgba(201,168,76,.45);background:rgba(26,37,53,.5)}
 .field select option{background:var(--forest);color:var(--cream)}
@@ -120,7 +120,7 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 .total-row.grand .total-label{font-size:.78rem;color:var(--cream);font-weight:600;letter-spacing:2px}
 .total-row.grand .total-value{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold-light)}
 .promo-row{display:flex;gap:10px;margin:16px 0}
-.promo-input{flex:1;background:rgba(26,37,53,.3);border:1px solid rgba(201,168,76,.12);color:var(--cream);padding:11px 14px;font-family:'Jost',sans-serif;font-size:.8rem;outline:none;transition:border-color .3s}
+.promo-input{flex:1;background:rgba(26,37,53,.3);border:1px solid rgba(201,168,76,.12);color:var(--cream);padding:11px 14px;font-family:'Jost',sans-serif;font-size:16px;outline:none;transition:border-color .3s}
 .promo-input::placeholder{color:var(--sand);opacity:.5}
 .promo-input:focus{border-color:rgba(201,168,76,.4)}
 .promo-btn{background:transparent;border:1px solid var(--sage);color:var(--sage);padding:11px 18px;font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .3s;white-space:nowrap}
@@ -143,6 +143,7 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 @media(max-width:960px){
   .checkout-page{grid-template-columns:1fr;padding:calc(var(--banner-h)+70px) 24px 60px}
   .order-summary{position:static}
+  .checkout-form-col{padding-left:0}
 }
 @media(max-width:640px){
   nav{padding:14px 20px}
@@ -196,23 +197,23 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
       <div class="form-grid two">
         <div class="field">
           <label>First Name</label>
-          <input type="text" id="firstName" placeholder="Rahul" required>
+          <input type="text" id="firstName" placeholder="Rahul" required autocorrect="off" autocapitalize="words" spellcheck="false">
         </div>
         <div class="field">
           <label>Last Name</label>
-          <input type="text" id="lastName" placeholder="Sharma" required>
+          <input type="text" id="lastName" placeholder="Sharma" required autocorrect="off" autocapitalize="words" spellcheck="false">
         </div>
       </div>
       <div class="form-grid" style="margin-top:14px">
         <div class="field">
           <label>Email Address</label>
-          <input type="email" id="email" placeholder="rahul@example.com" required>
+          <input type="email" id="email" placeholder="rahul@example.com" required autocorrect="off" autocapitalize="off" spellcheck="false">
         </div>
       </div>
       <div class="form-grid" style="margin-top:14px">
         <div class="field">
           <label>Mobile Number</label>
-          <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+          <input type="tel" id="phone" placeholder="+91 98765 43210" required autocorrect="off" autocapitalize="off" spellcheck="false">
         </div>
       </div>
     </div>
@@ -223,19 +224,19 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
       <div class="form-grid">
         <div class="field">
           <label>Address Line 1</label>
-          <input type="text" id="addr1" placeholder="House / Flat No., Street" required>
+          <input type="text" id="addr1" placeholder="House / Flat No., Street" required autocorrect="off" autocapitalize="words" spellcheck="false">
         </div>
       </div>
       <div class="form-grid" style="margin-top:14px">
         <div class="field">
           <label>Address Line 2 (optional)</label>
-          <input type="text" id="addr2" placeholder="Area, Landmark">
+          <input type="text" id="addr2" placeholder="Area, Landmark" autocorrect="off" autocapitalize="words" spellcheck="false">
         </div>
       </div>
       <div class="form-grid three" style="margin-top:14px">
         <div class="field">
           <label>City</label>
-          <input type="text" id="city" placeholder="Mumbai" required>
+          <input type="text" id="city" placeholder="Mumbai" required autocorrect="off" autocapitalize="words" spellcheck="false">
         </div>
         <div class="field">
           <label>State</label>
@@ -257,7 +258,7 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
         </div>
         <div class="field">
           <label>PIN Code</label>
-          <input type="text" id="pincode" placeholder="400001" maxlength="6" required>
+          <input type="text" id="pincode" placeholder="400001" maxlength="6" required autocorrect="off" autocapitalize="off" spellcheck="false">
         </div>
       </div>
     </div>
@@ -288,28 +289,28 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
       <div class="card-fields show form-grid" id="cardFields">
         <div class="field">
           <label>Card Number</label>
-          <input type="text" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
+          <input type="text" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)" autocorrect="off" autocapitalize="off" spellcheck="false">
         </div>
         <div class="form-grid two" style="margin-top:0">
           <div class="field">
             <label>Expiry (MM / YY)</label>
-            <input type="text" id="expiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+            <input type="text" id="expiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)" autocorrect="off" autocapitalize="off" spellcheck="false">
           </div>
           <div class="field">
             <label>CVV</label>
-            <input type="text" id="cvv" placeholder="•••" maxlength="4">
+            <input type="text" id="cvv" placeholder="•••" maxlength="4" autocorrect="off" autocapitalize="off" spellcheck="false">
           </div>
         </div>
         <div class="field" style="margin-top:0">
           <label>Name on Card</label>
-          <input type="text" id="cardName" placeholder="RAHUL SHARMA">
+          <input type="text" id="cardName" placeholder="RAHUL SHARMA" autocorrect="off" autocapitalize="words" spellcheck="false">
         </div>
       </div>
 
       <!-- UPI field -->
       <div class="upi-field" id="upiField">
         <label style="font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage);font-weight:500">UPI ID</label>
-        <input type="text" id="upiId" placeholder="yourname@upi" style="background:rgba(26,37,53,.3);border:1px solid rgba(201,168,76,.12);color:var(--cream);padding:14px 16px;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;transition:border-color .3s">
+        <input type="text" id="upiId" placeholder="yourname@upi" style="background:rgba(26,37,53,.3);border:1px solid rgba(201,168,76,.12);color:var(--cream);padding:14px 16px;font-family:'Jost',sans-serif;font-size:16px;outline:none;transition:border-color .3s" autocorrect="off" autocapitalize="off" spellcheck="false">
       </div>
 
       <!-- COD note -->
@@ -338,7 +339,7 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
       </div>
 
       <div class="promo-row">
-        <input class="promo-input" type="text" id="promoCode" placeholder="Promo code">
+        <input class="promo-input" type="text" id="promoCode" placeholder="Promo code" autocorrect="off" autocapitalize="words" spellcheck="false">
         <button class="promo-btn" onclick="applyPromo()">Apply</button>
       </div>
 
