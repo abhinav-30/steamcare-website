@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KZHYM8WQ4E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KZHYM8WQ4E');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CarGlanz — Premium Car Care</title>
@@ -144,11 +136,26 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .product-features{list-style:none;margin-bottom:24px;flex:1}
 .product-features li{font-size:.88rem;color:var(--sand);padding:5px 0;display:flex;align-items:center;gap:10px;font-weight:700}
 .product-features li::before{content:'';width:16px;height:1px;background:var(--sage);flex-shrink:0}
-.product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:20px;border-top:1px solid rgba(201,168,76,.1)}
+.product-footer{display:flex;flex-direction:column;align-items:stretch;gap:14px;margin-top:20px;padding-top:20px;border-top:1px solid rgba(201,168,76,.1)}
 .product-price{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--gold-light)}
 .product-price sup{font-size:.9rem;vertical-align:super}
-.product-btn{background:transparent;border:1px solid var(--sage);color:var(--sage);padding:9px 20px;font-family:'Jost',sans-serif;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s}
-.product-btn:hover{background:var(--sage);color:var(--warm-black)}
+.product-btn-row{display:flex;gap:10px;align-items:center}
+.btn-buy-now{flex:1;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:var(--warm-black);padding:10px 14px;font-family:'Jost',sans-serif;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:5px;text-decoration:none}
+.btn-buy-now::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-light),#f5d97a);opacity:0;transition:opacity .3s}
+.btn-buy-now:hover::after{opacity:1}
+.btn-buy-now span,.btn-buy-now svg{position:relative;z-index:1}
+.btn-buy-now svg{width:11px;height:11px;flex-shrink:0}
+/* qty counter */
+.qty-box{display:flex;align-items:center;border:1px solid var(--sage);overflow:hidden;flex-shrink:0}
+.qty-btn{background:transparent;border:none;color:var(--sage);width:30px;height:34px;font-size:1rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;line-height:1}
+.qty-btn:hover{background:var(--sage);color:var(--warm-black)}
+.qty-num{color:var(--cream);font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;min-width:26px;text-align:center;padding:0 2px}
+/* cart icon in nav */
+.nav-cart-btn{background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--gold);padding:9px 12px;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:6px;position:relative;text-decoration:none}
+.nav-cart-btn:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.nav-cart-btn svg{width:16px;height:16px}
+.cart-badge{position:absolute;top:-7px;right:-7px;background:var(--gold);color:var(--warm-black);font-family:'Jost',sans-serif;font-size:.55rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(0);transition:all .3s}
+.cart-badge.visible{opacity:1;transform:scale(1)}
 
 /* MARQUEE */
 .launch-marquee{overflow:hidden;padding:50px 0;background:linear-gradient(135deg,rgba(26,37,53,.3),rgba(42,58,74,.2));border-top:1px solid rgba(201,168,76,.15);border-bottom:1px solid rgba(201,168,76,.15);position:relative}
@@ -355,6 +362,10 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
     <li><a href="#notify">Waitlist</a></li>
   </ul>
   <button class="nav-cta" onclick="document.getElementById('notify').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+  <a class="nav-cart-btn" href="checkout.html" id="navCartBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+    <span class="cart-badge" id="navBadge">0</span>
+  </a>
   <button class="nav-ham" id="ham" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -453,7 +464,16 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
         </ul>
         <div class="product-footer">
           <div class="product-price"><sup>₹</sup>399</div>
-          <button class="product-btn">Notify Me</button>
+          <div class="product-btn-row">
+            <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-shampoo',399,'High-Gloss Car Shampoo');return false;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
+            </a>
+            <div class="qty-box" id="qtyBox-car-shampoo">
+              <button class="qty-btn" onclick="changeQty('car-shampoo',399,'High-Gloss Car Shampoo',-1)">−</button>
+              <span class="qty-num" id="qty-car-shampoo">0</span>
+              <button class="qty-btn" onclick="changeQty('car-shampoo',399,'High-Gloss Car Shampoo',1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -475,7 +495,16 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
         </ul>
         <div class="product-footer">
           <div class="product-price"><sup>₹</sup>499</div>
-          <button class="product-btn">Notify Me</button>
+          <div class="product-btn-row">
+            <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-wax',499,'Ceramic Protection Wax');return false;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
+            </a>
+            <div class="qty-box" id="qtyBox-car-wax">
+              <button class="qty-btn" onclick="changeQty('car-wax',499,'Ceramic Protection Wax',-1)">−</button>
+              <span class="qty-num" id="qty-car-wax">0</span>
+              <button class="qty-btn" onclick="changeQty('car-wax',499,'Ceramic Protection Wax',1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -497,7 +526,16 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
         </ul>
         <div class="product-footer">
           <div class="product-price"><sup>₹</sup>399</div>
-          <button class="product-btn">Notify Me</button>
+          <div class="product-btn-row">
+            <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-scratch-remover',399,'Pro Scratch Remover');return false;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
+            </a>
+            <div class="qty-box" id="qtyBox-car-scratch-remover">
+              <button class="qty-btn" onclick="changeQty('car-scratch-remover',399,'Pro Scratch Remover',-1)">−</button>
+              <span class="qty-num" id="qty-car-scratch-remover">0</span>
+              <button class="qty-btn" onclick="changeQty('car-scratch-remover',399,'Pro Scratch Remover',1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -519,7 +557,16 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
         </ul>
         <div class="product-footer">
           <div class="product-price"><sup>₹</sup>299</div>
-          <button class="product-btn">Notify Me</button>
+          <div class="product-btn-row">
+            <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-apc',299,'All Purpose Cleaner');return false;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
+            </a>
+            <div class="qty-box" id="qtyBox-car-apc">
+              <button class="qty-btn" onclick="changeQty('car-apc',299,'All Purpose Cleaner',-1)">−</button>
+              <span class="qty-num" id="qty-car-apc">0</span>
+              <button class="qty-btn" onclick="changeQty('car-apc',299,'All Purpose Cleaner',1)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -706,10 +753,50 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.08,rootMargin:'0px 0px -50px 0px'});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
-/* PRODUCT BUTTONS */
-document.querySelectorAll('.product-btn').forEach(b=>{
-  b.addEventListener('click',()=>document.getElementById('notify').scrollIntoView({behavior:'smooth'}));
-});
+/* CART */
+let cart = JSON.parse(sessionStorage.getItem('cg_cart')||'[]');
+
+function saveCart(){sessionStorage.setItem('cg_cart',JSON.stringify(cart));}
+
+function updateBadge(){
+  const total=cart.reduce((s,i)=>s+i.qty,0);
+  const badge=document.getElementById('navBadge');
+  if(!badge)return;
+  badge.textContent=total;
+  badge.classList.toggle('visible',total>0);
+}
+
+function syncQtyDisplays(){
+  cart.forEach(item=>{
+    const el=document.getElementById('qty-'+item.slug);
+    if(el) el.textContent=item.qty;
+  });
+}
+
+function changeQty(slug,price,name,delta){
+  const existing=cart.find(i=>i.slug===slug);
+  if(existing){
+    existing.qty=Math.max(0,existing.qty+delta);
+    if(existing.qty===0) cart=cart.filter(i=>i.slug!==slug);
+  } else if(delta>0){
+    cart.push({slug,name,price,qty:1});
+  }
+  const el=document.getElementById('qty-'+slug);
+  if(el) el.textContent=cart.find(i=>i.slug===slug)?.qty||0;
+  saveCart(); updateBadge();
+}
+
+function buyNowDirect(slug,price,name){
+  // Ensure at least 1 in cart then go to checkout
+  const existing=cart.find(i=>i.slug===slug);
+  if(!existing) cart.push({slug,name,price,qty:1});
+  else if(existing.qty===0) existing.qty=1;
+  saveCart();
+  window.location.href='checkout.html';
+}
+
+// init on load
+updateBadge(); syncQtyDisplays();
 
 /* FORM */
 document.getElementById('notifyForm').addEventListener('submit',function(e){
