@@ -312,20 +312,6 @@ footer{padding:40px 80px;border-top:1px solid rgba(201,168,76,.12);display:flex;
   </div>
 </section>
 
-<!-- NOTIFY STRIP -->
-<section class="notify-strip reveal" id="notifyStrip">
-  <div class="section-eyebrow center">Limited Early Access</div>
-  <h2 class="section-title" style="margin:0 auto 14px;text-align:center">Be First to <em>Experience</em> <span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span></h2>
-  <p>Join our VIP waitlist for early bird pricing and exclusive launch offers.</p>
-  <form class="notify-form" id="notifyForm">
-    <input type="text"  id="name"  placeholder="Your Name"  required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <input type="text"  id="city"  placeholder="Your City"  required>
-    <button type="submit"><span>Join the VIP Waitlist</span></button>
-  </form>
-  <div class="success-msg" id="successMsg">You're on the <span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span> VIP list — we'll be in touch soon. ⚡</div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div>
@@ -513,8 +499,50 @@ function renderProduct() {
   document.getElementById('prodPrice').innerHTML = `<sup>₹</sup>${p.price.replace('₹','')}`;
   document.getElementById('prodVolume').textContent = p.volume;
 
-  // Buy Now
-  const priceNum = p.price.replace('₹','');
+  // ── CART LOGIC ──────────────────────────────────────────────────
+  const priceNum = parseInt(p.price.replace('₹',''));
+  let cart = JSON.parse(sessionStorage.getItem('cg_cart') || '[]');
+
+  function saveCart() { sessionStorage.setItem('cg_cart', JSON.stringify(cart)); }
+
+  function updateBadge() {
+    const total = cart.reduce((s, i) => s + i.qty, 0);
+    const badge = document.getElementById('navBadge');
+    if (badge) { badge.textContent = total; badge.classList.toggle('visible', total > 0); }
+  }
+
+  function syncQty() {
+    const item = cart.find(i => i.slug === id);
+    document.getElementById('qtyDisplay').textContent = item ? item.qty : 0;
+  }
+
+  document.getElementById('qtyPlus').addEventListener('click', () => {
+    const item = cart.find(i => i.slug === id);
+    if (item) { item.qty++; } else { cart.push({ slug: id, name: p.name, price: priceNum, qty: 1 }); }
+    saveCart(); syncQty(); updateBadge();
+  });
+
+  document.getElementById('qtyMinus').addEventListener('click', () => {
+    const item = cart.find(i => i.slug === id);
+    if (item) {
+      item.qty = Math.max(0, item.qty - 1);
+      if (item.qty === 0) cart = cart.filter(i => i.slug !== id);
+    }
+    saveCart(); syncQty(); updateBadge();
+  });
+
+  document.getElementById('buyNowBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const item = cart.find(i => i.slug === id);
+    if (!item) { cart.push({ slug: id, name: p.name, price: priceNum, qty: 1 }); }
+    else if (item.qty === 0) { item.qty = 1; }
+    saveCart();
+    window.location.href = 'checkout.html';
+  });
+
+  syncQty();
+  updateBadge();
+  // ────────────────────────────────────────────────────────────────
 
   // features
   const featEl = document.getElementById('prodFeatures');
@@ -573,21 +601,6 @@ window.addEventListener('load', () => {
     }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
   }, 900);
-});
-
-/* ── FORM ── */
-document.getElementById('notifyForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const n  = document.getElementById('name').value;
-  const em = document.getElementById('email').value;
-  const c  = document.getElementById('city').value;
-  document.getElementById('successMsg').style.display = 'block';
-  this.reset();
-  fetch('https://script.google.com/macros/s/AKfycbxEbMtj2X_MRp7Tw_Rght7RdyeC6HlpfyWMwZjk-lJkTt7ZI3b_Qj3_Yg5c8B5vcd8C/exec', {
-    method:'POST', mode:'no-cors',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({name:n, email:em, city:c})
-  }).catch(()=>{});
 });
 </script>
 </body>
