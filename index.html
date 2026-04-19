@@ -483,16 +483,14 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 <!-- STICKY BANNER -->
 <div class="banner">
   <div class="banner-track">
-    <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
-    <span class="banner-item">Introducing CARGLANZ – Engineered for Showroom Shine <span>✦</span></span>
-    <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
-    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
-    <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
-    <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
-    <span class="banner-item">Introducing CARGLANZ – Engineered for Showroom Shine <span>✦</span></span>
-    <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
-    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
-    <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
+    <span class="banner-item">CarGlanz — Professional Car Care India <span>✦</span></span>
+    <span class="banner-item">Engineered for India's Roads, Heat & Monsoon <span>✦</span></span>
+    <span class="banner-item">Free Shipping on Orders Above ₹599 <span>✦</span></span>
+    <span class="banner-item">pH-Balanced · Ceramic-Safe · Made in India <span>✦</span></span>
+    <span class="banner-item">CarGlanz — Professional Car Care India <span>✦</span></span>
+    <span class="banner-item">Engineered for India's Roads, Heat & Monsoon <span>✦</span></span>
+    <span class="banner-item">Free Shipping on Orders Above ₹599 <span>✦</span></span>
+    <span class="banner-item">pH-Balanced · Ceramic-Safe · Made in India <span>✦</span></span>
   </div>
 </div>
 
@@ -503,9 +501,8 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
     <li><a href="#about">About</a></li>
     <li><a href="#products">Products</a></li>
     <li><a href="#process">Our Process</a></li>
-    <li><a href="#notify">Waitlist</a></li>
+    <li><a href="#blog">Blog</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('notify').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
   <a class="nav-cart-btn" href="checkout.html" id="navCartBtn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
     <span class="cart-badge" id="navBadge">0</span>
@@ -522,10 +519,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   <a class="mob-link" href="#about"    onclick="closeMenu()">About</a>
   <a class="mob-link" href="#products" onclick="closeMenu()">Products</a>
   <a class="mob-link" href="#process"  onclick="closeMenu()">Our Process</a>
-  <a class="mob-link" href="#notify"   onclick="closeMenu()">Waitlist</a>
-  <button class="mob-cta" onclick="closeMenu();setTimeout(()=>document.getElementById('notify').scrollIntoView({behavior:'smooth'}),300)">
-    Get Early Access
-  </button>
+  <a class="mob-link" href="#blog"     onclick="closeMenu()">Blog</a>
 </div>
 
 <!-- HERO -->
@@ -548,11 +542,11 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
       <button class="btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
         <span>Explore Products</span>
       </button>
-      <button class="btn-ghost" onclick="document.getElementById('notify').scrollIntoView({behavior:'smooth'})">
+      <button class="btn-ghost" onclick="document.getElementById('blog').scrollIntoView({behavior:'smooth'})">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
-        Join Waitlist
+        Read Our Blog
       </button>
     </div>
   </div>
@@ -912,21 +906,90 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   </div>
 </section>
 
-<!-- ⑦ NOTIFY -->
-<section class="section notify-section" id="notify">
-  <div class="notify-bg"></div>
-  <div class="notify-content reveal">
-    <div class="section-eyebrow">Limited Early Access</div>
-    <h2 class="section-title">Be First to <em>Experience</em> <span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span></h2>
-    <p class="notify-sub">Join our VIP waitlist for early bird pricing, exclusive launch offers</p>
-    <form class="notify-form" id="notifyForm">
-      <input type="text"  id="name"  placeholder="Your Name"  required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <input type="text"  id="city"  placeholder="Your City"  required>
-      <button type="submit"><span>Join the VIP Waitlist</span></button>
-    </form>
-    <div class="success-msg" id="successMsg">You're on the <span class="cg-car">CAR</span><span class="cg-glanz">GLANZ</span> VIP list — we'll be in touch soon. ⚡</div>
+<!-- ⑦ BLOG -->
+<section class="section" id="blog" style="padding:120px 80px;">
+  <div class="reveal" style="margin-bottom:64px;">
+    <div class="section-eyebrow">From the CarGlanz Blog</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <h2 class="section-title">Car Care Tips &amp; <em>Guides</em></h2>
+      <a href="blog/" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:3px;transition:border-color .3s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(201,168,76,.3)'">View All Articles →</a>
+    </div>
   </div>
+
+  <div class="reveal" style="display:grid;grid-template-columns:2fr 1fr;gap:24px;max-width:1300px;margin:0 auto;">
+
+    <!-- FEATURED ARTICLE -->
+    <a href="blog/how-to-wash-car-at-home-india-without-swirl-marks.html" style="text-decoration:none;display:block;">
+      <article style="background:rgba(26,37,53,.2);border:1px solid rgba(201,168,76,.12);border-radius:2px;overflow:hidden;transition:border-color .4s,transform .4s;" onmouseover="this.style.borderColor='rgba(201,168,76,.35)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.12)';this.style.transform='translateY(0)'">
+        <!-- Article visual header -->
+        <div style="background:linear-gradient(135deg,rgba(26,37,53,.8) 0%,rgba(10,18,30,.9) 100%);padding:48px 40px 40px;border-bottom:1px solid rgba(201,168,76,.1);position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-20px;right:-20px;width:180px;height:180px;border:1px solid rgba(201,168,76,.08);border-radius:50%;"></div>
+          <div style="position:absolute;bottom:-40px;right:40px;width:100px;height:100px;border:1px solid rgba(201,168,76,.06);border-radius:50%;"></div>
+          <div style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:500;">Featured Article · Car Care Tips</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--cream);line-height:1.25;margin-bottom:16px;">How to Wash Your Car at Home in India <em style="color:var(--gold-light);font-style:italic;">Without Getting Swirl Marks</em></h2>
+          <p style="font-size:.88rem;color:var(--sand);font-weight:300;line-height:1.75;max-width:560px;">Most Indian car owners are unknowingly scratching their own paint every time they wash their car. Here is the complete step-by-step guide — covering the two-bucket method, pH-neutral shampoo, hard water tips, monsoon care, and the biggest mistakes to avoid.</p>
+        </div>
+        <!-- Article meta + CTA -->
+        <div style="padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+          <div style="display:flex;gap:24px;flex-wrap:wrap;">
+            <span style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">April 19, 2026</span>
+            <span style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">10 min read</span>
+            <span style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">2,100 words</span>
+          </div>
+          <span style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:8px 20px;transition:all .3s;">Read Article →</span>
+        </div>
+        <!-- Tags -->
+        <div style="padding:0 40px 28px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">Car Wash</span>
+          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">Swirl Marks</span>
+          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">Car Shampoo</span>
+          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">India Guide</span>
+        </div>
+      </article>
+    </a>
+
+    <!-- COMING SOON SIDEBAR -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <a href="#" style="text-decoration:none;display:block;">
+        <article style="background:rgba(26,37,53,.15);border:1px solid rgba(201,168,76,.08);padding:24px;transition:border-color .4s,transform .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.25)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.08)';this.style.transform='translateY(0)'">
+          <div style="font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Coming Soon · Buying Guide</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--cream);line-height:1.35;margin-bottom:10px;">Ceramic Wax vs Ceramic Coating: Which One Does Your Car Actually Need in India?</h3>
+          <p style="font-size:.8rem;color:var(--sage);font-weight:300;line-height:1.6;">Decode the difference and find the right protection level for your budget and car type.</p>
+          <div style="margin-top:14px;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.4);">Publishing Soon</div>
+        </article>
+      </a>
+
+      <a href="#" style="text-decoration:none;display:block;">
+        <article style="background:rgba(26,37,53,.15);border:1px solid rgba(201,168,76,.08);padding:24px;transition:border-color .4s,transform .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.25)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.08)';this.style.transform='translateY(0)'">
+          <div style="font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Coming Soon · DIY Guide</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--cream);line-height:1.35;margin-bottom:10px;">How to Remove Swirl Marks and Scratches from Your Car Paint at Home</h3>
+          <p style="font-size:.8rem;color:var(--sage);font-weight:300;line-height:1.6;">A complete India-specific guide to restoring your car's paint using a scratch remover compound.</p>
+          <div style="margin-top:14px;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.4);">Publishing Soon</div>
+        </article>
+      </a>
+
+      <a href="#" style="text-decoration:none;display:block;">
+        <article style="background:rgba(26,37,53,.15);border:1px solid rgba(201,168,76,.08);padding:24px;transition:border-color .4s,transform .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.25)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.08)';this.style.transform='translateY(0)'">
+          <div style="font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Coming Soon · Tips</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--cream);line-height:1.35;margin-bottom:10px;">How to Protect Your Car's Paint During Indian Monsoon Season</h3>
+          <p style="font-size:.8rem;color:var(--sage);font-weight:300;line-height:1.6;">Monsoon rain in India isn't pure — here's what it does to your paint and how to stay protected.</p>
+          <div style="margin-top:14px;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.4);">Publishing Soon</div>
+        </article>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Mobile responsive blog grid override -->
+  <style>
+    @media(max-width:900px){
+      #blog [style*="grid-template-columns:2fr 1fr"]{grid-template-columns:1fr !important;}
+      #blog [style*="padding:48px 40px"]{padding:32px 24px !important;}
+      #blog [style*="padding:24px 40px"]{padding:18px 24px !important;}
+      #blog [style*="padding:0 40px"]{padding:0 24px 20px !important;}
+    }
+  </style>
 </section>
 
 <!-- FOOTER -->
@@ -937,7 +1000,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
     <div style="margin-top:20px;">
       <p style="font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);margin-bottom:10px;">Contact Us</p>
       <p style="font-size:.82rem;color:var(--sand);margin-bottom:6px;">📧 <a href="mailto:support@carglanz.in" style="color:var(--sand);text-decoration:none;">support@carglanz.in</a></p>
-      <p style="font-size:.82rem;color:var(--sand);">💬 <a href="https://wa.me/919667692560" target="_blank" rel="noopener" style="color:var(--sand);text-decoration:none;">WhatsApp Support</a></p>
+      <p style="font-size:.82rem;color:var(--sand);">💬 <a href="https://wa.me/919999999999" target="_blank" rel="noopener" style="color:var(--sand);text-decoration:none;">WhatsApp Support</a></p>
     </div>
     <div style="margin-top:20px;display:flex;gap:14px;">
       <a href="https://instagram.com/carglanz" target="_blank" rel="noopener" aria-label="CarGlanz on Instagram" style="color:var(--sage);text-decoration:none;font-size:.72rem;letter-spacing:1.5px;border:1px solid rgba(201,168,76,.2);padding:6px 14px;transition:all .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)'" onmouseout="this.style.borderColor='rgba(201,168,76,.2)'">Instagram</a>
@@ -958,6 +1021,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
     <ul>
       <li><a href="#about">About Us</a></li>
       <li><a href="#process">Our Technology</a></li>
+      <li><a href="#blog">Blog</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="privacy-policy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Service</a></li>
@@ -967,7 +1031,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 </footer>
 
 <!-- WhatsApp Float Button -->
-<a href="https://wa.me/919667692560?text=Hi%20CarGlanz%2C%20I%20have%20a%20question%20about%20your%20products."
+<a href="https://wa.me/919999999999?text=Hi%20CarGlanz%2C%20I%20have%20a%20question%20about%20your%20products."
    target="_blank" rel="noopener" aria-label="Chat with CarGlanz on WhatsApp"
    style="position:fixed;bottom:28px;right:28px;z-index:500;background:#25D366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.4);text-decoration:none;transition:transform .3s;"
    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
@@ -1049,18 +1113,7 @@ function buyNowDirect(slug,price,name){
 // init on load
 updateBadge(); syncQtyDisplays();
 
-/* FORM */
-document.getElementById('notifyForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const n=document.getElementById('name').value;
-  const em=document.getElementById('email').value;
-  const c=document.getElementById('city').value;
-  document.getElementById('successMsg').style.display='block';
-  this.reset();
-  fetch('https://script.google.com/macros/s/AKfycbxEbMtj2X_MRp7Tw_Rght7RdyeC6HlpfyWMwZjk-lJkTt7ZI3b_Qj3_Yg5c8B5vcd8C/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:em,city:c})}).catch(()=>{});
-});
-
-/* PARALLAX */
+/* FAQ TOGGLE */
 const hImg=document.querySelector('.hero-product-float');
 window.addEventListener('scroll',()=>{
   if(hImg)hImg.style.transform=`translateY(calc(-50% + ${window.scrollY*.15}px))`;
