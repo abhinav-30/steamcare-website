@@ -55,10 +55,13 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 .nav-back svg{width:14px;height:14px}
 
 /* PAGE LAYOUT */
-.checkout-page{min-height:100vh;padding:calc(var(--banner-h) + 80px) 60px 80px;display:grid;grid-template-columns:1fr 420px;gap:48px;max-width:1300px;margin:0 auto}
+.checkout-page{min-height:100vh;padding:calc(var(--banner-h) + 80px) 60px 80px;display:grid;grid-template-columns:420px 1fr;gap:48px;max-width:1300px;margin:0 auto}
 
-/* LEFT — FORM */
-.checkout-form-col{padding-left:32px}
+/* LEFT — ORDER SUMMARY */
+.order-summary{position:sticky;top:calc(var(--banner-h) + 90px);height:fit-content}
+
+/* RIGHT — FORM */
+.checkout-form-col{padding-right:32px}
 .checkout-heading{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;margin-bottom:6px}
 .checkout-heading em{color:var(--gold-light);font-style:italic}
 .checkout-sub{font-size:.8rem;color:var(--sand);letter-spacing:1px;margin-bottom:48px}
@@ -161,7 +164,7 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 @media(max-width:960px){
   .checkout-page{grid-template-columns:1fr;padding:calc(var(--banner-h)+70px) 24px 60px}
   .order-summary{position:static}
-  .checkout-form-col{padding-left:0}
+  .checkout-form-col{padding-right:0}
 }
 @media(max-width:640px){
   nav{padding:14px 20px}
@@ -204,7 +207,27 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 <!-- CHECKOUT PAGE -->
 <div class="checkout-page">
 
-  <!-- LEFT: FORM -->
+  <!-- LEFT: ORDER SUMMARY -->
+  <div class="order-summary">
+    <div class="summary-card">
+      <div class="summary-title">Order <em>Summary</em></div>
+
+      <div class="cart-items" id="cartItems">
+        <!-- filled by JS -->
+      </div>
+
+      <div class="promo-row">
+        <input class="promo-input" type="text" id="promoCode" placeholder="Promo code" autocorrect="off" autocapitalize="words" spellcheck="false">
+        <button class="promo-btn" onclick="applyPromo()">Apply</button>
+      </div>
+
+      <div class="summary-totals" id="summaryTotals">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
   <div class="checkout-form-col">
     <h1 class="checkout-heading">Secure <em>Checkout</em></h1>
     <p class="checkout-sub">Complete your order below</p>
@@ -347,25 +370,6 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
     </div>
   </div>
 
-  <!-- RIGHT: ORDER SUMMARY -->
-  <div class="order-summary">
-    <div class="summary-card">
-      <div class="summary-title">Order <em>Summary</em></div>
-
-      <div class="cart-items" id="cartItems">
-        <!-- filled by JS -->
-      </div>
-
-      <div class="promo-row">
-        <input class="promo-input" type="text" id="promoCode" placeholder="Promo code" autocorrect="off" autocapitalize="words" spellcheck="false">
-        <button class="promo-btn" onclick="applyPromo()">Apply</button>
-      </div>
-
-      <div class="summary-totals" id="summaryTotals">
-        <!-- filled by JS -->
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- SUCCESS OVERLAY -->
