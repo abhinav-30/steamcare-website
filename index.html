@@ -916,78 +916,94 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
     </div>
   </div>
 
-  <div class="reveal" style="display:grid;grid-template-columns:2fr 1fr;gap:24px;max-width:1300px;margin:0 auto;">
+  <!-- TWO PUBLISHED ARTICLES — equal grid -->
+  <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1300px;margin:0 auto 20px;">
 
-    <!-- FEATURED ARTICLE -->
+    <!-- ARTICLE 1 — Car Wash Guide -->
     <a href="blog/how-to-wash-car-at-home-india-without-swirl-marks.html" style="text-decoration:none;display:block;">
-      <article style="background:rgba(26,37,53,.2);border:1px solid rgba(201,168,76,.12);border-radius:2px;overflow:hidden;transition:border-color .4s,transform .4s;" onmouseover="this.style.borderColor='rgba(201,168,76,.35)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.12)';this.style.transform='translateY(0)'">
-        <!-- Article visual header -->
-        <div style="background:linear-gradient(135deg,rgba(26,37,53,.8) 0%,rgba(10,18,30,.9) 100%);padding:48px 40px 40px;border-bottom:1px solid rgba(201,168,76,.1);position:relative;overflow:hidden;">
-          <div style="position:absolute;top:-20px;right:-20px;width:180px;height:180px;border:1px solid rgba(201,168,76,.08);border-radius:50%;"></div>
-          <div style="position:absolute;bottom:-40px;right:40px;width:100px;height:100px;border:1px solid rgba(201,168,76,.06);border-radius:50%;"></div>
-          <div style="font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:500;">Featured Article · Car Care Tips</div>
-          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--cream);line-height:1.25;margin-bottom:16px;">How to Wash Your Car at Home in India <em style="color:var(--gold-light);font-style:italic;">Without Getting Swirl Marks</em></h2>
-          <p style="font-size:.88rem;color:var(--sand);font-weight:300;line-height:1.75;max-width:560px;">Most Indian car owners are unknowingly scratching their own paint every time they wash their car. Here is the complete step-by-step guide — covering the two-bucket method, pH-neutral shampoo, hard water tips, monsoon care, and the biggest mistakes to avoid.</p>
+      <article style="background:rgba(26,37,53,.2);border:1px solid rgba(201,168,76,.12);border-radius:2px;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:border-color .4s,transform .4s;" onmouseover="this.style.borderColor='rgba(201,168,76,.35)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.12)';this.style.transform='translateY(0)'">
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,rgba(26,37,53,.8) 0%,rgba(10,18,30,.9) 100%);padding:36px 32px 30px;border-bottom:1px solid rgba(201,168,76,.1);position:relative;overflow:hidden;flex:1;">
+          <div style="position:absolute;top:-20px;right:-20px;width:160px;height:160px;border:1px solid rgba(201,168,76,.07);border-radius:50%;"></div>
+          <div style="position:absolute;bottom:-30px;right:30px;width:80px;height:80px;border:1px solid rgba(201,168,76,.05);border-radius:50%;"></div>
+          <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500;">Car Care Tips</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:300;color:var(--cream);line-height:1.28;margin-bottom:14px;">How to Wash Your Car at Home in India <em style="color:var(--gold-light);font-style:italic;">Without Getting Swirl Marks</em></h2>
+          <p style="font-size:.84rem;color:var(--sand);font-weight:300;line-height:1.75;">The complete step-by-step guide — two-bucket method, pH-neutral shampoo, hard water tips, monsoon care, and the biggest washing mistakes Indian car owners make.</p>
         </div>
-        <!-- Article meta + CTA -->
-        <div style="padding:24px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-          <div style="display:flex;gap:24px;flex-wrap:wrap;">
-            <span style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">April 19, 2026</span>
-            <span style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">10 min read</span>
-            <span style="font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">2,100 words</span>
+        <!-- Meta -->
+        <div style="padding:18px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid rgba(201,168,76,.07);">
+          <div style="display:flex;gap:18px;flex-wrap:wrap;">
+            <span style="font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">Apr 19, 2026</span>
+            <span style="font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">10 min read</span>
           </div>
-          <span style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:8px 20px;transition:all .3s;">Read Article →</span>
+          <span style="font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Read →</span>
         </div>
         <!-- Tags -->
-        <div style="padding:0 40px 28px;display:flex;gap:8px;flex-wrap:wrap;">
-          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">Car Wash</span>
-          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">Swirl Marks</span>
-          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">Car Shampoo</span>
-          <span style="font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:4px 12px;">India Guide</span>
+        <div style="padding:14px 32px;display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:3px 10px;">Car Wash</span>
+          <span style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:3px 10px;">Swirl Marks</span>
+          <span style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:3px 10px;">India Guide</span>
         </div>
       </article>
     </a>
 
-    <!-- COMING SOON SIDEBAR -->
-    <div style="display:flex;flex-direction:column;gap:16px;">
+    <!-- ARTICLE 2 — Scratch Removal Guide -->
+    <a href="blog/how-to-remove-swirl-marks-scratches-car-paint-home-india-2026.html" style="text-decoration:none;display:block;">
+      <article style="background:rgba(26,37,53,.2);border:1px solid rgba(201,168,76,.12);border-radius:2px;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:border-color .4s,transform .4s;" onmouseover="this.style.borderColor='rgba(201,168,76,.35)';this.style.transform='translateY(-6px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.12)';this.style.transform='translateY(0)'">
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,rgba(18,26,38,.9) 0%,rgba(26,37,53,.7) 100%);padding:36px 32px 30px;border-bottom:1px solid rgba(201,168,76,.1);position:relative;overflow:hidden;flex:1;">
+          <div style="position:absolute;top:-20px;right:-20px;width:160px;height:160px;border:1px solid rgba(201,168,76,.07);border-radius:50%;"></div>
+          <div style="position:absolute;bottom:-30px;right:30px;width:80px;height:80px;border:1px solid rgba(201,168,76,.05);border-radius:50%;"></div>
+          <div style="font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500;">DIY Detailing Guide</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:300;color:var(--cream);line-height:1.28;margin-bottom:14px;">How to Remove Swirl Marks and Scratches from Your Car Paint at Home — <em style="color:var(--gold-light);font-style:italic;">India Guide 2026</em></h2>
+          <p style="font-size:.84rem;color:var(--sand);font-weight:300;line-height:1.75;">The scratch depth test, correct compound technique, colour-specific tips for black &amp; white cars, and how to protect the paint after correction to prevent swirls from returning.</p>
+        </div>
+        <!-- Meta -->
+        <div style="padding:18px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid rgba(201,168,76,.07);">
+          <div style="display:flex;gap:18px;flex-wrap:wrap;">
+            <span style="font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">Apr 19, 2026</span>
+            <span style="font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);">11 min read</span>
+          </div>
+          <span style="font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Read →</span>
+        </div>
+        <!-- Tags -->
+        <div style="padding:14px 32px;display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:3px 10px;">Scratch Remover</span>
+          <span style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:3px 10px;">Swirl Marks</span>
+          <span style="font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.15);color:var(--sage);padding:3px 10px;">DIY Guide</span>
+        </div>
+      </article>
+    </a>
 
-      <a href="#" style="text-decoration:none;display:block;">
-        <article style="background:rgba(26,37,53,.15);border:1px solid rgba(201,168,76,.08);padding:24px;transition:border-color .4s,transform .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.25)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.08)';this.style.transform='translateY(0)'">
+  </div>
+
+  <!-- COMING SOON — single card full width -->
+  <div class="reveal" style="max-width:1300px;margin:0 auto;">
+    <a href="#" style="text-decoration:none;display:block;">
+      <article style="background:rgba(26,37,53,.12);border:1px solid rgba(201,168,76,.08);border-radius:2px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;transition:border-color .4s,transform .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.22)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.08)';this.style.transform='translateY(0)'">
+        <div style="flex:1;min-width:240px;">
           <div style="font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Coming Soon · Buying Guide</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--cream);line-height:1.35;margin-bottom:10px;">Ceramic Wax vs Ceramic Coating: Which One Does Your Car Actually Need in India?</h3>
-          <p style="font-size:.8rem;color:var(--sage);font-weight:300;line-height:1.6;">Decode the difference and find the right protection level for your budget and car type.</p>
-          <div style="margin-top:14px;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.4);">Publishing Soon</div>
-        </article>
-      </a>
-
-      <a href="#" style="text-decoration:none;display:block;">
-        <article style="background:rgba(26,37,53,.15);border:1px solid rgba(201,168,76,.08);padding:24px;transition:border-color .4s,transform .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.25)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.08)';this.style.transform='translateY(0)'">
-          <div style="font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Coming Soon · DIY Guide</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--cream);line-height:1.35;margin-bottom:10px;">How to Remove Swirl Marks and Scratches from Your Car Paint at Home</h3>
-          <p style="font-size:.8rem;color:var(--sage);font-weight:300;line-height:1.6;">A complete India-specific guide to restoring your car's paint using a scratch remover compound.</p>
-          <div style="margin-top:14px;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.4);">Publishing Soon</div>
-        </article>
-      </a>
-
-      <a href="#" style="text-decoration:none;display:block;">
-        <article style="background:rgba(26,37,53,.15);border:1px solid rgba(201,168,76,.08);padding:24px;transition:border-color .4s,transform .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.25)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(201,168,76,.08)';this.style.transform='translateY(0)'">
-          <div style="font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Coming Soon · Tips</div>
-          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:300;color:var(--cream);line-height:1.35;margin-bottom:10px;">How to Protect Your Car's Paint During Indian Monsoon Season</h3>
-          <p style="font-size:.8rem;color:var(--sage);font-weight:300;line-height:1.6;">Monsoon rain in India isn't pure — here's what it does to your paint and how to stay protected.</p>
-          <div style="margin-top:14px;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.4);">Publishing Soon</div>
-        </article>
-      </a>
-
-    </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--cream);line-height:1.35;margin-bottom:8px;">Ceramic Wax vs Ceramic Coating: Which One Does Your Car Actually Need in India?</h3>
+          <p style="font-size:.82rem;color:var(--sage);font-weight:300;line-height:1.6;">Decode the difference, compare the cost, and find the right protection level for your budget and car type — including specific advice for Indian heat and monsoon conditions.</p>
+        </div>
+        <div style="flex-shrink:0;text-align:right;">
+          <div style="font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.35);border:1px solid rgba(201,168,76,.15);padding:8px 18px;white-space:nowrap;">Publishing Soon</div>
+        </div>
+      </article>
+    </a>
   </div>
 
   <!-- Mobile responsive blog grid override -->
   <style>
     @media(max-width:900px){
-      #blog [style*="grid-template-columns:2fr 1fr"]{grid-template-columns:1fr !important;}
-      #blog [style*="padding:48px 40px"]{padding:32px 24px !important;}
-      #blog [style*="padding:24px 40px"]{padding:18px 24px !important;}
-      #blog [style*="padding:0 40px"]{padding:0 24px 20px !important;}
+      #blog [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+      #blog [style*="padding:36px 32px"]{padding:26px 20px !important;}
+      #blog [style*="padding:18px 32px"]{padding:14px 20px !important;}
+      #blog [style*="padding:14px 32px"]{padding:10px 20px !important;}
+      #blog [style*="padding:28px 36px"]{padding:22px 20px !important;}
+    }
+    @media(max-width:768px){
+      #blog{padding:60px 20px !important;}
     }
   </style>
 </section>
