@@ -113,16 +113,22 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
 .ph-tagline{font-size:.95rem;color:var(--sand);font-weight:300;line-height:1.8;margin-bottom:36px;max-width:420px}
 
 /* price row */
-.ph-price-row{display:flex;align-items:center;gap:24px;margin-bottom:40px;padding:24px 0;border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12)}
-.ph-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold-light);line-height:1}
+.ph-price-row{display:flex;flex-direction:column;gap:6px;margin-bottom:28px;padding:20px 0;border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12)}
+.ph-price-main{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ph-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--gold-light);line-height:1}
 .ph-price sup{font-size:1.4rem;vertical-align:super}
 .ph-volume{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage);padding:5px 14px;border:1px solid rgba(201,168,76,.2)}
+.ph-mrp{font-size:.78rem;color:var(--sage);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ph-mrp s{color:rgba(154,170,184,.5)}
+.ph-tax{font-size:.68rem;color:rgba(154,170,184,.4)}
+.ph-payment-strip{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:10px;border-top:1px solid rgba(201,168,76,.06);font-size:.72rem;color:var(--sage)}
+.ph-pay-icons{display:flex;gap:5px;align-items:center}
 
 /* features */
 .ph-features-title{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:16px}
 .ph-features{list-style:none;margin-bottom:40px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ph-features li{font-size:.88rem;color:var(--sand);display:flex;align-items:flex-start;gap:10px;font-weight:400;line-height:1.5}
-.ph-features li::before{content:'';width:18px;height:1px;background:var(--gold);flex-shrink:0;margin-top:10px}
+.ph-features li{font-size:.84rem;color:var(--sand);display:flex;align-items:flex-start;gap:8px;font-weight:400;line-height:1.5}
+.ph-features li::before{content:'✦';font-size:.55rem;color:var(--gold);flex-shrink:0;margin-top:4px}
 
 /* CTA */
 .ph-cta-row{display:flex;gap:14px;flex-wrap:wrap}
@@ -273,16 +279,14 @@ footer{padding:40px 80px;border-top:1px solid rgba(201,168,76,.12);display:flex;
 <!-- BANNER -->
 <div class="banner">
   <div class="banner-track">
-    <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
-    <span class="banner-item">Introducing CARGLANZ – Engineered for Showroom Shine <span>✦</span></span>
-    <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
-    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
-    <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
-    <span class="banner-item">⚡ Launching Soon in India <span>✦</span></span>
-    <span class="banner-item">Introducing CARGLANZ – Engineered for Showroom Shine <span>✦</span></span>
-    <span class="banner-item">Professional-Grade Detailing Formulas <span>✦</span></span>
-    <span class="banner-item">Join the VIP Waitlist <span>✦</span></span>
-    <span class="banner-item">Built for Every Indian Car <span>✦</span></span>
+    <span class="banner-item">CarGlanz — Professional Car Care India <span>✦</span></span>
+    <span class="banner-item">Engineered for India's Roads, Heat &amp; Monsoon <span>✦</span></span>
+    <span class="banner-item">Free Shipping on Orders Above ₹599 <span>✦</span></span>
+    <span class="banner-item">pH-Balanced · Ceramic-Safe · Made in India <span>✦</span></span>
+    <span class="banner-item">CarGlanz — Professional Car Care India <span>✦</span></span>
+    <span class="banner-item">Engineered for India's Roads, Heat &amp; Monsoon <span>✦</span></span>
+    <span class="banner-item">Free Shipping on Orders Above ₹599 <span>✦</span></span>
+    <span class="banner-item">pH-Balanced · Ceramic-Safe · Made in India <span>✦</span></span>
   </div>
 </div>
 
@@ -315,8 +319,21 @@ footer{padding:40px 80px;border-top:1px solid rgba(201,168,76,.12);display:flex;
     <h1 class="ph-name" id="prodName">Loading…</h1>
     <p class="ph-tagline" id="prodTagline"></p>
     <div class="ph-price-row">
-      <div class="ph-price" id="prodPrice"></div>
-      <div class="ph-volume" id="prodVolume">200 ml</div>
+      <div class="ph-price-main">
+        <div class="ph-price" id="prodPrice"></div>
+        <div class="ph-volume" id="prodVolume">200 ml</div>
+      </div>
+      <div class="ph-mrp" id="prodMrp"></div>
+      <div class="ph-tax">Inclusive of all taxes</div>
+      <div class="ph-payment-strip">
+        <span>Cash on Delivery available · UPI · Cards · Net Banking</span>
+        <span class="ph-pay-icons">
+          <svg viewBox="0 0 38 24" style="height:16px;width:auto;border-radius:3px;opacity:.75"><rect width="38" height="24" rx="4" fill="#072654"/><text x="19" y="16" font-family="Arial" font-size="8" fill="white" text-anchor="middle" font-weight="bold">VISA</text></svg>
+          <svg viewBox="0 0 38 24" style="height:16px;width:auto;border-radius:3px;opacity:.75"><rect width="38" height="24" rx="4" fill="#EB001B"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 6.8a7 7 0 010 10.4A7 7 0 0119 6.8z" fill="#FF5F00"/></svg>
+          <svg viewBox="0 0 38 24" style="height:16px;width:auto;border-radius:3px;opacity:.75"><rect width="38" height="24" rx="4" fill="#6739B7"/><text x="19" y="16" font-family="Arial" font-size="6.5" fill="white" text-anchor="middle" font-weight="bold">UPI</text></svg>
+          <svg viewBox="0 0 50 24" style="height:16px;width:auto;border-radius:3px;opacity:.75"><rect width="50" height="24" rx="4" fill="#072654"/><text x="25" y="16" font-family="Arial" font-size="6" fill="white" text-anchor="middle" font-weight="bold">Razorpay</text></svg>
+        </span>
+      </div>
     </div>
     <div class="ph-features-title">Key Features</div>
     <ul class="ph-features" id="prodFeatures"></ul>
@@ -325,12 +342,15 @@ footer{padding:40px 80px;border-top:1px solid rgba(201,168,76,.12);display:flex;
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
         <span>Buy Now</span>
       </a>
+      <button class="btn-add-cart" id="addToCartBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        Add to Cart
+      </button>
       <div class="qty-box">
         <button class="qty-btn" id="qtyMinus">−</button>
         <span class="qty-num" id="qtyDisplay">0</span>
         <button class="qty-btn" id="qtyPlus">+</button>
       </div>
-      <a class="btn-ghost-outline" href="index.html">View All Products</a>
     </div>
   </div>
 </section>
@@ -390,6 +410,7 @@ const PRODUCTS = {
     image: 'assets/car-shampoo.PNG',
     badge: '200ml',
     price: '₹399',
+    mrp: '₹499',
     volume: '200 ml',
     tagline: 'A pH-balanced, ultra-foaming shampoo engineered to dissolve road grime, hard water deposits, and dust — all while being completely safe on ceramic coatings and paint protection film.',
     features: [
@@ -426,6 +447,7 @@ const PRODUCTS = {
     image: 'assets/car-wax.PNG',
     badge: '200ml',
     price: '₹499',
+    mrp: '₹649',
     volume: '200 ml',
     tagline: 'Advanced ceramic-polymer hybrid wax that bonds to your paintwork and delivers a deep mirror-gloss finish with up to 3+ months of UV and heat protection — built specifically for India\'s 45°C summers.',
     features: [
@@ -462,6 +484,7 @@ const PRODUCTS = {
     image: 'assets/car-scratch-remover.png',
     badge: '200ml',
     price: '₹399',
+    mrp: '₹499',
     volume: '200 ml',
     tagline: 'A professional-grade micro-abrasive compound that eliminates light-to-medium scratches, swirl marks, and oxidation — restoring deep gloss without damaging your clear coat or going through paint.',
     features: [
@@ -498,6 +521,7 @@ const PRODUCTS = {
     image: 'assets/car-apc.PNG',
     badge: '200ml',
     price: '₹299',
+    mrp: '₹399',
     volume: '200 ml',
     tagline: 'A professional APC formulated without ammonia or harsh solvents — safe for every surface inside your car from leather seats to dashboard plastics, door trims, AC vents, and fabric upholstery.',
     features: [
@@ -586,8 +610,14 @@ function renderProduct() {
   document.getElementById('prodPrice').innerHTML = `<sup>₹</sup>${p.price.replace('₹','')}`;
   document.getElementById('prodVolume').textContent = p.volume;
 
-  // ── CART LOGIC ──────────────────────────────────────────────────
+  // MRP + discount
   const priceNum = parseInt(p.price.replace('₹',''));
+  const mrpNum = parseInt(p.mrp.replace('₹',''));
+  const discPct = Math.round((mrpNum - priceNum) / mrpNum * 100);
+  document.getElementById('prodMrp').innerHTML =
+    `<s>MRP ${p.mrp}</s> <span style="color:var(--gold);font-weight:600">${discPct}% off</span>`;
+
+  // ── CART LOGIC ──────────────────────────────────────────────────
   let cart = JSON.parse(sessionStorage.getItem('cg_cart') || '[]');
 
   function saveCart() { sessionStorage.setItem('cg_cart', JSON.stringify(cart)); }
@@ -603,11 +633,13 @@ function renderProduct() {
     document.getElementById('qtyDisplay').textContent = item ? item.qty : 0;
   }
 
-  document.getElementById('qtyPlus').addEventListener('click', () => {
+  function addOneToCart() {
     const item = cart.find(i => i.slug === id);
     if (item) { item.qty++; } else { cart.push({ slug: id, name: p.name, price: priceNum, qty: 1 }); }
     saveCart(); syncQty(); updateBadge();
-  });
+  }
+
+  document.getElementById('qtyPlus').addEventListener('click', addOneToCart);
 
   document.getElementById('qtyMinus').addEventListener('click', () => {
     const item = cart.find(i => i.slug === id);
@@ -616,6 +648,17 @@ function renderProduct() {
       if (item.qty === 0) cart = cart.filter(i => i.slug !== id);
     }
     saveCart(); syncQty(); updateBadge();
+  });
+
+  // Add to Cart button — adds 1 and shows brief confirmation
+  document.getElementById('addToCartBtn').addEventListener('click', () => {
+    addOneToCart();
+    const btn = document.getElementById('addToCartBtn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Added!';
+    btn.style.borderColor = 'rgba(59,150,136,.6)';
+    btn.style.color = '#3B9688';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.borderColor = ''; btn.style.color = ''; }, 1500);
   });
 
   document.getElementById('buyNowBtn').addEventListener('click', (e) => {
