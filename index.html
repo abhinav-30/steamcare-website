@@ -295,9 +295,9 @@ nav.scrolled{top:var(--banner-h);background:#000000;backdrop-filter:blur(20px);p
 .btn-buy-now span,.btn-buy-now svg{position:relative;z-index:1}
 .btn-buy-now svg{width:10px;height:10px;flex-shrink:0}
 /* Combined Add to Cart + Counter button */
-.btn-cart-counter{flex:1;background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--sand);font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;min-height:42px;position:relative}
+.btn-cart-counter{flex:1;background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--sand);font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;min-height:42px;position:relative}
 .btn-cart-counter:hover{border-color:var(--gold);color:var(--gold-light)}
-.cart-add-state{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;padding:0 6px}
+.cart-add-state{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;padding:0 6px;text-align:center;line-height:1.2}
 .cart-add-state svg{width:10px;height:10px;flex-shrink:0}
 .cart-counter-state{display:none;align-items:center;justify-content:center;width:100%}
 .cart-counter-state.active{display:flex}
@@ -410,7 +410,7 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   :root{--banner-h:34px}
 
   /* nav */
-  nav{padding:0 20px;top:calc(var(--banner-h) + 8px)}
+  nav{padding:0 20px;top:var(--banner-h)}
   nav.scrolled{padding:12px 20px}
   .nav-links,.nav-cta{display:none}
   .nav-ham{display:flex}
@@ -457,9 +457,10 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   .product-features li{font-size:.65rem}
   .product-price{font-size:1.3rem}
   .product-btn-row{gap:4px}
-  .btn-buy-now,.btn-cart-counter{font-size:.52rem;letter-spacing:.8px;padding:0 4px;min-height:38px}
-  .c-qty-btn{width:26px;min-height:36px;font-size:.85rem}
-  .c-qty-num{font-size:.65rem;min-width:16px}
+  .btn-buy-now,.btn-cart-counter{font-size:.5rem;letter-spacing:.5px;padding:0 3px;min-height:38px}
+  .cart-add-state svg{display:none}
+  .c-qty-btn{width:24px;min-height:36px;font-size:.85rem}
+  .c-qty-num{font-size:.65rem;min-width:14px}
 
   /* marquee */
   .launch-marquee{padding:28px 0}
