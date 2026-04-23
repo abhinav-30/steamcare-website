@@ -171,8 +171,8 @@ body{font-family:'Jost',sans-serif;background:var(--warm-black);color:var(--crea
 @keyframes bscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ── NAV ── */
-nav{position:fixed;top:calc(var(--banner-h) + 10px);left:0;right:0;z-index:99;padding:0 60px;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease}
-nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(201,168,76,.15)}
+nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60px;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease;background:#000000;border-bottom:1px solid rgba(201,168,76,.2)}
+nav.scrolled{top:var(--banner-h);background:#000000;backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(201,168,76,.25)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--cream);letter-spacing:6px;text-transform:uppercase;text-decoration:none}
 .nav-logo em{color:var(--gold);font-style:normal}
 .nav-links{display:flex;gap:40px;list-style:none}
@@ -198,7 +198,7 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .mob-link:hover{color:var(--gold-light)}
 .mob-cta{margin-top:36px;background:linear-gradient(135deg,var(--forest),var(--moss));border:none;color:var(--cream);padding:16px 48px;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer;width:100%}
 /* ── HERO ── */
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding-top:110px}
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--banner-h) + 90px)}
 .hero-subtitle{color:#ffffff;font-weight:500;font-size:1.1rem;background:rgba(0,0,0,0.45);padding:10px 18px;border-radius:8px;display:inline-block
 }
 .hero-ribbon{
@@ -266,8 +266,8 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .product-img-link::after{content:'View Details';position:absolute;inset:0;background:rgba(10,12,16,.7);color:var(--gold-light);font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s;backdrop-filter:blur(4px)}
 .product-card:hover .product-img-link::after{opacity:1}
 .product-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-8px);z-index:2;box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 40px rgba(201,168,76,.1)}
-.product-img-wrap{aspect-ratio:1/1;overflow:hidden;position:relative;background:linear-gradient(180deg,rgba(26,37,53,.15) 0%,rgba(10,12,16,.6) 100%);display:flex;align-items:center;justify-content:center;padding:16px}
-.product-img-wrap img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.product-img-wrap{aspect-ratio:1/1;overflow:hidden;position:relative;background:linear-gradient(180deg,rgba(26,37,53,.15) 0%,rgba(10,12,16,.6) 100%)}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
 .product-card:hover .product-img-wrap img{transform:scale(1.06)}
 .product-badge{position:absolute;top:10px;right:10px;background:rgba(26,37,53,.9);border:1px solid rgba(201,168,76,.4);color:var(--gold-light);font-size:.55rem;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;font-weight:600;backdrop-filter:blur(10px)}
 .product-body{padding:14px 16px 16px;border-top:1px solid rgba(201,168,76,.1);display:flex;flex-direction:column;flex:1}
@@ -289,19 +289,22 @@ nav.scrolled{top:var(--banner-h);background:rgba(18,15,10,.95);backdrop-filter:b
 .pay-icon{height:14px;width:auto;border-radius:2px;opacity:.7;vertical-align:middle}
 /* buttons */
 .product-btn-row{display:flex;gap:6px;align-items:stretch}
-.btn-buy-now{flex:1;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:var(--warm-black);padding:8px 6px;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:4px;text-decoration:none;white-space:nowrap}
+.btn-buy-now{flex:1;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:var(--warm-black);padding:10px 6px;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:4px;text-decoration:none;white-space:nowrap;min-height:42px}
 .btn-buy-now::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-light),#f5d97a);opacity:0;transition:opacity .3s}
 .btn-buy-now:hover::after{opacity:1}
 .btn-buy-now span,.btn-buy-now svg{position:relative;z-index:1}
 .btn-buy-now svg{width:10px;height:10px;flex-shrink:0}
-.btn-add-cart-sm{flex:1;background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--sand);padding:8px 6px;font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
-.btn-add-cart-sm:hover{border-color:var(--gold);color:var(--gold-light)}
-.btn-add-cart-sm svg{width:10px;height:10px;flex-shrink:0}
-/* qty counter */
-.qty-box{display:flex;align-items:center;border:1px solid var(--sage);overflow:hidden;flex-shrink:0}
-.qty-btn{background:transparent;border:none;color:var(--sage);width:26px;height:30px;font-size:.95rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;line-height:1}
-.qty-btn:hover{background:var(--sage);color:var(--warm-black)}
-.qty-num{color:var(--cream);font-family:'Jost',sans-serif;font-size:.75rem;font-weight:600;min-width:22px;text-align:center;padding:0 2px}
+/* Combined Add to Cart + Counter button */
+.btn-cart-counter{flex:1;background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--sand);font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;min-height:42px;position:relative}
+.btn-cart-counter:hover{border-color:var(--gold);color:var(--gold-light)}
+.cart-add-state{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;padding:0 6px}
+.cart-add-state svg{width:10px;height:10px;flex-shrink:0}
+.cart-counter-state{display:none;align-items:center;justify-content:center;width:100%}
+.cart-counter-state.active{display:flex}
+.cart-add-state.hidden{display:none}
+.c-qty-btn{background:transparent;border:none;color:var(--sage);width:32px;height:100%;min-height:40px;font-size:1rem;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-qty-btn:hover{background:rgba(201,168,76,.12);color:var(--gold-light)}
+.c-qty-num{color:var(--cream);font-family:'Jost',sans-serif;font-size:.75rem;font-weight:700;min-width:22px;text-align:center;flex:1}
 /* cart icon in nav */
 .nav-cart-btn{background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--gold);padding:9px 12px;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:6px;position:relative;text-decoration:none}
 .nav-cart-btn:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
@@ -448,15 +451,15 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
   /* products — 2 columns side by side on mobile */
   .products-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:0 4px}
   .products-header{margin-bottom:36px}
-  .product-img-wrap{aspect-ratio:1/1;padding:12px}
+  .product-img-wrap{aspect-ratio:1/1}
   .product-body{padding:10px 12px 12px}
   .product-name{font-size:.82rem}
   .product-features li{font-size:.65rem}
   .product-price{font-size:1.3rem}
   .product-btn-row{gap:4px}
-  .btn-buy-now,.btn-add-cart-sm{font-size:.55rem;letter-spacing:1px;padding:7px 4px}
-  .qty-btn{width:22px;height:26px;font-size:.85rem}
-  .qty-num{font-size:.65rem;min-width:18px}
+  .btn-buy-now,.btn-cart-counter{font-size:.52rem;letter-spacing:.8px;padding:0 4px;min-height:38px}
+  .c-qty-btn{width:26px;min-height:36px;font-size:.85rem}
+  .c-qty-num{font-size:.65rem;min-width:16px}
 
   /* marquee */
   .launch-marquee{padding:28px 0}
@@ -629,22 +632,24 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
           <div class="product-payment-strip">
             <span>COD · UPI · Cards</span>
             <span class="pay-icons">
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#072654"/><text x="19" y="16" font-family="Arial" font-size="8" fill="white" text-anchor="middle" font-weight="bold">VISA</text></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#EB001B"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 6.8a7 7 0 010 10.4A7 7 0 0119 6.8z" fill="#FF5F00"/></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#6739B7"/><text x="19" y="16" font-family="Arial" font-size="6.5" fill="white" text-anchor="middle" font-weight="bold">UPI</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#1A1F71"/><text x="25" y="21" font-family="Arial Black,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="900" font-style="italic">VISA</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#252525"/><circle cx="19" cy="15" r="9" fill="#EB001B"/><circle cx="31" cy="15" r="9" fill="#F79E1B"/><path d="M25 7.9a9 9 0 010 14.2A9 9 0 0125 7.9z" fill="#FF5F00"/></svg>
+              <svg class="pay-icon" viewBox="0 0 56 30" style="height:16px;width:auto"><rect width="56" height="30" rx="4" fill="#fff"/><text x="28" y="12" font-family="Arial,sans-serif" font-size="6" fill="#6739B7" text-anchor="middle" font-weight="bold">BHARAT</text><text x="28" y="23" font-family="Arial Black,sans-serif" font-size="10" fill="#6739B7" text-anchor="middle" font-weight="900">UPI</text></svg>
             </span>
           </div>
           <div class="product-btn-row">
             <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-shampoo',399,'High-Gloss Car Shampoo');return false;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
             </a>
-            <button class="btn-add-cart-sm" onclick="changeQty('car-shampoo',399,'High-Gloss Car Shampoo',1)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Cart</span>
-            </button>
-            <div class="qty-box" id="qtyBox-car-shampoo">
-              <button class="qty-btn" onclick="changeQty('car-shampoo',399,'High-Gloss Car Shampoo',-1)">−</button>
-              <span class="qty-num" id="qty-car-shampoo">0</span>
-              <button class="qty-btn" onclick="changeQty('car-shampoo',399,'High-Gloss Car Shampoo',1)">+</button>
+            <div class="btn-cart-counter" id="cartBtn-car-shampoo">
+              <div class="cart-add-state" id="cartAdd-car-shampoo" onclick="cartAddFirst('car-shampoo',399,'High-Gloss Car Shampoo')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Add to Cart</span>
+              </div>
+              <div class="cart-counter-state" id="cartCounter-car-shampoo">
+                <button class="c-qty-btn" onclick="changeQty('car-shampoo',399,'High-Gloss Car Shampoo',-1)">−</button>
+                <span class="c-qty-num" id="qty-car-shampoo">0</span>
+                <button class="c-qty-btn" onclick="changeQty('car-shampoo',399,'High-Gloss Car Shampoo',1)">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -675,22 +680,24 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
           <div class="product-payment-strip">
             <span>COD · UPI · Cards</span>
             <span class="pay-icons">
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#072654"/><text x="19" y="16" font-family="Arial" font-size="8" fill="white" text-anchor="middle" font-weight="bold">VISA</text></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#EB001B"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 6.8a7 7 0 010 10.4A7 7 0 0119 6.8z" fill="#FF5F00"/></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#6739B7"/><text x="19" y="16" font-family="Arial" font-size="6.5" fill="white" text-anchor="middle" font-weight="bold">UPI</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#1A1F71"/><text x="25" y="21" font-family="Arial Black,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="900" font-style="italic">VISA</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#252525"/><circle cx="19" cy="15" r="9" fill="#EB001B"/><circle cx="31" cy="15" r="9" fill="#F79E1B"/><path d="M25 7.9a9 9 0 010 14.2A9 9 0 0125 7.9z" fill="#FF5F00"/></svg>
+              <svg class="pay-icon" viewBox="0 0 56 30" style="height:16px;width:auto"><rect width="56" height="30" rx="4" fill="#fff"/><text x="28" y="12" font-family="Arial,sans-serif" font-size="6" fill="#6739B7" text-anchor="middle" font-weight="bold">BHARAT</text><text x="28" y="23" font-family="Arial Black,sans-serif" font-size="10" fill="#6739B7" text-anchor="middle" font-weight="900">UPI</text></svg>
             </span>
           </div>
           <div class="product-btn-row">
             <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-wax',499,'Ceramic Protection Wax');return false;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
             </a>
-            <button class="btn-add-cart-sm" onclick="changeQty('car-wax',499,'Ceramic Protection Wax',1)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Cart</span>
-            </button>
-            <div class="qty-box" id="qtyBox-car-wax">
-              <button class="qty-btn" onclick="changeQty('car-wax',499,'Ceramic Protection Wax',-1)">−</button>
-              <span class="qty-num" id="qty-car-wax">0</span>
-              <button class="qty-btn" onclick="changeQty('car-wax',499,'Ceramic Protection Wax',1)">+</button>
+            <div class="btn-cart-counter" id="cartBtn-car-wax">
+              <div class="cart-add-state" id="cartAdd-car-wax" onclick="cartAddFirst('car-wax',499,'Ceramic Protection Wax')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Add to Cart</span>
+              </div>
+              <div class="cart-counter-state" id="cartCounter-car-wax">
+                <button class="c-qty-btn" onclick="changeQty('car-wax',499,'Ceramic Protection Wax',-1)">−</button>
+                <span class="c-qty-num" id="qty-car-wax">0</span>
+                <button class="c-qty-btn" onclick="changeQty('car-wax',499,'Ceramic Protection Wax',1)">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -721,22 +728,24 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
           <div class="product-payment-strip">
             <span>COD · UPI · Cards</span>
             <span class="pay-icons">
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#072654"/><text x="19" y="16" font-family="Arial" font-size="8" fill="white" text-anchor="middle" font-weight="bold">VISA</text></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#EB001B"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 6.8a7 7 0 010 10.4A7 7 0 0119 6.8z" fill="#FF5F00"/></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#6739B7"/><text x="19" y="16" font-family="Arial" font-size="6.5" fill="white" text-anchor="middle" font-weight="bold">UPI</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#1A1F71"/><text x="25" y="21" font-family="Arial Black,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="900" font-style="italic">VISA</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#252525"/><circle cx="19" cy="15" r="9" fill="#EB001B"/><circle cx="31" cy="15" r="9" fill="#F79E1B"/><path d="M25 7.9a9 9 0 010 14.2A9 9 0 0125 7.9z" fill="#FF5F00"/></svg>
+              <svg class="pay-icon" viewBox="0 0 56 30" style="height:16px;width:auto"><rect width="56" height="30" rx="4" fill="#fff"/><text x="28" y="12" font-family="Arial,sans-serif" font-size="6" fill="#6739B7" text-anchor="middle" font-weight="bold">BHARAT</text><text x="28" y="23" font-family="Arial Black,sans-serif" font-size="10" fill="#6739B7" text-anchor="middle" font-weight="900">UPI</text></svg>
             </span>
           </div>
           <div class="product-btn-row">
             <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-scratch-remover',399,'Pro Scratch Remover');return false;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
             </a>
-            <button class="btn-add-cart-sm" onclick="changeQty('car-scratch-remover',399,'Pro Scratch Remover',1)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Cart</span>
-            </button>
-            <div class="qty-box" id="qtyBox-car-scratch-remover">
-              <button class="qty-btn" onclick="changeQty('car-scratch-remover',399,'Pro Scratch Remover',-1)">−</button>
-              <span class="qty-num" id="qty-car-scratch-remover">0</span>
-              <button class="qty-btn" onclick="changeQty('car-scratch-remover',399,'Pro Scratch Remover',1)">+</button>
+            <div class="btn-cart-counter" id="cartBtn-car-scratch-remover">
+              <div class="cart-add-state" id="cartAdd-car-scratch-remover" onclick="cartAddFirst('car-scratch-remover',399,'Pro Scratch Remover')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Add to Cart</span>
+              </div>
+              <div class="cart-counter-state" id="cartCounter-car-scratch-remover">
+                <button class="c-qty-btn" onclick="changeQty('car-scratch-remover',399,'Pro Scratch Remover',-1)">−</button>
+                <span class="c-qty-num" id="qty-car-scratch-remover">0</span>
+                <button class="c-qty-btn" onclick="changeQty('car-scratch-remover',399,'Pro Scratch Remover',1)">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -767,22 +776,24 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
           <div class="product-payment-strip">
             <span>COD · UPI · Cards</span>
             <span class="pay-icons">
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#072654"/><text x="19" y="16" font-family="Arial" font-size="8" fill="white" text-anchor="middle" font-weight="bold">VISA</text></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#EB001B"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B"/><path d="M19 6.8a7 7 0 010 10.4A7 7 0 0119 6.8z" fill="#FF5F00"/></svg>
-              <svg class="pay-icon" viewBox="0 0 38 24" style="height:13px;width:auto"><rect width="38" height="24" rx="4" fill="#6739B7"/><text x="19" y="16" font-family="Arial" font-size="6.5" fill="white" text-anchor="middle" font-weight="bold">UPI</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#1A1F71"/><text x="25" y="21" font-family="Arial Black,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="900" font-style="italic">VISA</text></svg>
+              <svg class="pay-icon" viewBox="0 0 50 30" style="height:16px;width:auto"><rect width="50" height="30" rx="4" fill="#252525"/><circle cx="19" cy="15" r="9" fill="#EB001B"/><circle cx="31" cy="15" r="9" fill="#F79E1B"/><path d="M25 7.9a9 9 0 010 14.2A9 9 0 0125 7.9z" fill="#FF5F00"/></svg>
+              <svg class="pay-icon" viewBox="0 0 56 30" style="height:16px;width:auto"><rect width="56" height="30" rx="4" fill="#fff"/><text x="28" y="12" font-family="Arial,sans-serif" font-size="6" fill="#6739B7" text-anchor="middle" font-weight="bold">BHARAT</text><text x="28" y="23" font-family="Arial Black,sans-serif" font-size="10" fill="#6739B7" text-anchor="middle" font-weight="900">UPI</text></svg>
             </span>
           </div>
           <div class="product-btn-row">
             <a class="btn-buy-now" href="checkout.html" onclick="buyNowDirect('car-apc',299,'All Purpose Cleaner');return false;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span>Buy Now</span>
             </a>
-            <button class="btn-add-cart-sm" onclick="changeQty('car-apc',299,'All Purpose Cleaner',1)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Cart</span>
-            </button>
-            <div class="qty-box" id="qtyBox-car-apc">
-              <button class="qty-btn" onclick="changeQty('car-apc',299,'All Purpose Cleaner',-1)">−</button>
-              <span class="qty-num" id="qty-car-apc">0</span>
-              <button class="qty-btn" onclick="changeQty('car-apc',299,'All Purpose Cleaner',1)">+</button>
+            <div class="btn-cart-counter" id="cartBtn-car-apc">
+              <div class="cart-add-state" id="cartAdd-car-apc" onclick="cartAddFirst('car-apc',299,'All Purpose Cleaner')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg><span>Add to Cart</span>
+              </div>
+              <div class="cart-counter-state" id="cartCounter-car-apc">
+                <button class="c-qty-btn" onclick="changeQty('car-apc',299,'All Purpose Cleaner',-1)">−</button>
+                <span class="c-qty-num" id="qty-car-apc">0</span>
+                <button class="c-qty-btn" onclick="changeQty('car-apc',299,'All Purpose Cleaner',1)">+</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1099,11 +1110,13 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
       <p style="font-size:.82rem;color:var(--sand);">💬 <a href="https://wa.me/919667692560" target="_blank" rel="noopener" style="color:var(--sand);text-decoration:none;">WhatsApp Support</a></p>
     </div>
     <div style="margin-top:20px;display:flex;gap:12px;align-items:center;">
-      <a href="https://instagram.com/carglanz" target="_blank" rel="noopener" aria-label="CarGlanz on Instagram" style="color:var(--sage);text-decoration:none;width:36px;height:36px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;border-radius:4px;transition:all .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)';this.style.color='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(201,168,76,.2)';this.style.color='var(--sage)'">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <!-- Instagram — colored gradient icon, links to carglanz.in profile -->
+      <a href="https://www.instagram.com/carglanz.in?igsh=YmN0N2RtN2IwYThj" target="_blank" rel="noopener" aria-label="CarGlanz on Instagram" style="text-decoration:none;width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);transition:transform .3s,box-shadow .3s;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 4px 16px rgba(214,36,159,.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a href="https://youtube.com/@carglanz" target="_blank" rel="noopener" aria-label="CarGlanz on YouTube" style="color:var(--sage);text-decoration:none;width:36px;height:36px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;border-radius:4px;transition:all .3s;" onmouseover="this.style.borderColor='rgba(201,168,76,.5)';this.style.color='var(--gold-light)'" onmouseout="this.style.borderColor='rgba(201,168,76,.2)';this.style.color='var(--sage)'">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+      <!-- YouTube — official red icon -->
+      <a href="https://youtube.com/@carglanz" target="_blank" rel="noopener" aria-label="CarGlanz on YouTube" style="text-decoration:none;width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#FF0000;transition:transform .3s,box-shadow .3s;" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 4px 16px rgba(255,0,0,.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FF0000"/></svg>
       </a>
     </div>
   </div>
@@ -1185,6 +1198,13 @@ function syncQtyDisplays(){
   cart.forEach(item=>{
     const el=document.getElementById('qty-'+item.slug);
     if(el) el.textContent=item.qty;
+    // show counter if qty>0
+    if(item.qty>0){
+      const addState=document.getElementById('cartAdd-'+item.slug);
+      const counterState=document.getElementById('cartCounter-'+item.slug);
+      if(addState) addState.classList.add('hidden');
+      if(counterState) counterState.classList.add('active');
+    }
   });
 }
 
@@ -1197,8 +1217,20 @@ function changeQty(slug,price,name,delta){
     cart.push({slug,name,price,qty:1});
   }
   const el=document.getElementById('qty-'+slug);
-  if(el) el.textContent=cart.find(i=>i.slug===slug)?.qty||0;
+  const qty=cart.find(i=>i.slug===slug)?.qty||0;
+  if(el) el.textContent=qty;
+  // toggle counter vs add-state
+  const addState=document.getElementById('cartAdd-'+slug);
+  const counterState=document.getElementById('cartCounter-'+slug);
+  if(addState&&counterState){
+    if(qty>0){addState.classList.add('hidden');counterState.classList.add('active');}
+    else{addState.classList.remove('hidden');counterState.classList.remove('active');}
+  }
   saveCart(); updateBadge();
+}
+
+function cartAddFirst(slug,price,name){
+  changeQty(slug,price,name,1);
 }
 
 function buyNowDirect(slug,price,name){
