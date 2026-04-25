@@ -527,6 +527,11 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
     <li><a href="#process">Our Process</a></li>
     <li><a href="#blog">Blog</a></li>
   </ul>
+  <a id="auth-link" href="login.html"
+  style="font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  color:#9aaab8;text-decoration:none;transition:color .3s;">
+  Login
+</a>
   <a class="nav-cart-btn" href="checkout.html" id="navCartBtn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
     <span class="cart-badge" id="navBadge">0</span>
@@ -1263,6 +1268,32 @@ function toggleFaq(btn){
   });
   if(!isOpen){answer.classList.add('open');icon.textContent='−';}
 }
+</script>
+  <script type="module">
+  import { getUser, signOut, onAuthChange } from './auth.js'
+
+  function updateNav(user) {
+    const link = document.getElementById('auth-link')
+    if (!link) return
+    if (user) {
+      link.textContent = user.email.split('@')[0]
+      link.href = '#'
+      link.style.color = '#c9a84c'
+      link.onclick = async (e) => {
+        e.preventDefault()
+        await signOut()
+        window.location.reload()
+      }
+    } else {
+      link.textContent = 'Login'
+      link.href = 'login.html'
+      link.style.color = '#9aaab8'
+      link.onclick = null
+    }
+  }
+
+  getUser().then(updateNav)
+  onAuthChange(updateNav)
 </script>
 <script type="module" src="auth.js"></script>
 </body>
