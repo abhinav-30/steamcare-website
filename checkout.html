@@ -637,6 +637,15 @@ renderSummary();
   getUser().then(updateNav)
   onAuthChange(updateNav)
 </script>
+<script type="module">
+    import { getUser } from './auth.js'
+    getUser().then(user => {
+      if (!user) {
+        sessionStorage.setItem('redirect_after_login', 'checkout.html')
+        window.location.href = 'login.html'
+      }
+    })
+  </script>
 <script type="module" src="auth.js"></script>
 </body>
 </html>
