@@ -202,6 +202,11 @@ nav{position:fixed;top:var(--banner-h);left:0;right:0;z-index:99;padding:14px 60
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Continue Shopping
   </a>
+  <a id="auth-link" href="login.html"
+  style="font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  color:#9aaab8;text-decoration:none;transition:color .3s;">
+  Login
+</a>
 </nav>
 
 <!-- CHECKOUT PAGE -->
@@ -605,6 +610,32 @@ function renderTotals() {
 
 /* ── INIT ── */
 renderSummary();
+</script>
+<script type="module">
+  import { getUser, signOut, onAuthChange } from './auth.js'
+
+  function updateNav(user) {
+    const link = document.getElementById('auth-link')
+    if (!link) return
+    if (user) {
+      link.textContent = user.email.split('@')[0]
+      link.href = '#'
+      link.style.color = '#c9a84c'
+      link.onclick = async (e) => {
+        e.preventDefault()
+        await signOut()
+        window.location.reload()
+      }
+    } else {
+      link.textContent = 'Login'
+      link.href = 'login.html'
+      link.style.color = '#9aaab8'
+      link.onclick = null
+    }
+  }
+
+  getUser().then(updateNav)
+  onAuthChange(updateNav)
 </script>
 <script type="module" src="auth.js"></script>
 </body>
