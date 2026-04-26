@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login — CarGlanz India | Premium Car Care</title>
+<title>Sign In — CarGlanz India | Premium Car Care</title>
 <meta name="robots" content="noindex, follow">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,30 +22,64 @@
     const errEl    = document.getElementById('auth-error')
     const btnEl    = document.getElementById('auth-btn')
 
-    if (!email || !password) {
-      errEl.textContent = 'Please enter your email and password.'
-      return
-    }
-
     errEl.textContent = ''
-    btnEl.disabled = true
-    btnEl.textContent = currentMode === 'login' ? 'Signing in…' : 'Creating account…'
 
-    const { data, error } = currentMode === 'login'
-      ? await signIn(email, password)
-      : await signUp(email, password)
+    if (currentMode === 'login') {
+      if (!email || !password) {
+        errEl.textContent = 'Please enter your email and password.'
+        return
+      }
+      btnEl.disabled = true
+      btnEl.textContent = 'Signing in…'
+      const { data, error } = await signIn(email, password)
+      if (error) {
+        errEl.textContent = error.message
+        btnEl.disabled = false
+        btnEl.textContent = 'Sign In'
+        return
+      }
+      const dest = sessionStorage.getItem('redirect_after_login') || 'index.html'
+      sessionStorage.removeItem('redirect_after_login')
+      window.location.href = dest
 
-    if (error) {
-      errEl.textContent = error.message
+    } else {
+      const fullName = document.getElementById('fullname').value.trim()
+      const phone    = document.getElementById('phone').value.trim()
+      if (!fullName || !phone || !email || !password) {
+        errEl.textContent = 'Please fill in all fields.'
+        return
+      }
+      if (phone.replace(/\D/g,'').length < 10) {
+        errEl.textContent = 'Please enter a valid 10-digit phone number.'
+        return
+      }
+      if (password.length < 6) {
+        errEl.textContent = 'Password must be at least 6 characters.'
+        return
+      }
+      btnEl.disabled = true
+      btnEl.textContent = 'Creating account…'
+      const { data, error } = await signUp(email, password, fullName, phone)
+      if (error) {
+        errEl.textContent = error.message
+        btnEl.disabled = false
+        btnEl.textContent = 'Create Account'
+        return
+      }
+      // Show success popup
+      document.getElementById('success-popup').classList.add('show')
       btnEl.disabled = false
-      btnEl.textContent = currentMode === 'login' ? 'Sign In' : 'Create Account'
-      return
+      btnEl.textContent = 'Create Account'
     }
+  }
 
-    // After success, go back to checkout or home
-    const dest = sessionStorage.getItem('redirect_after_login') || 'index.html'
-    sessionStorage.removeItem('redirect_after_login')
-    window.location.href = dest
+  window.closePopupAndSwitch = function() {
+    document.getElementById('success-popup').classList.remove('show')
+    setMode('login')
+    document.getElementById('fullname').value = ''
+    document.getElementById('phone').value = ''
+    document.getElementById('email').value = ''
+    document.getElementById('password').value = ''
   }
 </script>
 
@@ -70,192 +104,68 @@ body{
   position:relative;
   overflow:hidden;
 }
-
-/* Background texture */
 body::before{
   content:'';
   position:fixed;
   inset:0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(42,58,74,.5) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(26,37,53,.4) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 60% at 50% 0%,rgba(42,58,74,.5) 0%,transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%,rgba(26,37,53,.4) 0%,transparent 60%);
   pointer-events:none;
   z-index:0;
 }
-
-/* Logo at top */
-.logo-wrap{
-  text-align:center;
-  margin-bottom:32px;
-  position:relative;
-  z-index:1;
-}
-.logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:2rem;
-  font-weight:600;
-  letter-spacing:8px;
-  text-transform:uppercase;
-  text-decoration:none;
-  color:var(--cream);
-}
+.logo-wrap{text-align:center;margin-bottom:32px;position:relative;z-index:1;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;letter-spacing:8px;text-transform:uppercase;text-decoration:none;color:var(--cream);}
 .logo em{color:var(--gold);font-style:normal}
-.logo-tagline{
-  font-size:.62rem;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:var(--sage);
-  margin-top:6px;
-}
-
-/* Card */
-.auth-card{
-  width:100%;
-  max-width:420px;
-  background:rgba(26,37,53,.65);
-  border:1px solid rgba(201,168,76,.18);
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
-  padding:40px 36px 36px;
-  position:relative;
-  z-index:1;
-}
-.auth-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);
-}
-
-/* Tabs */
-.tab-row{
-  display:flex;
-  border-bottom:1px solid rgba(201,168,76,.15);
-  margin-bottom:28px;
-}
-.tab-btn{
-  flex:1;
-  padding:10px 0;
-  background:none;
-  border:none;
-  border-bottom:2px solid transparent;
-  font-family:'Jost',sans-serif;
-  font-size:.68rem;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:color .25s, border-color .25s;
-  color:var(--sage);
-  margin-bottom:-1px;
-}
-.tab-btn.active{
-  color:var(--gold);
-  border-bottom-color:var(--gold);
-}
-
-/* Fields */
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-  margin-bottom:14px;
-}
-.field label{
-  font-size:.62rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--sage);
-  font-weight:500;
-}
-.field input{
-  background:rgba(10,12,16,.4);
-  border:1px solid rgba(201,168,76,.12);
-  color:var(--cream);
-  padding:13px 16px;
-  font-family:'Jost',sans-serif;
-  font-size:15px;
-  outline:none;
-  transition:border-color .25s, background .25s;
-  -webkit-appearance:none;
-  appearance:none;
-  width:100%;
-}
+.logo-tagline{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--sage);margin-top:6px;}
+.auth-card{width:100%;max-width:420px;background:rgba(26,37,53,.65);border:1px solid rgba(201,168,76,.18);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:40px 36px 36px;position:relative;z-index:1;}
+.auth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);}
+.tab-row{display:flex;border-bottom:1px solid rgba(201,168,76,.15);margin-bottom:28px;}
+.tab-btn{flex:1;padding:10px 0;background:none;border:none;border-bottom:2px solid transparent;font-family:'Jost',sans-serif;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:color .25s,border-color .25s;color:var(--sage);margin-bottom:-1px;}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.field label{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage);font-weight:500;}
+.field input{background:rgba(10,12,16,.4);border:1px solid rgba(201,168,76,.12);color:var(--cream);padding:13px 16px;font-family:'Jost',sans-serif;font-size:15px;outline:none;transition:border-color .25s,background .25s;-webkit-appearance:none;appearance:none;width:100%;}
 .field input::placeholder{color:var(--sand);opacity:.45}
-.field input:focus{
-  border-color:rgba(201,168,76,.45);
-  background:rgba(26,37,53,.6);
-}
-
-/* Error */
-#auth-error{
-  font-size:.78rem;
-  color:#e05a3a;
-  min-height:20px;
-  margin-bottom:14px;
-  line-height:1.4;
-}
-
-/* Submit button */
-.auth-btn{
-  width:100%;
-  padding:14px;
-  background:linear-gradient(135deg,var(--gold),var(--gold-light));
-  border:none;
-  color:#0a0c10;
-  font-family:'Jost',sans-serif;
-  font-weight:700;
-  letter-spacing:3px;
-  font-size:.72rem;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:opacity .25s, transform .15s;
-  margin-top:4px;
-}
+.field input:focus{border-color:rgba(201,168,76,.45);background:rgba(26,37,53,.6);}
+.signup-only{display:none;}
+#auth-error{font-size:.78rem;color:#e05a3a;min-height:20px;margin-bottom:14px;line-height:1.4;}
+.auth-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:#0a0c10;font-family:'Jost',sans-serif;font-weight:700;letter-spacing:3px;font-size:.72rem;text-transform:uppercase;cursor:pointer;transition:opacity .25s,transform .15s;margin-top:4px;}
 .auth-btn:hover{opacity:.88}
 .auth-btn:active{transform:scale(.98)}
 .auth-btn:disabled{opacity:.5;cursor:not-allowed}
-
-/* Back link */
-.back-link{
-  display:block;
-  text-align:center;
-  margin-top:22px;
-  font-size:.68rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--sage);
-  text-decoration:none;
-  transition:color .25s;
-}
+.back-link{display:block;text-align:center;margin-top:22px;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage);text-decoration:none;transition:color .25s;}
 .back-link:hover{color:var(--gold)}
+.auth-footer{margin-top:36px;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--bark);text-align:center;z-index:1;position:relative;}
 
-/* Signup note */
-#signup-note{
-  display:none;
-  font-size:.72rem;
-  color:var(--sage);
-  line-height:1.6;
-  margin-bottom:16px;
-  padding:10px 14px;
-  border-left:2px solid rgba(201,168,76,.3);
-  background:rgba(201,168,76,.05);
-}
-
-/* Footer strip */
-.auth-footer{
-  margin-top:36px;
-  font-size:.6rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--bark);
-  text-align:center;
-  z-index:1;
-  position:relative;
-}
+/* Success Popup */
+.popup-overlay{position:fixed;inset:0;background:rgba(10,12,16,.85);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.popup-overlay.show{opacity:1;pointer-events:all;}
+.popup-box{background:rgba(26,37,53,.97);border:1px solid rgba(201,168,76,.3);max-width:380px;width:100%;padding:44px 36px;text-align:center;position:relative;transform:translateY(20px);transition:transform .3s;}
+.popup-overlay.show .popup-box{transform:translateY(0);}
+.popup-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.5),transparent);}
+.popup-icon{width:60px;height:60px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:26px;color:var(--gold);}
+.popup-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--cream);letter-spacing:2px;margin-bottom:10px;}
+.popup-msg{font-size:.82rem;color:var(--sage);line-height:1.8;margin-bottom:28px;}
+.popup-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:#0a0c10;font-family:'Jost',sans-serif;font-weight:700;letter-spacing:3px;font-size:.7rem;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.popup-btn:hover{opacity:.88}
 </style>
 </head>
 <body>
+
+<!-- Success Popup -->
+<div class="popup-overlay" id="success-popup">
+  <div class="popup-box">
+    <div class="popup-icon">✓</div>
+    <div class="popup-title">Account Created!</div>
+    <p class="popup-msg">
+      Welcome to CarGlanz India.<br>
+      Your account has been created successfully.<br><br>
+      Please sign in with your email and password to continue.
+    </p>
+    <button class="popup-btn" onclick="closePopupAndSwitch()">Sign In Now</button>
+  </div>
+</div>
 
 <div class="logo-wrap">
   <a href="index.html" class="logo"><em>CAR</em>GLANZ</a>
@@ -269,6 +179,18 @@ body::before{
     <button class="tab-btn" id="tab-signup" onclick="setMode('signup')">Create Account</button>
   </div>
 
+  <!-- Signup only fields -->
+  <div class="field signup-only" id="field-fullname">
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" placeholder="Rahul Sharma" autocomplete="name" />
+  </div>
+
+  <div class="field signup-only" id="field-phone">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+  </div>
+
+  <!-- Always visible -->
   <div class="field">
     <label for="email">Email Address</label>
     <input type="email" id="email" placeholder="you@example.com"
@@ -283,10 +205,6 @@ body::before{
 
   <p id="auth-error"></p>
 
-  <div id="signup-note">
-    You'll receive a confirmation email. Click the link in it to activate your account before signing in.
-  </div>
-
   <button class="auth-btn" id="auth-btn" onclick="handleAuth()">Sign In</button>
 
   <a href="index.html" class="back-link">← Back to store</a>
@@ -300,20 +218,15 @@ let currentMode = 'login'
 
 function setMode(mode) {
   currentMode = mode
-
   document.getElementById('tab-login').classList.toggle('active', mode === 'login')
   document.getElementById('tab-signup').classList.toggle('active', mode === 'signup')
-
+  document.querySelectorAll('.signup-only').forEach(el => {
+    el.style.display = mode === 'signup' ? 'flex' : 'none'
+  })
   document.getElementById('auth-btn').textContent =
     mode === 'login' ? 'Sign In' : 'Create Account'
-
-  document.getElementById('signup-note').style.display =
-    mode === 'signup' ? 'block' : 'none'
-
-  // Update autocomplete hint for password
   document.getElementById('password').setAttribute('autocomplete',
     mode === 'login' ? 'current-password' : 'new-password')
-
   document.getElementById('auth-error').textContent = ''
 }
 </script>
