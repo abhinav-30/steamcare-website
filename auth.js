@@ -12,9 +12,33 @@ export async function getUser() {
   return user
 }
 
-// Sign up with email + password
-export async function signUp(email, password) {
+// Returns the profile (name, phone) of the current user
+export async function getUserProfile() {
+  const user = await getUser()
+  if (!user) return null
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('full_name, phone')
+    .eq('id', user.id)
+    .single()
+  if (error) return null
+  return data
+}
+
+// Sign up with email + password, then save name & phone to profiles table
+export async function signUp(email, password, fullName, phone) {
   const { data, error } = await supabase.auth.signUp({ email, password })
+  if (error) return { data, error }
+
+  // Save name and phone to profiles table
+  if (data.user) {
+    await supabase.from('profiles').insert({
+      id: data.user.id,
+      full_name: fullName,
+      phone: phone
+    })
+  }
+
   return { data, error }
 }
 
