@@ -744,13 +744,18 @@ window.addEventListener('load', () => {
 });
 </script>
 <script type="module">
-  import { getUser, signOut, onAuthChange } from './auth.js'
+  import { getUser, getUserProfile, signOut, onAuthChange } from './auth.js'
 
-  function updateNav(user) {
+  async function updateNav(user) {
     const link = document.getElementById('auth-link')
     if (!link) return
     if (user) {
-      link.textContent = user.email.split('@')[0]
+      // Fetch their name from profiles table
+      const profile = await getUserProfile()
+      const displayName = profile?.full_name
+        ? profile.full_name.split(' ')[0]   // show first name only
+        : user.email.split('@')[0]           // fallback to email prefix
+      link.textContent = displayName
       link.href = '#'
       link.style.color = '#c9a84c'
       link.onclick = async (e) => {
@@ -759,7 +764,7 @@ window.addEventListener('load', () => {
         window.location.reload()
       }
     } else {
-      link.textContent = 'Login'
+      link.textContent = 'Sign In'
       link.href = 'login.html'
       link.style.color = '#9aaab8'
       link.onclick = null
