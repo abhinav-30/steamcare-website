@@ -527,6 +527,11 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
     <li><a href="#process">Our Process</a></li>
     <li><a href="#blog">Blog</a></li>
   </ul>
+  <a id="auth-link" href="login.html"
+  style="font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  color:#9aaab8;text-decoration:none;transition:color .3s;">
+  Sign In
+</a>
   <a class="nav-cart-btn" href="checkout.html" id="navCartBtn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
     <span class="cart-badge" id="navBadge">0</span>
@@ -540,11 +545,12 @@ footer{padding:60px 80px 40px;border-top:1px solid rgba(201,168,76,.12);display:
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" id="mobClose" aria-label="Close">✕</button>
   <a class="mob-logo" href="#" onclick="closeMenu()"><em>CAR</em>Glanz</a>
+  <a class="mob-link" id="auth-link" href="login.html" onclick="closeMenu()">Sign In</a>
   <a class="mob-link" href="#about"    onclick="closeMenu()">About</a>
   <a class="mob-link" href="#products" onclick="closeMenu()">Products</a>
   <a class="mob-link" href="#process"  onclick="closeMenu()">Our Process</a>
   <a class="mob-link" href="#blog"     onclick="closeMenu()">Blog</a>
-  <a class="mob-link" id="auth-link" href="login.html" onclick="closeMenu()">Sign In</a>
+  
 </div>
 
 <!-- HERO -->
